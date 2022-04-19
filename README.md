@@ -1,24 +1,38 @@
-# README
+# TriPlan(仮)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+自分の地元や旅行で訪れた場所の旅行プランやお店、場所を共有できるサイト。
 
-* Ruby version
+### サイトテーマ
 
-* System dependencies
+旅を楽しもう！
 
-* Configuration
+### テーマを選んだ理由
 
-* Database creation
+私は旅行が好きで旅行の計画を立てるのも好きです。
+しかし、何度も行ったことがある場所だと行くところに迷うことがあります。また、私とは逆に計画を立てるのが苦手で丸投げしたいという方もいらっしゃると思います。
+そんな時に旅が楽しくなるようなアイデアを共有できればいいなと思い、このテーマにしました。
 
-* Database initialization
+### ターゲットユーザ
 
-* How to run the test suite
+旅行好きな人、旅行に行きたいけど計画を立てるのは面倒くさい人。
 
-* Services (job queues, cache servers, search engines, etc.)
+### 主な利用シーン
 
-* Deployment instructions
+自分の旅行プランを共有したいとき、手軽に旅行の計画を立てたいとき。
 
-* ...
+## 設計書
+
+
+## チャレンジ要素一覧
+
+https://docs.google.com/spreadsheets/d/1Eg61PCbQM74HNB_9vCGv0Hst36bgQyld_GfhbN-rrAc/edit?usp=sharing
+
+## 開発環境
+- OS：Windows
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+
