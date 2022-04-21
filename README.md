@@ -1,4 +1,4 @@
-# TriPlan(仮)
+# TriPlan
 
 ## サイト概要
 
