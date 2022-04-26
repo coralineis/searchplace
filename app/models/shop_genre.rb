@@ -1,0 +1,2 @@
+class ShopGenre < ApplicationRecord
+end
