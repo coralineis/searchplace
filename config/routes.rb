@@ -5,8 +5,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
-    resources :place_genres, only: [:create, :index, :show, :edit, :destroy]
-    resources :shop_genres, only: [:create, :show, :edit, :destroy]
+    resources :place_genres
+    resources :shop_genres
     resources :users, only:[:show, :index, :edit, :update]
   end
 

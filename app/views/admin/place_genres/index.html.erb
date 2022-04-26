@@ -1,0 +1,15 @@
+<div>
+  ジャンル名登録
+  <%= form_with model: @place_genre, url: admin_place_genres_path do |f| %>
+    <%= f.text_field :place_genre_name %>
+    <%= f.radio_button :genre_type, "place" %>
+    <%= f.label :genre_type, "場所" %>
+    <%= f.radio_button :genre_type, "shop" %>
+    <%= f.label :genre_type, "お店" %>
+    <%= f.submit "登録" %>
+  <% end %>
+</div>
+
+<table class="table">
+  
+</table>
