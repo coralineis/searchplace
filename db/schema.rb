@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2022_04_26_025347) do
   end
 
   create_table "place_genres", force: :cascade do |t|
-    t.string "place_genre_name"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2022_04_26_025347) do
   end
 
   create_table "shop_genres", force: :cascade do |t|
-    t.string "shop_genre_name"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

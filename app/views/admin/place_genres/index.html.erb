@@ -1,15 +1,26 @@
-<div>
-  ジャンル名登録
-  <%= form_with model: @place_genre, url: admin_place_genres_path do |f| %>
-    <%= f.text_field :place_genre_name %>
-    <%= f.radio_button :genre_type, "place" %>
-    <%= f.label :genre_type, "場所" %>
-    <%= f.radio_button :genre_type, "shop" %>
-    <%= f.label :genre_type, "お店" %>
-    <%= f.submit "登録" %>
-  <% end %>
-</div>
+<div class="container">
+  <div>
+    場所ジャンル名登録
+    <%= form_with model: @place_genre, url: admin_place_genres_path do |f| %>
+      <%= f.text_field :name %><br>
+      <%= f.submit "登録", class: "btn btn-success" %>
+    <% end %>
+  </div>
 
-<table class="table">
-  
-</table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>場所ジャンル</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @place_genres.each do |place_genre| %>
+        <tr>
+          <td><%= place_genre.name %> </td>
+          <td><%= link_to "編集", edit_admin_place_genre_path(place_genre.id), class: "btn btn-success" %></td>
+          <td><%= link_to "削除", admin_place_genre_path(place_genre.id), method: :delete, class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
