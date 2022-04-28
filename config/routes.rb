@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    devise_for :users, skip: [:password], controllers: {
+    devise_for :users, controllers: {
       registrations: 'public/registrations',
       sessions: 'public/sessions'
     }

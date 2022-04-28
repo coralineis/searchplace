@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">ジャンル名編集</div>
-  
+
   <div class="row">
     <p>ジャンル名</p>
     <%= form_with model: @place_genre, url: admin_place_genre_path(@place_genre.id), method: :patch do |f| %>
       <%= f.text_field :name, class: 'form_control' %>
       <%= f.submit "変更を保存", class: 'btn btn-success' %>
-    <% end 
+    <% end %>
   </div>
 </div>
