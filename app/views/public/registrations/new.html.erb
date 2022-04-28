@@ -1,7 +1,7 @@
 <div class="container">
 <h4>新規会員登録</h4>
 
-  <%= form_with model: @user, url: new_user_registration_path do |f| %>
+  <%= form_with model: @user, url: user_registration_path do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
 
     <div class="field">

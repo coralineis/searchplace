@@ -1,0 +1,24 @@
+<div class="container">
+  <h4>会員一覧</h4>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>会員ID</th>
+        <th>ユーザーネーム</th>
+        <th>メールアドレス</th>
+        <th>会員ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <th><%= user.id %></th>
+          <th><%= link_to user.name, admin_user_path(user.id) %></th>
+          <th><%= user.email %></th>
+          <th><%= user.is_deleted %></th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
