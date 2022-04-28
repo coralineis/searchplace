@@ -19,4 +19,6 @@ class User < ApplicationRecord
     tottori: 31, shimane: 32, okayama: 33, hiroshima: 34, yamaguchi: 35, tokushima: 36, kagawa: 37, ehime: 38, kochi: 39,
     fukuoka: 40, saga: 41, nagasaki: 42, kumamoto: 43, oita: 44, miyazaki: 45, kagoshima: 46, okinawa: 47
   }
+  
+  
 end

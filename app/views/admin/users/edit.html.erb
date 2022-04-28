@@ -1,0 +1,36 @@
+<div class="container">
+  <h4>会員編集</h4>
+
+  <table class="table table-borderless">
+    <tbody>
+      <%= form_with model: @user, admin_user_path(@user.id), method: :patch do %>
+        <tr>
+          <th>会員ID</th>
+          <th><%= @user.id %></th>
+        </tr>
+        <tr>
+          <th>ユーザーネーム</th>
+          <th><%= f.text_field :name %></th>
+        </tr>
+        <tr>
+          <th>居住地</th>
+          <th><%= f.select :prefecture, User.prefectures_i18n.invert, {} %></th>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <th><%= f.text_field :email %></th>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <th>
+            <%= f.radio_button :is_deleted, false %><%= f.label :is_deleted "有効", value: false %>
+            <%= f.radio_button :is_deleted, true %><%= f.label :is_deleted "退会", value: true %>
+          </th>
+        </tr>
+        <tr>
+          <th><%= f.submit "変更を保存", class: "btn btn-success" %></th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
