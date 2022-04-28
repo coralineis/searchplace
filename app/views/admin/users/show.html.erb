@@ -1,0 +1,30 @@
+<div class="container">
+  <h4>会員詳細</h4>
+
+  <table class="table table-borderless">
+    <tbody>
+      <tr>
+        <th>会員ID</th>
+        <th><%= @user.id %></th>
+      </tr>
+      <tr>
+        <th>ユーザーネーム</th>
+        <th><%= @user.name %></th>
+      </tr>
+      <tr>
+        <th>居住地</th>
+        <th><%= @user.prefecture %></th>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <th><%= @user.email %></th>
+      </tr>
+      <tr>
+        <th>会員ステータス</th>
+        <th><%= @user.is_deleted %></th>
+      </tr>
+    </tbody>
+  </table>
+
+  <%= link_to "編集する", edit_admin_user_path(@user.id), class: "btn btn-success" %>
+</div>
