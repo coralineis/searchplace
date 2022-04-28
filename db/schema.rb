@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2022_04_26_025347) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.integer "prefecture", default: 0
+    t.integer "prefecture"
     t.boolean "is_deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
