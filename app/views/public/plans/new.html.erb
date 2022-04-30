@@ -1,0 +1,12 @@
+<div class="container">
+  <h4>Plan新規投稿</h4>
+
+  <p>1日目</p>
+  <%= form_with model: @plan, url: plans_path, method: :post do |f| %>
+    <%= f.label :name, "プラン名" %>
+    <%= f.text_field :name %>
+
+    <%= f.label :time, "時間" %>
+    <%= f.time_field :time, :minute_step => 15 %>
+  <% end %>
+</div>

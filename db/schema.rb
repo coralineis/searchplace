@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 2022_04_26_025347) do
     t.integer "like_id"
     t.integer "review_id"
     t.integer "place_genre_id"
-    t.string "place_name"
-    t.string "place_image_id"
+    t.string "name"
+    t.string "image_id"
     t.string "time"
     t.text "introduction"
     t.string "tag"
@@ -55,9 +55,9 @@ ActiveRecord::Schema.define(version: 2022_04_26_025347) do
     t.integer "user_id"
     t.integer "like_id"
     t.integer "review_id"
-    t.string "plan_name"
-    t.string "plan_image_id"
-    t.string "time"
+    t.string "name"
+    t.string "image_id"
+    t.integer "time"
     t.string "stay_night"
     t.text "introduction"
     t.string "tag"
@@ -68,26 +68,6 @@ ActiveRecord::Schema.define(version: 2022_04_26_025347) do
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id"
     t.string "review"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "shop_genres", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "shops", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "like_id"
-    t.integer "review_id"
-    t.integer "shop_genre_id"
-    t.string "shop_name"
-    t.string "shop_image_id"
-    t.string "time"
-    t.text "introduction"
-    t.string "tag"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

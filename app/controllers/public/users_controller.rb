@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
   def show
-    @user = User.find(current_user)
+    @user = current_user
+  end
 end

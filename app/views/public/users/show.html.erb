@@ -1,3 +1,17 @@
 <div class="container">
   <h4>My Page</h4>
+
+  <p>ユーザー情報</p>
+  <%= @user.name %><br>
+  <%= @user.prefecture_i18n %>在住<br>
+  <%= link_to "編集する", edit_users_path(current_user), class: "btn btn-primary" %>
+
+  <p>投稿する</p>
+  <%= link_to "Plan", new_plan_path, class: "btn btn-primary" %>
+  <%= link_to "Place", new_place_path, class: "btn btn-danger" %>
+
+  <p>お気に入り一覧</p>
+
+
+  <%= link_to "投稿一覧" %>
 </div>

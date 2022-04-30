@@ -6,8 +6,8 @@ class CreatePlaces < ActiveRecord::Migration[6.1]
       t.integer :like_id
       t.integer :review_id
       t.integer :place_genre_id
-      t.string :place_name
-      t.string :place_image_id
+      t.string :name
+      t.string :image_id
       t.string :time
       t.text :introduction
       t.string :tag
