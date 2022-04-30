@@ -7,6 +7,18 @@
     <%= f.text_field :name %>
 
     <%= f.label :time, "時間" %>
-    <%= f.time_field :time, :minute_step => 15 %>
+    <%= f.time_select :time, :minute_step => 15 %>
+
+    <%= f.label :place_name, "施設名称" %>
+    <%= f.text_field :place_name %>
+
+    <%= f.label :image, "画像" %>
+    <%= f.attachment_field :image %>
+
+    <%= f.label :introduction, "感想　おすすめポイント" %>
+    <%= f.text_area :introduction %>
+
+    <%= f.label :, "タグ付け" %>
+    <%= f.text_field :, value: @plan.tag.join(',') %>
   <% end %>
 </div>
