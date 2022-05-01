@@ -18,6 +18,9 @@
     <%= f.label :tag_list, "タグを追加" %>
     <%= f.text_field :tag_list, value: @place.tag_list.join(',') %>
 
+    <%= f.label :tine, "所要時間" %>
+    <%= f.text_field :time %>時間
+
     <%= f.text_field :address %>
 
     <input type="button" value="検索" onclick="codeAddress()">
@@ -46,7 +49,7 @@
         map: map
       });
     }
-    
+
     let geocoder
 
     function codeAddress(){
@@ -64,7 +67,7 @@
         }
       });
     }
-    
+
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZbqOn4l4qqJtIF4mVm_JO87YklwwvaBs&callback=initMap" async defer></script>
 

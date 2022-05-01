@@ -1,0 +1,18 @@
+<div class="container">
+  <% @places.each do |place| %>
+    <%= place.name %>
+
+    <% if @tags.present? %>
+      <%= @tags.ezch do |tag| %>
+        <%= "#"tag.name %>
+      <% end %>
+    <% end %>
+
+    <%= image_tag attachment_url(place, :image, :fill, 100, 100) %>
+
+    <%= place.introduction %>
+
+    所要時間　<%= place.time %>時間
+    
+    <
+</div>
