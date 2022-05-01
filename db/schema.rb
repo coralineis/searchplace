@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2022_04_30_034223) do
     t.string "image_id"
     t.string "time"
     t.text "introduction"
-    t.string "tag"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -17,8 +17,58 @@
 
     <%= f.label :tag_list, "タグを追加" %>
     <%= f.text_field :tag_list, value: @place.tag_list.join(',') %>
+
+    <%= f.text_field :address %>
+
+    <input type="button" value="検索" onclick="codeAddress()">
+
+    <div id='map'></div>
+
+    <style>
+    #map {
+      height: 400px;
+      width: 400px;
+    }
+    </style>
+
+    <script>
+    let map
+    function initMap(){
+      geocoder = new google.maps.Geocoder()
+
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 40.7828, lng:-73.9653},
+        zoom: 12,
+      });
+
+      marker = new google.maps.Marker({
+        position:  {lat: 40.7828, lng:-73.9653},
+        map: map
+      });
+    }
     
-    <%= f.submit ""
+    let geocoder
+
+    function codeAddress(){
+      let inputAddress = document.getElementById('address').value;
+
+      geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+        if (status == 'OK') {
+          map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+          });
+        } else {
+          alert('該当する結果がありませんでした：' + status);
+        }
+      });
+    }
+    
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZbqOn4l4qqJtIF4mVm_JO87YklwwvaBs&callback=initMap" async defer></script>
+
+    <%= f.submit "投稿イメージを確認する", class: "btn btn-success" %>
 
   <% end %>
 </div>
