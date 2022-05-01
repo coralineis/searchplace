@@ -8,10 +8,11 @@ class Public::PlansController < ApplicationController
     @plan.save
     redirect_to plan_path(@plan.id)
   end
-  
+
   def index
     @plans = Plan.all
     @tags = Plan.tag_count_on()
+  end
 
   def show
   end
@@ -19,6 +20,6 @@ class Public::PlansController < ApplicationController
   private
 
   def plan_params
-    params.require(:plan).permit(:name, :place_name, :image, :time, :stay_night, :introduction, :tag)
+    params.require(:plan).permit(:name, :place_name, :image, :time, :stay_night, :introduction, :tag_list)
   end
 end

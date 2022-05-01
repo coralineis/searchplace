@@ -1,0 +1,24 @@
+<div class="container">
+  <h4>Place新規登録</h4>
+
+  <%= form_with model: @place, url: places_path, method: :post do |f| %>
+
+    <%= f.label :place_genre_id, "ジャンル" %>
+    <%= f.collection_select :place_genre_id, PlaceGenre.all, :id, :name, :prompt => "--ジャンルを選択してください--" %>
+
+    <%= f.label :image, "画像" %>
+    <%= f.attachment_field :image %>
+
+    <%= f.label :name, "施設名称" %>
+    <%= f.text_field :name %>
+
+    <%= f.label :introduction, "感想　おすすめポイント" %>
+    <%= f.text_area :introduction %>
+
+    <%= f.label :tag_list, "タグを追加" %>
+    <%= f.text_field :tag_list, value: @place.tag_list.join(',') %>
+    
+    <%= f.submit ""
+
+  <% end %>
+</div>

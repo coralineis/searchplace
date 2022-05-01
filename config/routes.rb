@@ -23,7 +23,6 @@ Rails.application.routes.draw do
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw'
     resources :plans
     resources :places
-    resources :shops
     resources :likes, only: []
     resources :reviews, only: []
   end
