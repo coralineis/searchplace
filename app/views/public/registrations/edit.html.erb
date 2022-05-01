@@ -1,11 +1,18 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>My Page</h2>
+<h4>ユーザー情報</h4>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "publics/shared/error_messages", resource: resource %>
+<%= form_with model: @user, url: registration_path(resource_name), method: :put do |f| %>
+  <%= render "public/shared/error_messages", resource: resource %>
+
+  <%= f.label :name, "ユーザーネーム" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :prefecture, "居住地" %>
+  <%= f.select :prefecture, User.prefectures_i18n.invert %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, "メールアドレス" %><br />
+    <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -32,12 +39,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "変更を保存する", class: "btn btn-success" %>
   </div>
 <% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
