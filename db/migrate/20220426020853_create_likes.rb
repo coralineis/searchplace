@@ -2,8 +2,9 @@ class CreateLikes < ActiveRecord::Migration[6.1]
   def change
     create_table :likes do |t|
 
-      t.integer :user_id
-      t.string :like
+      t.references :user, foreign_key: true
+      t.references :plan, foreign_key: true
+      t.references :place, foreign_key: true
 
       t.timestamps
     end

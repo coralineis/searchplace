@@ -26,9 +26,13 @@ ActiveRecord::Schema.define(version: 2022_04_30_034223) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
-    t.string "like"
+    t.integer "plan_id"
+    t.integer "place_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["place_id"], name: "index_likes_on_place_id"
+    t.index ["plan_id"], name: "index_likes_on_plan_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "place_genres", force: :cascade do |t|
@@ -117,5 +121,8 @@ ActiveRecord::Schema.define(version: 2022_04_30_034223) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "likes", "places"
+  add_foreign_key "likes", "plans"
+  add_foreign_key "likes", "users"
   add_foreign_key "taggings", "tags"
 end

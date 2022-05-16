@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :plans do
       collection do
         post :confirm
+        get :search
       end
     end
     resources :places do

@@ -15,6 +15,10 @@ class Public::PlacesController < ApplicationController
     redirect_to places_path
   end
 
+  def index
+    @places = Place.all
+  end
+
   def place_params
     params.require(:place).permit(:name, :image, :time, :introduction, :tag_list)
   end
