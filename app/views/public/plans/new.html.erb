@@ -4,33 +4,35 @@
   <p>1日目</p>
   <%= form_with model: @plan, url: confirm_plans_path, method: :post do |f| %>
     <table class="table table-borderless">
-      <tr>
-        <th><%= f.label :name, "プラン名" %></th>
-        <th><%= f.text_field :name %></th>
-      </tr>
-      <tr>
-        <th><%= f.label :time, "時間" %></th>
-        <th><%= f.time_select :time, :minute_step => 15, ignore_data: true %></th>
-      </tr>
-      <tr>
-        <th><%= f.label :place_name, "施設名称" %></th>
-        <th><%= f.text_field :place_name %></th>
-      </tr>
-      <tr>
-        <th><%= f.label :image, "画像" %></th>
-        <th><%= f.attachment_field :image %></th>
-      </tr>
-      <tr>
-        <th><%= f.label :introduction, "感想　おすすめポイント" %></th>
-        <th><%= f.text_area :introduction %></th>
-      </tr>
-      <tr>
-        <th><%= f.label :tag_list, "タグ付け" %></th>
-        <th><%= f.text_field :tag_list, value: @plan.tag_list.join(',') %></th>
-      </tr>
-      <tr>
-        <th><%= f.submit "投稿イメージを確認する", class: "btn btn-success" %></th>
-      </tr>
+      <tbody>
+        <tr>
+          <th><%= f.label :name, "プラン名" %></th>
+          <th><%= f.text_field :name %></th>
+        </tr>
+        <tr>
+          <th><%= f.label :time, "時間" %></th>
+          <th><%= f.time_select :time, :minute_step => 15, ignore_data: true %></th>
+        </tr>
+        <tr>
+          <th><%= f.label :place_name, "施設名称" %></th>
+          <th><%= f.text_field :place_name %></th>
+        </tr>
+        <tr>
+          <th><%= f.label :image, "画像" %></th>
+          <th><%= f.attachment_field :image %></th>
+        </tr>
+        <tr>
+          <th><%= f.label :introduction, "感想　おすすめポイント" %></th>
+          <th><%= f.text_area :introduction %></th>
+        </tr>
+        <tr>
+          <th><%= f.label :tag_list, "タグ付け" %></th>
+          <th><%= f.text_field :tag_list, value: @plan.tag_list.join(',') %></th>
+        </tr>
+        <tr>
+          <th><%= f.submit "投稿イメージを確認する", class: "btn btn-success" %></th>
+        </tr>
+      </tbody>
     </table>
   <% end %>
 

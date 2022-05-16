@@ -2,76 +2,90 @@
   <h4>Place新規登録</h4>
 
   <%= form_with model: @place, url: places_path, method: :post do |f| %>
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th><%= f.label :place_genre_id, "ジャンル" %></th>
+          <th><%= f.collection_select :place_genre_id, PlaceGenre.all, :id, :name, :prompt => "--ジャンルを選択してください--" %></th>
+        </tr>
+        <tr>
+          <th><%= f.label :image, "画像" %></th>
+          <th><%= f.attachment_field :image %></th>
+        </tr>
+        <tr>
+          <th><%= f.label :name, "施設名称" %></th>
+          <th><%= f.text_field :name %></th>
+        </tr>
+        <tr>
+          <th><%= f.label :introduction, "感想　おすすめポイント" %></th>
+          <th><%= f.text_area :introduction %></th>
+        </tr>
+        <tr>
+          <th><%= f.label :tag_list, "タグを追加" %></th>
+          <th><%= f.text_field :tag_list, value: @place.tag_list.join(',') %></th>
+        </tr>
+        <tr>
+          <th><%= f.label :time, "所要時間" %></th>
+          <th><%= f.text_field :time %>時間</th>
+        </tr>
+        <tr>
+          <th>
+            所在地
+            <input id="address" type="textbox">
+            <input type="button" value="検索" onclick="codeAddress()">
+          </th>
+          <th>
+            <div id='map'></div>
 
-    <%= f.label :place_genre_id, "ジャンル" %>
-    <%= f.collection_select :place_genre_id, PlaceGenre.all, :id, :name, :prompt => "--ジャンルを選択してください--" %>
+            <style>
+            #map {
+              height: 400px;
+              width: 400px;
+            }
+            </style>
 
-    <%= f.label :image, "画像" %>
-    <%= f.attachment_field :image %>
+            <script>
+            let map
+            function initMap(){
+              geocoder = new google.maps.Geocoder()
 
-    <%= f.label :name, "施設名称" %>
-    <%= f.text_field :name %>
+              map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 35.6809591, lng: 139.7673068},
+                zoom: 12,
+              });
 
-    <%= f.label :introduction, "感想　おすすめポイント" %>
-    <%= f.text_area :introduction %>
+              marker = new google.maps.Marker({
+                position:  {lat: 35.6809591, lng: 139.7673068},
+                map: map
+              });
+            }
 
-    <%= f.label :tag_list, "タグを追加" %>
-    <%= f.text_field :tag_list, value: @place.tag_list.join(',') %>
+            let geocoder
 
-    <%= f.label :tine, "所要時間" %>
-    <%= f.text_field :time %>時間
+            function codeAddress(){
+              let inputAddress = document.getElementById('address').value;
 
-    <%= f.text_field :address %>
+              geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+                if (status == 'OK') {
+                  map.setCenter(results[0].geometry.location);
+                  var marker = new google.maps.Marker({
+                      map: map,
+                      position: results[0].geometry.location
+                  });
+                } else {
+                  alert('該当する結果がありませんでした：' + status);
+                }
+              });
+            }
 
-    <input type="button" value="検索" onclick="codeAddress()">
-
-    <div id='map'></div>
-
-    <style>
-    #map {
-      height: 400px;
-      width: 400px;
-    }
-    </style>
-
-    <script>
-    let map
-    function initMap(){
-      geocoder = new google.maps.Geocoder()
-
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 40.7828, lng:-73.9653},
-        zoom: 12,
-      });
-
-      marker = new google.maps.Marker({
-        position:  {lat: 40.7828, lng:-73.9653},
-        map: map
-      });
-    }
-
-    let geocoder
-
-    function codeAddress(){
-      let inputAddress = document.getElementById('address').value;
-
-      geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-        if (status == 'OK') {
-          map.setCenter(results[0].geometry.location);
-          var marker = new google.maps.Marker({
-              map: map,
-              position: results[0].geometry.location
-          });
-        } else {
-          alert('該当する結果がありませんでした：' + status);
-        }
-      });
-    }
-
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZbqOn4l4qqJtIF4mVm_JO87YklwwvaBs&callback=initMap" async defer></script>
-
-    <%= f.submit "投稿イメージを確認する", class: "btn btn-success" %>
-
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZbqOn4l4qqJtIF4mVm_JO87YklwwvaBs&callback=initMap" async defer></script>
+          </th>
+        </tr>
+        <tr>
+          <th><%= f.submit "投稿イメージを確認する", class: "btn btn-success" %></th>
+        </tr>
+      </tbody>
+    </table>
   <% end %>
 </div>
