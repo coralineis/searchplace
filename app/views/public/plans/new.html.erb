@@ -3,27 +3,35 @@
 
   <p>1日目</p>
   <%= form_with model: @plan, url: plans_confirm_path, method: :post do |f| %>
-    <%= f.label :name, "プラン名" %>
-    <%= f.text_field :name %><br>
-
-    <%= f.label :time, "時間" %>
-    <%= f.time_select :time, :minute_step => 15 %><br>
-
-    <%= f.label :place_name, "施設名称" %>
-    <%= f.text_field :place_name %><br>
-
-    <%= f.label :image, "画像" %>
-    <%= f.attachment_field :image %><br>
-
-    <%= f.label :introduction, "感想　おすすめポイント" %>
-    <%= f.text_area :introduction %><br>
-
-    <%= f.label :tag_list, "タグ付け" %>
-    <%= f.text_field :tag_list, value: @plan.tag_list.join(',') %><br>
-
-    <%= link_to "＋場所を追加する" %>　<%= link_to "＋次の日へ" %><br>
-
-    <%= f.submit "投稿イメージを確認する", class: "btn btn-success" %>
+    <table class="table table-borderless">
+      <tr>
+        <th><%= f.label :name, "プラン名" %></th>
+        <th><%= f.text_field :name %></th>
+      </tr>
+      <tr>
+        <th><%= f.label :time, "時間" %></th>
+        <th><%= f.time_select :time, :minute_step => 15 %></th>
+      </tr>
+      <tr>
+        <th><%= f.label :place_name, "施設名称" %></th>
+        <th><%= f.text_field :place_name %></th>
+      </tr>
+      <tr>
+        <th><%= f.label :image, "画像" %></th>
+        <th><%= f.attachment_field :image %></th>
+      </tr>
+      <tr>
+        <th><%= f.label :introduction, "感想　おすすめポイント" %></th>
+        <th><%= f.text_area :introduction %></th>
+      </tr>
+      <tr>
+        <th><%= f.label :tag_list, "タグ付け" %></th>
+        <th><%= f.text_field :tag_list, value: @plan.tag_list.join(',') %></th>
+      </tr>
+      <tr>
+        <th><%= f.submit "投稿イメージを確認する", class: "btn btn-success" %></th>
+      </tr>
+    </table>
   <% end %>
 
 
