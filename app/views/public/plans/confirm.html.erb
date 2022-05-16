@@ -1,15 +1,12 @@
 <div class="container">
-  <div class="row">
+  <div class="row justify-content-center">
     <h5>内容を確認してください</h5>
   </div>
   <div class="row justify-content-center">
-    <div class="col">
-      <div class="border border-info border-2 p-2">
+    <div class="border border-info border-2 p-2">
         <h5><%= @plan.name %></h5>
-      </div>
     </div>
-    <div class="col-auto">
-      by <%= @plan.user.name %>
+    by <%= @plan.user.name %>
     </div>
   </div>
 
