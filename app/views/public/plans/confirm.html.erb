@@ -1,0 +1,26 @@
+<div class="container">
+  <% @plans.each do |plan| %>
+    <%= plan.name %>
+    <%= plan.user.name %>
+
+    <% if @tags.present? %>
+      <% @tags.each do |tag| %>
+        <%= tag.name %>
+      <% end %>
+    <% end %>
+
+    <%= plan.time %>
+
+    <%= plan.place_name %>
+
+    <%= image_tag attachment_url(plan, :image, :fill, 100, 100) %>
+
+    <%= plan.introduction %>
+  <% end %>
+
+  <%= form_with model: @plan, url: plans_path, method: :post do |f| %>
+    <%= f.submit "投稿する", class: "btn btn-success" %>
+  <% end %>
+
+
+</div>

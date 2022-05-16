@@ -3,8 +3,15 @@ class Public::PlansController < ApplicationController
     @plan = Plan.new
   end
 
+  def confirm
+    @plan = Plan.new(plan_params)
+    @plans = Plan.all
+    @plan.user_id = current_user.id
+  end
+
   def create
     @plan = Plan.new(plan_params)
+    @plan.user_id = current_user.id
     @plan.save
     redirect_to plan_path(@plan.id)
   end

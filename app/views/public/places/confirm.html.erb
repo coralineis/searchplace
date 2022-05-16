@@ -3,7 +3,7 @@
     <%= place.name %>
 
     <% if @tags.present? %>
-      <%= @tags.ezch do |tag| %>
+      <%= @tags.each do |tag| %>
         <%= "#"tag.name %>
       <% end %>
     <% end %>

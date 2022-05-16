@@ -2,23 +2,29 @@
   <h4>Plan新規投稿</h4>
 
   <p>1日目</p>
-  <%= form_with model: @plan, url: plans_path, method: :post do |f| %>
+  <%= form_with model: @plan, url: plans_confirm_path, method: :post do |f| %>
     <%= f.label :name, "プラン名" %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name %><br>
 
     <%= f.label :time, "時間" %>
-    <%= f.time_select :time, :minute_step => 15 %>
+    <%= f.time_select :time, :minute_step => 15 %><br>
 
     <%= f.label :place_name, "施設名称" %>
-    <%= f.text_field :place_name %>
+    <%= f.text_field :place_name %><br>
 
     <%= f.label :image, "画像" %>
-    <%= f.attachment_field :image %>
+    <%= f.attachment_field :image %><br>
 
     <%= f.label :introduction, "感想　おすすめポイント" %>
-    <%= f.text_area :introduction %>
+    <%= f.text_area :introduction %><br>
 
     <%= f.label :tag_list, "タグ付け" %>
-    <%= f.text_field :tag_list, value: @plan.tag.join(',') %>
+    <%= f.text_field :tag_list, value: @plan.tag_list.join(',') %><br>
+
+    <%= link_to "＋場所を追加する" %>　<%= link_to "＋次の日へ" %><br>
+
+    <%= f.submit "投稿イメージを確認する", class: "btn btn-success" %>
   <% end %>
+
+
 </div>
