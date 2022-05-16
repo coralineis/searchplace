@@ -3,6 +3,6 @@ class Plan < ApplicationRecord
   acts_as_taggable
 
   belongs_to :user
-  belongs_to :like
   belongs_to :review
+  has_many :likes, dependent: :destroy
 end
