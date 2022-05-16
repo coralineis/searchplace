@@ -1,17 +1,32 @@
 <div class="container">
-  <% @places.each do |place| %>
-    <%= place.name %>
+  <div class="row">
+    <%= @place.name %>
+    by <%= @place.user.name %>
+  </div>
 
+  <div class="row">
     <% if @tags.present? %>
       <%= @tags.each do |tag| %>
         <%= "#"tag.name %>
       <% end %>
     <% end %>
+  </div>
 
-    <%= image_tag attachment_url(place, :image, :fill, 100, 100) %>
+  <div class="row">
+    <%= image_tag attachment_url(@place, :image, :fill, 100, 100) %>
+    <%= @place.introduction %>
+  </div>
 
-    <%= place.introduction %>
+  <div class="row">
+    所要時間　<%= @place.time %>時間
+  </div>
 
-    所要時間　<%= place.time %>時間
-
+  <%= form_with model: @place, url: places_path, method: :post do |f| %>
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :tag_list %>
+    <%= f.hidden_field :image %>
+    <%= f.hidden_field :time %>
+    <%= f.hidden_field :introduction %>
+    <%= f.submit "投稿する", class: "btn btn-success" %>
+  <% end %>
 </div>

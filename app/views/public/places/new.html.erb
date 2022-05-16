@@ -1,7 +1,7 @@
 <div class="container">
   <h4>Place新規登録</h4>
 
-  <%= form_with model: @place, url: places_path, method: :post do |f| %>
+  <%= form_with model: @place, url: places_confirm_path, method: :post do |f| %>
     <table class="table table-borderless">
       <tbody>
         <tr>
@@ -34,7 +34,10 @@
             <input id="address" type="textbox">
             <input type="button" value="検索" onclick="codeAddress()">
           </th>
+        </tr>
+        <tr>
           <th>
+            <div id="display"></div>
             <div id='map'></div>
 
             <style>
@@ -61,6 +64,7 @@
             }
 
             let geocoder
+            const display = document.getElementById('display')
 
             function codeAddress(){
               let inputAddress = document.getElementById('address').value;
@@ -72,6 +76,7 @@
                       map: map,
                       position: results[0].geometry.location
                   });
+                  display.textContent = "検索結果：" + results[ 0 ].geometry.location
                 } else {
                   alert('該当する結果がありませんでした：' + status);
                 }

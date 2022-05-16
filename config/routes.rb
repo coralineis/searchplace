@@ -25,7 +25,11 @@ Rails.application.routes.draw do
         post :confirm
       end
     end
-    resources :places
+    resources :places do
+      collection do
+          post :confirm
+      end
+    end
     post 'places/confirm' => 'places#confirm'
     resources :likes, only: []
     resources :reviews, only: []
