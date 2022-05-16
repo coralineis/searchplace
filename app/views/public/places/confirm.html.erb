@@ -1,24 +1,19 @@
 <div class="container">
-  <div class="row">
-    <%= @place.name %>
-    by <%= @place.user.name %>
+  <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= @place.name %></h5>
+    <h6 class="card-subtitle mb-2 text-muted">by <%= @place.user.name %></h6>
+    <%= image_tag attachment_url(@place, :image, :fill, 100, 100) %>
+    <p class="card-text"><%= @place.introduction %></p>
+    <p class="card-text">所要時間　<%= @place.time %>時間</p>
   </div>
-
+</div>
   <div class="row">
     <% if @tags.present? %>
       <%= @tags.each do |tag| %>
-        <%= "#"tag.name %>
+        <%= tag.name %>
       <% end %>
     <% end %>
-  </div>
-
-  <div class="row">
-    <%= image_tag attachment_url(@place, :image, :fill, 100, 100) %>
-    <%= @place.introduction %>
-  </div>
-
-  <div class="row">
-    所要時間　<%= @place.time %>時間
   </div>
 
   <%= form_with model: @place, url: places_path, method: :post do |f| %>

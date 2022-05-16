@@ -13,6 +13,13 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 
+//= require jquery
+//= require jquery_ujs
+//= require jquery-ui
+//= require tag-it
+//= require_tree .
+
+// turbolinks
 import "scripts/plan.js"
 
 Rails.start()
