@@ -1,25 +1,47 @@
 <div class="container">
-  <% @plans.each do |plan| %>
-    <%= plan.name %>
-    <%= plan.user.name %>
+  <div class="row">
+    <h5>内容を確認してください</h5>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col">
+      <div class="border border-info border-2 p-2">
+        <h5><%= @plan.name %></h5>
+      </div>
+    </div>
+    <div class="col-auto">
+      by <%= @plan.user.name %>
+    </div>
+  </div>
 
+  <div class="row">
     <% if @tags.present? %>
-      <% @tags.each do |tag| %>
-        <%= tag.name %>
-      <% end %>
+      <div class="border border-dark border-4 rounded-2">
+        <% @tags.each do |tag| %>
+          <%= tag.name %>
+        <% end %>
+      </div>
     <% end %>
+  </div>
 
-    <%= plan.time %>
+  <div class="row">
+    <%= @plan.time %>
+    <%= @plan.place_name %>
+  </div>
 
-    <%= plan.place_name %>
-
-    <%= image_tag attachment_url(plan, :image, :fill, 100, 100) %>
-
-    <%= plan.introduction %>
-  <% end %>
+  <div class="row">
+    <%= image_tag attachment_url(@plan, :image, :fill, 100, 100) %>
+    <%= @plan.introduction %>
+  </div>
 
   <%= form_with model: @plan, url: plans_path, method: :post do |f| %>
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :place_name %>
+    <%= f.hidden_field :image %>
+    <%= f.hidden_field :time %>
+    <%= f.hidden_field :introduction %>
+    <%= f.hidden_field :tag_list %>
     <%= f.submit "投稿する", class: "btn btn-success" %>
+    <%= f.submit "修正する", name: :back, class: "btn btn-primary" %>
   <% end %>
 
 

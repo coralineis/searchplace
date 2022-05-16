@@ -2,7 +2,7 @@
   <h4>Plan新規投稿</h4>
 
   <p>1日目</p>
-  <%= form_with model: @plan, url: plans_confirm_path, method: :post do |f| %>
+  <%= form_with model: @plan, url: confirm_plans_path, method: :post do |f| %>
     <table class="table table-borderless">
       <tr>
         <th><%= f.label :name, "プラン名" %></th>

@@ -20,8 +20,11 @@ Rails.application.routes.draw do
     get 'users/my_page' => 'users#show', as: 'my_page'
     get 'users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw'
-    post 'plans/confirm' => 'plans#confirm'
-    resources :plans
+    resources :plans do
+      collection do
+        post :confirm
+      end
+    end
     resources :places
     post 'places/confirm' => 'places#confirm'
     resources :likes, only: []
