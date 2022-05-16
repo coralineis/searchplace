@@ -16,7 +16,11 @@ Rails.application.routes.draw do
 
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    resource :users, only: [:edit, :update]
+    resource :users, only: [:edit, :update] do
+      collection do
+        get :likes
+      end
+    end
     get 'users/my_page' => 'users#show', as: 'my_page'
     get 'users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw'
