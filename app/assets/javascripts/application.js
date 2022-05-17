@@ -5,3 +5,6 @@
 //= require_tree .
 
 // turbolinks
+
+//= require underscore
+//= require gmaps/google

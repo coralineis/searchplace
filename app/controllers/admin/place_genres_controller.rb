@@ -2,8 +2,6 @@ class Admin::PlaceGenresController < ApplicationController
   def index
     @place_genre = PlaceGenre.new
     @place_genres = PlaceGenre.all
-    @shop_genre = ShopGenre.new
-    @shop_genres = ShopGenre.all
   end
 
   def create

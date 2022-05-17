@@ -43,8 +43,6 @@ ActiveRecord::Schema.define(version: 2022_04_30_034223) do
 
   create_table "places", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "like_id"
-    t.integer "review_id"
     t.integer "place_genre_id"
     t.string "name"
     t.string "image_id"

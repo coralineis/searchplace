@@ -1,14 +1,13 @@
 <div class="container">
   <h4>Place新規登録</h4>
 
-  <%= form_with model: @place, url: places_confirm_path, method: :post do |f| %>
+  <%= form_with model: @place, url: confirm_places_path, method: :post do |f| %>
     <table class="table table-borderless">
       <tbody>
         <tr>
           <th><%= f.label :place_genre_id, "ジャンル" %></th>
           <th>
-            <%= f.collection_select :place_genre_id, PlaceGenre.all, :id, :name, :prompt => "--ジャンルを選択してください--" %>
-            <%= f.hidden_field :place_genre_name %>
+            <%= f.select :place_genre_id, options_from_collection_for_select(PlaceGenre.all, :id, :name), :prompt => "--ジャンルを選択してください--" %>
           </th>
         </tr>
         <tr>
@@ -30,65 +29,6 @@
         <tr>
           <th><%= f.label :time, "所要時間" %></th>
           <th><%= f.text_field :time %>時間</th>
-        </tr>
-        <tr>
-          <th>
-            所在地
-            <input id="address" type="textbox">
-            <input type="button" value="検索" onclick="codeAddress()">
-          </th>
-        </tr>
-        <tr>
-          <th>
-            <div id="display"></div>
-            <div id='map'></div>
-
-            <style>
-            #map {
-              height: 400px;
-              width: 400px;
-            }
-            </style>
-
-            <script>
-            let map
-            function initMap(){
-              geocoder = new google.maps.Geocoder()
-
-              map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 35.6809591, lng: 139.7673068},
-                zoom: 12,
-              });
-
-              marker = new google.maps.Marker({
-                position:  {lat: 35.6809591, lng: 139.7673068},
-                map: map
-              });
-            }
-
-            let geocoder
-            const display = document.getElementById('display')
-
-            function codeAddress(){
-              let inputAddress = document.getElementById('address').value;
-
-              geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-                if (status == 'OK') {
-                  map.setCenter(results[0].geometry.location);
-                  var marker = new google.maps.Marker({
-                      map: map,
-                      position: results[0].geometry.location
-                  });
-                  display.textContent = "検索結果：" + results[ 0 ].geometry.location
-                } else {
-                  alert('該当する結果がありませんでした：' + status);
-                }
-              });
-            }
-
-            </script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
-          </th>
         </tr>
         <tr>
           <th><%= f.submit "投稿イメージを確認する", class: "btn btn-success" %></th>

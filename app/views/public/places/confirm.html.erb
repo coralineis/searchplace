@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
     <h4 class="bg-info text-white">§<%= @place.place_genre.name %>§</h4>
-
   </div>
   <div class="row justify-content-center">
     <h5 class="bg-dark text-white p-2"><%= @place.name %></h5>
@@ -23,6 +22,7 @@
   <div class="row justify-content-center mt-3">
     所要時間　<%= @place.time %>時間
   </div>
+
   <div class="row justify-content-center">
     <%= form_with model: @place, url: places_path, method: :post do |f| %>
       <%= f.hidden_field :name %>
@@ -30,6 +30,7 @@
       <%= f.hidden_field :image %>
       <%= f.hidden_field :time %>
       <%= f.hidden_field :introduction %>
+      <%= f.hidden_field :place_genre_id %>
       <%= f.submit "投稿する", class: "btn btn-success mt-3" %>
     <% end %>
   </div>
