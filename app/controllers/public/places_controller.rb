@@ -11,8 +11,11 @@ class Public::PlacesController < ApplicationController
   def create
     @place = Place.new(place_params)
     @place.user_id = current_user.id
-    @place.save
-    redirect_to places_path
+    if @place.save
+      redirect_to place_path(@place.id)
+    else
+      render :new
+    end
   end
 
   def index
@@ -20,7 +23,7 @@ class Public::PlacesController < ApplicationController
   end
 
   def place_params
-    params.require(:place).permit(:name, :image, :time, :introduction, :tag_list)
+    params.require(:place).permit(:name, :image, :time, :introduction, :tag_list, :place_genre_id)
   end
 
 end

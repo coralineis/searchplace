@@ -66,3 +66,8 @@ gem 'acts-as-taggable-on', '~> 9.0'
 gem 'jquery-ui-rails'
 
 gem 'ransack'
+
+gem "gmaps4rails"
+gem "geocoder"
+gem "gon"
+gem "dotenv-rails"

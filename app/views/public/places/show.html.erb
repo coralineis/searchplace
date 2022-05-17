@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <h5 class="bg-dark text-white p-2"><%= @place.name %></h5>
+  </div>
+  <div class="row">
+    <% if @tags.present? %>
+      <% @tags.each do |tag| %>
+        <%= tag.name %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="row justify-content-end">
+    <p>by <%= @place.user.name %></p>
+  </div>
+  <div class="row justify-content-center">
+    <%= image_tag attachment_url(@place, :image, :fill, 300, 300) %>
+  </div>
+  <div class="row justify-content-center">
+    <%= @place.introduction %>
+  </div>
+  <div class="row justify-content-center">
+    所要時間　<%= @place.time %>時間
+  </div>

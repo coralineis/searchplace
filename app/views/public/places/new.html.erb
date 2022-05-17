@@ -6,7 +6,10 @@
       <tbody>
         <tr>
           <th><%= f.label :place_genre_id, "ジャンル" %></th>
-          <th><%= f.collection_select :place_genre_id, PlaceGenre.all, :id, :name, :prompt => "--ジャンルを選択してください--" %></th>
+          <th>
+            <%= f.collection_select :place_genre_id, PlaceGenre.all, :id, :name, :prompt => "--ジャンルを選択してください--" %>
+            <%= f.hidden_field :place_genre_name %>
+          </th>
         </tr>
         <tr>
           <th><%= f.label :image, "画像" %></th>
@@ -84,7 +87,7 @@
             }
 
             </script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZbqOn4l4qqJtIF4mVm_JO87YklwwvaBs&callback=initMap" async defer></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
           </th>
         </tr>
         <tr>

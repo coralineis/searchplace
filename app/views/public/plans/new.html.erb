@@ -11,7 +11,7 @@
         </tr>
         <tr>
           <th><%= f.label :time, "時間" %></th>
-          <th><%= f.time_select :time, :minute_step => 15, ignore_data: true %></th>
+          <th><%= f.time_select :time, :minute_step => 15, ignore_data: true %>～</th>
         </tr>
         <tr>
           <th><%= f.label :place_name, "施設名称" %></th>
@@ -35,6 +35,4 @@
       </tbody>
     </table>
   <% end %>
-
-
 </div>
