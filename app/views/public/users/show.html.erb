@@ -20,6 +20,12 @@
 
     <div class="col">
       <p>お気に入り一覧</p>
+      <% if @like_list.present? %>
+        <% @like_list.each do |plan| %>
+          <%= plan.name %>
+          <%= plan.introduction %>
+        <% end %>
+      <% end %>
       <%= link_to "投稿一覧" %>
     </div>
   </div>

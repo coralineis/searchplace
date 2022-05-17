@@ -29,6 +29,7 @@ Rails.application.routes.draw do
         post :confirm
         get :search
       end
+      resource :likes, only: [:create, :destroy]
     end
     resources :places do
       collection do
