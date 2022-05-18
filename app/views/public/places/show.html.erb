@@ -13,7 +13,7 @@
     <p>by <%= @place.user.name %></p>
   </div>
   <div class="row justify-content-center">
-    <%= image_tag attachment_url(@place, :image, :fill, 300, 300) %>
+    <%= image_tag attachment_url(@place, :image, :fill, 300, 300, fallback: "logo2.png") %>
   </div>
   <div class="row justify-content-center">
     <%= @place.introduction %>
@@ -21,3 +21,4 @@
   <div class="row justify-content-center">
     所要時間　<%= @place.time %>時間
   </div>
+</div>

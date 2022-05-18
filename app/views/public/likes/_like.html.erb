@@ -1,0 +1,11 @@
+<% if !like.exists?(user: current_user, place_id: @place.id) %>
+  <%= link_to place_likes_path(@place), method: :post, remote: true, class: "favorite-btn" do %>
+    <i class="fa-solid fa-heart">お気に入りに追加</i>
+  <% end %>
+  <%= @place.likes.length %>
+<% else %>
+  <%= link_to place_likes_path(@place), method: :delete, remote: true, class: "favorite-btn" do %>
+    <i class="fa-solid fa-heart">お気に入りを解除</i>
+  <% end %>
+  <%= @place.likes.length %>
+<% end %>

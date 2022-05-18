@@ -22,7 +22,7 @@
       <p>お気に入り一覧</p>
       <% if @like_list.present? %>
         <% @like_list.each do |plan| %>
-          <%= plan.name %>
+          <%= link_to plan.name %>
           <%= plan.introduction %>
         <% end %>
       <% end %>

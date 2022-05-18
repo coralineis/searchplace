@@ -1,4 +1,5 @@
 class Public::LikesController < ApplicationController
+  before_action :set_place
   before_action :authenticate_user!
 
   def create
@@ -13,6 +14,12 @@ class Public::LikesController < ApplicationController
   def destroy
     @like = Like.find_by(user_id: current_user.id, plan_id: @plan.id)
     @like.destroy
+  end
+
+  private
+
+  def set_place
+    @place = Place.find(params[:id])
   end
 
 

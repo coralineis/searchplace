@@ -12,7 +12,10 @@
         </tr>
         <tr>
           <th><%= f.label :image, "画像" %></th>
-          <th><%= f.attachment_field :image %></th>
+          <th>
+            <%= f.attachment_field :image %>
+            <%= f.hidden_field :image_cache %>
+          </th>
         </tr>
         <tr>
           <th><%= f.label :name, "施設名称" %></th>
@@ -24,7 +27,10 @@
         </tr>
         <tr>
           <th><%= f.label :tag_list, "タグを追加" %></th>
-          <th><%= f.text_field :tag_list, value: @place.tag_list.join(',') %></th>
+          <th>
+            <%= f.text_field :tag_list, value: @place.tag_list.join(',') %>
+            <%= f.hidden_field :tag_list %>
+          </th>
         </tr>
         <tr>
           <th><%= f.label :time, "所要時間" %></th>

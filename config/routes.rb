@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       collection do
           post :confirm
       end
+      resource :likes, only: [:create, :destroy]
     end
     resources :likes, only: []
     resources :reviews, only: []

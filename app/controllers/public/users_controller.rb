@@ -2,8 +2,8 @@ class Public::UsersController < ApplicationController
   def show
     @user = current_user
     @plans = @user.plans
-    @likes = Like.where(user_id: current_user.id).pluck(:plan_id)
-    @like_list = Plan.find(@likes)
+    @likes = Like.where(user_id: current_user.id).pluck(:id)
+    @like_list = Place.find(@likes)
   end
 
   def edit
