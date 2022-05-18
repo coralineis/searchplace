@@ -1,16 +1,3 @@
-<nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li><%= link_to "Plans", plans_path, class: "btn btn-outline-info mr-3" %></li>
-      <li><%= link_to "Places", places_path, class: "btn btn-outline-info" %></li>
-    </ul>
-    <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-
 <div class="container">
   <div class="row">
     <%= search_form_for @search do |f| %>
