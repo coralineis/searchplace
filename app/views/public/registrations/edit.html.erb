@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
-    <h4>ユーザー情報</h4>
+    <h3 class="bg-secondary text-white p-1">プロフィール編集</h3>
   </div>
 
   <%= form_with model: @user, url: registration_path(resource_name), method: :patch do |f| %>
@@ -24,7 +24,7 @@
           <% end %>
         </tr>
         <tr>
-          <td>パスワードを変更しない場合は空白のまま</td>
+          <td class="text-warning">！パスワードを変更しない場合は空白のままにしてください！</td>
         </tr>
         <tr>
           <th>
@@ -46,11 +46,13 @@
           <th><%= f.password_field :current_password, autocomplete: "current-password" %></th>
         </tr>
         <tr>
-          <th><%= f.submit "変更を保存する", class: "btn btn-success" %></th>
-          <th><%= link_to "退会する", unsubscribe_path, class: "btn btn-danger" %></th>
+          <th class="text-center"><%= f.submit "変更を保存する", class: "btn btn-success mt-3" %></th>
         </tr>
       </tbody>
     </table>
   <% end %>
 
+  <div class="row justify-content-end text-reset">
+    <%= link_to "退会する", unsubscribe_path, class: "btn btn-outline-danger" %>
+  </div>
 </div>
