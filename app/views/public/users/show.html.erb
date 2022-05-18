@@ -15,11 +15,13 @@
           </div>
         </div>
       </div>
-      <ul>
-        <li style="list-style: none;" class="font-weight-bold my-1">投稿する</li>
-        <li style="list-style: none;" class="my-1"><%= link_to "Plan", new_plan_path, class: "btn btn-info" %></li>
-        <li style="list-style: none;" class="my-1"><%= link_to "Place", new_place_path, class: "btn btn-danger" %></li>
-      </ul>
+      <div class="card border-success bg-light mb-3" style="max-width: 13rem;">
+        <div class="card-header font-weight-bold text-center">投稿する</div>
+        <div class="card-body">
+          <div class="text-center"><%= link_to "Plan", new_plan_path, class: "btn btn-info" %></div>
+          <div class="text-center"><%= link_to "Place", new_place_path, class: "btn btn-danger mt-3" %></div>
+        </div>
+      </div>
     </div>
 
     <div class="col">
