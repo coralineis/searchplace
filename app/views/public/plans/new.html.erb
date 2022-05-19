@@ -22,10 +22,10 @@
         <div id="form_area" class="form-inline">
           <div class="col-sm-10">
             <input type="tag_list" class="form-control" id="inputTag" placeholder="タグを入力してください">
-            <button id="0" onclick="deleteBtn(this)" class="btn btn-outline-danger ml-2">削除</button>
+            <button id="0" onclick="deleteBtn(this)">削除</button>
           </div>
           <div class="col">
-            <input type="button" value="タグを追加" onclick="addForm()" class="btn btn-primary mt-2">
+            <input type="button" value="タグを追加" onclick="addForm()">
           </div>
         </div>
       </div>
@@ -68,55 +68,48 @@
           </div>
         </div>
         <div class="row mb-3">
-          <label for="inputTag" class="col-sm-2 col-form-label">施設名称</label>
+          <label for="inputPlaceName" class="col-sm-2 col-form-label">施設名称</label>
           <div class="col-sm-3">
             <%= f.text_field :place_name %>
           </div>
         </div>
         <div class="row mb-3">
-          <label for="inputTag" class="col-sm-2 col-form-label">画像</label>
+          <label for="inputImage" class="col-sm-2 col-form-label">画像</label>
           <div class="col-sm-3">
             <%= f.attachment_field :image %>
           </div>
         </div>
         <div class="row mb-3">
-          <label for="inputTag" class="col-sm-2 col-form-label">感想　おすすめポイント</label>
+          <label for="inputIntroduction" class="col-sm-2 col-form-label">感想　おすすめポイント</label>
           <div class="col-sm-3">
             <%= f.text_area :introduction %>
           </div>
         </div>
         <input type="button" value="場所を追加" onclick="addForm()">
       </div>
-
-      <script>
-        var i = 1 ;
-        function addForm() {
-          var input_data = document.createElement('input');
-          input_data.type = 'inputPlace';
-          input_data.id = 'inputPlace_' + i;
-          var parent = document.getElementById('form_area2');
-          parent.appendChild(input_data);
-
-          var button_data = document.createElement('button');
-          button_data.id = i;
-          button_data.onclick = function(){deleteBtn(this);}
-          button_data.innerHTML = '削除';
-          var input_area = document.getElementById(input_data.id);
-          parent.appendChild(button_data);
-
-          i++ ;
-        }
-
-        function deleteBtn(target) {
-          var target_id = target.id;
-          var parent = document.getElementById('form_area2');
-          var ipt_id = document.getElementById('inputPlace_' + target_id);
-          var tgt_id = document.getElementById(target_id);
-          parent.removeChild(ipt_id);
-          parent.removeChild(tgt_id);
-        }
-      </script>
     </form>
+
+    <script>
+      var df = document.createDocumentFragment();
+
+      for(var i=1; i<=4; i++) {
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(i));
+        df.appendChild(div)
+      }
+      var div = document.createElement("div");
+      div.appendChild(document.createTextNode('時間'));
+      var div1 = document.createElement("div");
+      div1.appendChild(document.createTextNode('div1'));
+      var div2 = document.createElement("div");
+      div2.appendChild(document.createTextNode('div2'));
+
+      df.appendChild(p1);
+      df.appendChild(div1);
+      df.appendChild(div2);
+
+      document.body.appendChild(df);
+    </script>
 
           <th><%= f.text_field :tag_list, value: @plan.tag_list.join(',') %></th>
           <th></th>
