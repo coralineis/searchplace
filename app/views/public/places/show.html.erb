@@ -23,16 +23,16 @@
   </div>
 
   <% if @place.liked_by?(current_user) %>
-    <p>
-      <%= link_to place_likes_path(@place), method: :delete do %>
+    <button type="button" class="btn btn-outline-danger">
+      <%= link_to place_likes_path(@place), method: :delete, class: "text-danger" do %>
         ♥ <%= @place.likes.count %> お気に入りを解除
       <% end %>
-    </p>
+    </button>
   <% else %>
-    <p>
-      <%= link_to place_likes_path(@place), method: :post do %>
+    <button type="button" class="btn btn-outline-danger">
+      <%= link_to place_likes_path(@place), method: :post, class: "text-danger" do %>
         ♡ <%= @place.likes.count %> お気に入りに追加
       <% end %>
-    </p>
+    </button>
   <% end %>
 </div>
