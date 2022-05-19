@@ -1,26 +1,25 @@
 class Public::LikesController < ApplicationController
-  before_action :set_place
-  before_action :authenticate_user!
 
   def create
-    if @plan.user_id != current_user.id
-      @like = Like.create(user_id: current_user.id, plan_id: @plan.id)
-    end
-    if @place.user_id != current_user.id
-      @like = Like.create(user_id: current_user.id, place_id: @place.id)
-    end
+    plan = Plan.find(params[:plan_id])
+    like = current_user.likes.new(plan_id: plan.id)
+    like.save
+    redirect_to plan_path(plan)
+    place = Place.find(params[:place_id])
+    like = current_user.likes.new(place_id: place.id)
+    like.save
+    redirect_to place_path(place)
   end
 
   def destroy
-    @like = Like.find_by(user_id: current_user.id, plan_id: @plan.id)
-    @like.destroy
+    plan = Plan.find(params[:plan_id])
+    like = current_user.likes.find_by(plan_id: plan.id)
+    like.destroy
+    redirect_to plan_path(plan)
+    place = Place.find(params[:place_id])
+    like = current_user.likes.find_by(place_id: place.id)
+    like.destroy
+    redirect_to place_path(place)
   end
-
-  private
-
-  def set_place
-    @place = Place.find(params[:id])
-  end
-
 
 end
