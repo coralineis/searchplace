@@ -1,12 +1,14 @@
 <div class="container">
   <% @places.each do |place| %>
-    <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title"><%= place.name %></h5>
-      <h6 class="card-subtitle mb-2 text-muted">by <%= place.user.name %></h6>
-      <%= image_tag attachment_url(place, :image, :fill, 100, 100, fallback: "logo2.png") %>
-      <p class="card-text"><%= place.introduction %></p>
-      <p class="card-text">所要時間　<%= place.time %>時間</p>
-    </div>
+    <%= link_to place_path(place.id) do %>
+      <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= place.name %></h5>
+        <h6 class="card-subtitle mb-2 text-muted">by <%= place.user.name %></h6>
+        <%= image_tag attachment_url(place, :image, :fill, 100, 100, fallback: "logo2.png") %>
+        <p class="card-text"><%= place.introduction %></p>
+        <p class="card-text">所要時間　<%= place.time %>時間</p>
+      </div>
+    <% end %>
   <% end %>
 </div>
