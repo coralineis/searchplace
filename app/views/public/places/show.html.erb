@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row justify-content-center">
     <h5 class="bg-dark text-white p-2"><%= @place.name %></h5>
+    
   </div>
-  <div class="row">
+  <div class="row justify-content-center">
     <% if @tags.present? %>
       <% @tags.each do |tag| %>
-        <%= tag.name %>
+        # <%= tag.name %>
       <% end %>
     <% end %>
   </div>
@@ -22,17 +23,19 @@
     所要時間　<%= @place.time %>時間
   </div>
 
-  <% if @place.liked_by?(current_user) %>
-    <button type="button" class="btn btn-outline-danger">
-      <%= link_to place_likes_path(@place), method: :delete, class: "text-danger" do %>
-        ♥ <%= @place.likes.count %> お気に入りを解除
-      <% end %>
-    </button>
-  <% else %>
-    <button type="button" class="btn btn-outline-danger">
-      <%= link_to place_likes_path(@place), method: :post, class: "text-danger" do %>
-        ♡ <%= @place.likes.count %> お気に入りに追加
-      <% end %>
-    </button>
-  <% end %>
+  <div class="row justify-content-center mt-3">
+    <% if @place.liked_by?(current_user) %>
+      <button type="button" class="btn btn-warning">
+        <%= link_to place_likes_path(@place), method: :delete, class: "text-dark" do %>
+          ♥ <%= @place.likes.count %> お気に入りを解除
+        <% end %>
+      </button>
+    <% else %>
+      <button type="button" class="btn btn-warning">
+        <%= link_to place_likes_path(@place), method: :post, class: "text-dark" do %>
+          ♡ <%= @place.likes.count %> お気に入りに追加
+        <% end %>
+      </button>
+    <% end %>
+  </div>
 </div>

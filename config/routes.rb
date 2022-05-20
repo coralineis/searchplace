@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    resource :users, only: [:edit, :update] do
+    resources :users, only: [:index, :edit, :update] do
       collection do
         get :likes
       end
@@ -37,8 +37,6 @@ Rails.application.routes.draw do
       end
       resource :likes, only: [:create, :destroy]
     end
-    resources :likes, only: []
-    resources :reviews, only: []
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -17,11 +17,14 @@ class Public::PlacesController < ApplicationController
   end
 
   def index
-    @places = Place.all
+    @places = Place.all.order(id: "DESC")
+    @tags = Place.tag_counts_on(:tags)
   end
 
   def show
     @place = Place.find(params[:id])
+    
+    @tags = Place.tag_counts_on(:tags)
   end
 
   private

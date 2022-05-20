@@ -1,6 +1,10 @@
 <div class="container">
-  <% @places.each do |place| %>
-    <%= link_to place_path(place.id) do %>
+  <div class="row">
+    <% @plans.each do |plan| %>
+    <% end %>
+  </div>
+  <div class="row">
+    <% @places.each do |place| %>
       <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title"><%= place.name %></h5>
@@ -17,5 +21,5 @@
         <p class="card-text">所要時間　<%= place.time %>時間</p>
       </div>
     <% end %>
-  <% end %>
+  </div>
 </div>
