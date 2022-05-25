@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    resources :users, only: [:index, :edit, :update] do
+    resource :users, only: [:edit, :update] do
       collection do
         get :likes
       end
