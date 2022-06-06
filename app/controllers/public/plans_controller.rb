@@ -11,6 +11,7 @@ class Public::PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params)
     @plan.user_id = current_user.id
+    @plan.save!
     if params[:back] || !@plan.save
       render :new and return
     end
