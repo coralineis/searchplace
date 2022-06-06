@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row justify-content-center">
-    <h5>内容を確認してください</h5>
+    <h5>＜内容を確認してください＞</h5>
   </div>
 
-  <div class="row justify-content-center">
-    <div class="bg-info">
-        <h6><%= @plan.name %></h6>
+  <div class="row justify-content-center my-3">
+    <div class="bg-light">
+        <h5><%= @plan.name %></h5>
     </div>
-    by <%= @plan.user.name %>
+    　by <%= @plan.user.name %>
     </div>
   </div>
 
@@ -21,14 +21,12 @@
     <% end %>
   </div>
 
-  <div class="row">
-    <%= @plan.time %>
-    <%= @plan.place_name %>
-  </div>
-
-  <div class="row">
+  <div class="card mx-auto" style="width: 18rem;">
     <%= image_tag @plan.image.url %>
-    <%= @plan.introduction %>
+    <div class="card-body">
+      <h5 class="card-title"><%= @plan.place_name %>  <%= @plan.time %></h5>
+      <p class="card-text"><%= @plan.introduction %></p>
+    </div>
   </div>
 
   <%= form_with model: @plan, url: plans_path, method: :post do |f| %>
@@ -39,8 +37,12 @@
     <%= f.hidden_field :time %>
     <%= f.hidden_field :introduction %>
     <%= f.hidden_field :tag_list %>
-    <%= f.submit "投稿する", class: "btn btn-success" %>
-    <%= f.submit "修正する", name: :back, class: "btn btn-primary" %>
+    <div class="form-group row justify-content-center mt-3">
+      <div>
+        <%= f.submit "投稿する", class: "btn btn-success mr-2" %>
+        <%= f.submit "修正する", name: :back, class: "btn btn-primary" %>
+      </div>
+    </div>
   <% end %>
 
 

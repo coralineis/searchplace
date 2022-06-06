@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2022_04_30_034223) do
     t.integer "place_genre_id"
     t.string "name"
     t.string "image"
-    t.string "image_cache"
     t.string "time"
     t.text "introduction"
     t.datetime "created_at", precision: 6, null: false
