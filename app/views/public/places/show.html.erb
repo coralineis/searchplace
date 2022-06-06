@@ -1,26 +1,21 @@
 <div class="container">
   <div class="row justify-content-center">
-    <h5 class="bg-dark text-white p-2"><%= @place.name %></h5>
-
-  </div>
-  <div class="row justify-content-center">
     <% if @tags.present? %>
       <% @tags.each do |tag| %>
         # <%= tag.name %>
       <% end %>
     <% end %>
   </div>
-  <div class="row justify-content-end">
-    <p>by <%= @place.user.name %></p>
-  </div>
-  <div class="row justify-content-center">
+
+  <div class="card mx-auto mt-3" style="width: 500px;">
     <%= image_tag @place.image.url %>
-  </div>
-  <div class="row justify-content-center">
-    <%= @place.introduction %>
-  </div>
-  <div class="row justify-content-center">
-    所要時間　<%= @place.time %>時間
+    <div class="card-body">
+      <h5 class="card-title"><%= @place.name %> by <%= @place.user.name %></h5>
+      <p class="card-text">
+        所要時間　<%= @place.time %>時間<br>
+        <%= @place.introduction %>
+      </p>
+    </div>
   </div>
 
   <div class="row justify-content-center mt-3">
