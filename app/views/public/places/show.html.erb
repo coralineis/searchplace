@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <h5 class="bg-dark text-white p-2"><%= @place.name %></h5>
-    
+
   </div>
   <div class="row justify-content-center">
     <% if @tags.present? %>
@@ -14,7 +14,7 @@
     <p>by <%= @place.user.name %></p>
   </div>
   <div class="row justify-content-center">
-    <%= image_tag attachment_url(@place, :image, :fill, 300, 300, fallback: "logo2.png") %>
+    <%= image_tag @place.image.url %>
   </div>
   <div class="row justify-content-center">
     <%= @place.introduction %>

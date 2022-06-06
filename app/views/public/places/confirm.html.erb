@@ -16,7 +16,7 @@
     <p>by <%= @place.user.name %></p>
   </div>
   <div class="row d-flex justify-content-center">
-    <%= image_tag attachment_url(@place, :image, :fill, 300, 300) %>
+    <%= image_tag @place.image.url %>
     <div class="ml-3">
       <%= @place.introduction %>
     </div>
