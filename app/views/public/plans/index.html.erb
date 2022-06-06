@@ -2,19 +2,10 @@
   <% @plans.each do |plan| %>
     <%= link_to plan_path(plan.id) do %>
       <div class="card" style="width: 18rem;">
-      <div class="card-body">
+      <div class="card-body text-muted">
         <h5 class="card-title"><%= plan.name %></h5>
-        <div class="row">
-          <% if @tags.present? %>
-            <% @tags.each do |tag| %>
-              <%= tag.name %>
-            <% end %>
-          <% end %>
-        </div>
-        <h6 class="card-subtitle mb-2 text-muted">by <%= plan.user.name %></h6>
-        <%= image_tag plan.image.url %>
-        <p class="card-text"><%= plan.introduction %></p>
-        <p class="card-text">所要時間　<%= plan.time %>時間</p>
+        <h6 class="card-subtitle">by <%= plan.user.name %></h6>
+        <p class="card-text"><%= plan.place_name %></p>
       </div>
     <% end %>
   <% end %>
