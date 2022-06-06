@@ -11,9 +11,7 @@ class Public::PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params)
     @plan.user_id = current_user.id
-    if params[:back] || !@plan.save
-      render :new and return
-    end
+    @plan.save
     redirect_to plan_path(@plan.id)
   end
 

@@ -9,112 +9,35 @@
 
   <%= form_with model: @plan, url: confirm_plans_path, method: :post do |f| %>
 
-    <form>
-      <div class="row mb-3">
-        <label for="inputName" class="col-sm-2 col-form-label">プラン名</label>
-        <div class="col-sm-5">
-          <input type="name" class="form-control" id="inputName">
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <label for="inputTag" class="col-sm-2 col-form-label">タグ</label>
-        <div id="form_area" class="form-inline">
-          <div class="col-sm-10">
-            <input type="tag_list" class="form-control" id="inputTag" placeholder="タグを入力してください">
-            <button id="0" onclick="deleteBtn(this)">削除</button>
-          </div>
-          <div class="col">
-            <input type="button" value="タグを追加" onclick="addForm()">
-          </div>
-        </div>
-      </div>
-
-      <script>
-        var i = 1 ;
-        function addForm() {
-          var input_data = document.createElement('input');
-          input_data.type = 'tag_list';
-          input_data.id = 'inputTag_' + i;
-          input_data.placeholder = 'タグを入力してください';
-          var parent = document.getElementById('form_area');
-          parent.appendChild(input_data);
-
-          var button_data = document.createElement('button');
-          button_data.id = i;
-          button_data.onclick = function(){deleteBtn(this);}
-          button_data.innerHTML = '削除';
-          var input_area = document.getElementById(input_data.id);
-          parent.appendChild(button_data);
-
-          i++ ;
-        }
-
-        function deleteBtn(target) {
-          var target_id = target.id;
-          var parent = document.getElementById('form_area');
-          var ipt_id = document.getElementById('inputTag_' + target_id);
-          var tgt_id = document.getElementById(target_id);
-          parent.removeChild(ipt_id);
-          parent.removeChild(tgt_id);
-        }
-      </script>
-
-      <div class="form_area2" id ="inputPlace">
-        <div class="row mb-3">
-          <label for="input" class="col-sm-2 col-form-label">時間</label>
-          <div class="col-sm-3">
-            <%= f.time_select :time, :minute_step => 15, id: "imputTime" %>～
-          </div>
-        </div>
-        <div class="row mb-3">
-          <label for="inputPlaceName" class="col-sm-2 col-form-label">施設名称</label>
-          <div class="col-sm-3">
-            <%= f.text_field :place_name %>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <label for="inputImage" class="col-sm-2 col-form-label">画像</label>
-          <div class="col-sm-3">
-            <%= f.attachment_field :image %>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <label for="inputIntroduction" class="col-sm-2 col-form-label">感想　おすすめポイント</label>
-          <div class="col-sm-3">
-            <%= f.text_area :introduction %>
-          </div>
-        </div>
-        <input type="button" value="場所を追加" onclick="addForm()">
-      </div>
-    </form>
-
-    <script>
-      var df = document.createDocumentFragment();
-
-      for(var i=1; i<=4; i++) {
-        var div = document.createElement('div');
-        div.appendChild(document.createTextNode(i));
-        df.appendChild(div)
-      }
-      var div = document.createElement("div");
-      div.appendChild(document.createTextNode('時間'));
-      var div1 = document.createElement("div");
-      div1.appendChild(document.createTextNode('div1'));
-      var div2 = document.createElement("div");
-      div2.appendChild(document.createTextNode('div2'));
-
-      df.appendChild(p1);
-      df.appendChild(div1);
-      df.appendChild(div2);
-
-      document.body.appendChild(df);
-    </script>
-
-          <th><%= f.text_field :tag_list, value: @plan.tag_list.join(',') %></th>
-          <th></th>
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th><%= f.label :name, "プラン名" %></th>
+          <th><%= f.text_field :name %></th>
         </tr>
         <tr>
+          <th><%= f.label :tag_list, "タグを追加" %></th>
+          <th><%= f.text_field :tag_list, value: @plan.tag_list.join(',') %></th>
+        </tr>
+        
+        <tr>
+          <th><%= f.label :time, "時間" %></th>
+          <th><%= f.time_select :time, :minute_step => 15, id: "imputTime" %>～</th>
+        </tr>
+        <tr>
+          <th><%= f.label :place_name, "施設名称" %></th>
+          <th><%= f.text_field :place_name %></th>
+        </tr>
+        <tr>
+          <th><%= f.label :image, "画像" %></th>
+          <th><%= f.attachment_field :image %></th>
+        </tr>
+        <tr>
+          <th><%= f.label :introduction, "感想、おすすめポイント" %></th>
+          <th><%= f.text_area :introduction %></th>
+        </tr>
+        <tr>
+          <th></th>
           <th><%= f.submit "投稿イメージを確認する", class: "btn btn-success" %></th>
         </tr>
       </tbody>
