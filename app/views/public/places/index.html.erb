@@ -1,20 +1,23 @@
 <div class="container">
   <% @places.each do |place| %>
     <%= link_to place_path(place.id) do %>
-      <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title"><%= place.name %></h5>
-        <div class="row">
-          <% if @tags.present? %>
-            <% @tags.each do |tag| %>
-              <%= tag.name %>
-            <% end %>
+      <div class="row justify-content-center">
+        <% if @tags.present? %>
+          <% @tags.each do |tag| %>
+            # <%= tag.name %>
           <% end %>
-        </div>
-        <h6 class="card-subtitle mb-2 text-muted">by <%= place.user.name %></h6>
+        <% end %>
+      </div>
+
+      <div class="card mx-auto mt-3" style="width: 500px;">
         <%= image_tag place.image.url %>
-        <p class="card-text"><%= place.introduction %></p>
-        <p class="card-text">所要時間　<%= place.time %>時間</p>
+        <div class="card-body text-muted">
+          <h5 class="card-title"><%= place.name %> by <%= place.user.name %></h5>
+          <p class="card-text">
+            所要時間　<%= place.time %>時間<br>
+            <%= place.introduction %>
+          </p>
+        </div>
       </div>
     <% end %>
   <% end %>
