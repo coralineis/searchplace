@@ -16,8 +16,8 @@ class Public::PlansController < ApplicationController
   end
 
   def index
-    @plans = Plan.all
-    @tags = Plan.tag_count_on()
+    @plans = Plan.all.order(id: "DESC")
+    @tags = Plan.tag_counts_on(:tags)
   end
 
   def show
@@ -27,6 +27,6 @@ class Public::PlansController < ApplicationController
   private
 
   def plan_params
-    params.require(:plan).permit(:name, :place_name, :image, :time, :stay_night, :introduction, :tag_list)
+    params.require(:plan).permit(:name, :place_name, :image, :image_cache, :time, :stay_night, :introduction, :tag_list)
   end
 end

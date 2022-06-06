@@ -23,7 +23,6 @@ class Public::PlacesController < ApplicationController
 
   def show
     @place = Place.find(params[:id])
-    
     @tags = Place.tag_counts_on(:tags)
   end
 

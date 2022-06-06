@@ -19,7 +19,7 @@
           <th><%= f.label :tag_list, "タグを追加" %></th>
           <th><%= f.text_field :tag_list, value: @plan.tag_list.join(',') %></th>
         </tr>
-        
+
         <tr>
           <th><%= f.label :time, "時間" %></th>
           <th><%= f.time_select :time, :minute_step => 15, id: "imputTime" %>～</th>
@@ -30,7 +30,10 @@
         </tr>
         <tr>
           <th><%= f.label :image, "画像" %></th>
-          <th><%= f.attachment_field :image %></th>
+          <th>
+            <%= f.file_field :image %>
+            <%= f.hidden_field :image_cache %>
+          </th>
         </tr>
         <tr>
           <th><%= f.label :introduction, "感想、おすすめポイント" %></th>

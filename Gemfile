@@ -57,9 +57,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
-gem "refile", require: "refile/rails", github: 'manfe/refile'
-gem "refile-mini_magick"
-
 gem 'enum_help'
 
 gem 'acts-as-taggable-on', '~> 9.0'
@@ -75,3 +72,4 @@ gem "dotenv-rails"
 gem "pry-rails"
 
 gem "carrierwave"
+gem "mini_magick"

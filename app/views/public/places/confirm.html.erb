@@ -1,13 +1,15 @@
 <div class="container">
   <div class="row">
-    <h4 class="bg-info text-white">§<%= @place.place_genre.name %>§</h4>
+    <h4 class="bg-dark text-white"><%= @place.place_genre.name %></h4>
   </div>
   <div class="row justify-content-center">
     <h5 class="bg-dark text-white p-2"><%= @place.name %></h5>
   </div>
   <div class="row justify-content-center">
-    <% @tags.each do |tag| %>
-      #<%= tag %>
+    <% if @tags.present? %>
+      <% @tags.each do |tag| %>
+        #<%= tag %>
+      <% end %>
     <% end %>
   </div>
   <div class="row justify-content-end">
