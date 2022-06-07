@@ -36,6 +36,12 @@ class Public::PlacesController < ApplicationController
     redirect_to place_path(@place.id)
   end
 
+  def destroy
+    @place = Place.find(params[:id])
+    @place.destroy
+    redirect_to my_page_path(current_user)
+  end
+
   private
 
   def place_params
