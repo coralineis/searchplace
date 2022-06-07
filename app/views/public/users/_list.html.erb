@@ -18,10 +18,13 @@
     <div class="card mx-auto my-3" style="width: 18rem;">
       <%= image_tag plan.image.url %>
       <div class="card-body text-center">
-        <h5 class="card-title"><%= plan.place_name %>  <%= plan.time %></h5>
+        <h5 class="card-title">
+          <%= plan.time %>:00～<br>
+          <%= plan.place_name %>
+        </h5>
         <p class="card-text"><%= plan.introduction %></p>
         <%= link_to "編集する", edit_plan_path(plan.id), class: "btn btn-success" %>
-        
+
       </div>
     </div>
   <% end %>

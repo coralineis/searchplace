@@ -22,7 +22,7 @@
 
         <tr>
           <th><%= f.label :time, "時間" %></th>
-          <th><%= f.time_select :time, :minute_step => 15, id: "imputTime" %>～</th>
+          <th><%= f.text_field :time %>:00～</th>
         </tr>
         <tr>
           <th><%= f.label :place_name, "施設名称" %></th>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center mb-3">
-    <h5 class="bg-dark text-white p-2"><%= @plan.name %></h5>
+    <h5><%= @plan.name %></h5>
     <h6 class="ml-3">by <%= @plan.user.name %></h6>
   </div>
 
@@ -17,7 +17,10 @@
   <div class="card mx-auto" style="width: 18rem;">
     <%= image_tag @plan.image.url %>
     <div class="card-body">
-      <h5 class="card-title"><%= @plan.place_name %>  <%= @plan.time %></h5>
+      <h5 class="card-title">
+        <%= @plan.time %>:00～<br>
+        <%= @plan.place_name %>
+      </h5>
       <p class="card-text"><%= @plan.introduction %></p>
     </div>
   </div>
