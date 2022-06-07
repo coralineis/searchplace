@@ -1,14 +1,17 @@
 class Public::LikesController < ApplicationController
 
   def create
-    plan = Plan.find(params[:plan_id])
-    like = current_user.likes.new(plan_id: plan.id)
-    like.save
-    redirect_to plan_path(plan)
-    place = Place.find(params[:place_id])
-    like = current_user.likes.new(place_id: place.id)
-    like.save
-    redirect_to place_path(place)
+    if params[:plan_id]
+      plan = Plan.find(params[:plan_id])
+      like = current_user.likes.new(plan_id: plan.id)
+      like.save
+      redirect_to plan_path(plan)
+    else
+      place = Place.find(params[:place_id])
+      like = current_user.likes.new(place_id: place.id)
+      like.save
+      redirect_to place_path(place)
+    end
   end
 
   def destroy
