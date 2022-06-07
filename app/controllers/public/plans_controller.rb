@@ -27,6 +27,16 @@ class Public::PlansController < ApplicationController
     @plan = Plan.find(params[:id])
   end
 
+  def edit
+    @plan = Plan.find(params[:id])
+  end
+
+  def update
+    @plan = Plan.find(params[:id])
+    @plan.update(plan_params)
+    redirect_to plan_path(@plan.id)
+  end
+
   private
 
   def plan_params

@@ -1,0 +1,41 @@
+<div class="container">
+  <%= form_with model: @plan, url: place_path, method: :patch do |f| %>
+
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th><%= f.label :name, "プラン名" %></th>
+          <th><%= f.text_field :name %></th>
+        </tr>
+        <tr>
+          <th><%= f.label :tag_list, "タグを追加" %></th>
+          <th><%= f.text_field :tag_list, value: @plan.tag_list.join(',') %></th>
+        </tr>
+
+        <tr>
+          <th><%= f.label :time, "時間" %></th>
+          <th><%= f.time_select :time, :minute_step => 15, id: "imputTime" %>～</th>
+        </tr>
+        <tr>
+          <th><%= f.label :place_name, "施設名称" %></th>
+          <th><%= f.text_field :place_name %></th>
+        </tr>
+        <tr>
+          <th><%= f.label :image, "画像" %></th>
+          <th>
+            <%= f.file_field :image %>
+            <%= f.hidden_field :image_cache %>
+          </th>
+        </tr>
+        <tr>
+          <th><%= f.label :introduction, "感想、おすすめポイント" %></th>
+          <th><%= f.text_area :introduction %></th>
+        </tr>
+        <tr>
+          <th></th>
+          <th><%= f.submit "変更を保存する", class: "btn btn-success" %></th>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>
