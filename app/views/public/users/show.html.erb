@@ -34,6 +34,7 @@
       <% end %>
     <div class="col-4">
       <%= link_to "投稿一覧", users_path %>
+      <%= render 'list', plans: @plans, tags: @tags %>
     </div>
     </div>
   </div>

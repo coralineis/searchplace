@@ -1,4 +1,5 @@
 class Public::LikesController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     if params[:plan_id]
