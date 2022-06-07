@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_with model: @plan, url: place_path, method: :patch do |f| %>
+  <%= form_with model: @plan, url: plan_path, method: :patch do |f| %>
 
     <table class="table table-borderless">
       <tbody>
@@ -34,7 +34,7 @@
         <tr>
           <th></th>
           <th><%= f.submit "変更を保存する", class: "btn btn-success" %></th>
-          <th><%= link_to "投稿を削除する", place_path, method: :delete, class: "btn btn-danger" %></th>
+          <th><%= button_to "投稿を削除する", plan_path(@plan.id), method: :delete, class: "btn btn-danger" %></th>
         </tr>
       </tbody>
     </table>

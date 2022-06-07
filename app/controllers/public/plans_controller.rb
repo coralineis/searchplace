@@ -37,6 +37,12 @@ class Public::PlansController < ApplicationController
     redirect_to plan_path(@plan.id)
   end
 
+  def destroy
+    @plan = Plan.find(params[:id])
+    @plan.destroy
+    redirect_to my_page_path(current_user)
+  end
+
   private
 
   def plan_params
