@@ -1,0 +1,6 @@
+<% if @like_list.present? %>
+  <% @like_list.each do |plan| %>
+    <%= link_to plan.name %>
+    <%= plan.introduction %>
+  <% end %>
+<% end %>
