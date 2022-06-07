@@ -1,5 +1,5 @@
 <div class="container">
-  <% @plans.each do |plan| %>
+  <% plans.each do |plan| %>
     <div class="row justify-content-center mb-3">
       <h5 class="bg-dark text-white p-2"><%= plan.name %></h5>
       <h6 class="ml-3">by <%= plan.user.name %></h6>
@@ -15,7 +15,7 @@
       <% end %>
     </div>
 
-    <div class="card mx-auto my-3" style="width: 18rem;">
+    <div class="card mx-auto my-3" style="width: 500px;">
       <%= image_tag plan.image.url %>
       <div class="card-body text-center">
         <h5 class="card-title">
@@ -25,6 +25,28 @@
         <p class="card-text"><%= plan.introduction %></p>
         <%= link_to "編集する", edit_plan_path(plan.id), class: "btn btn-success" %>
 
+      </div>
+    </div>
+  <% end %>
+
+  <% places.each do |place| %>
+    <div class="row justify-content-center">
+      <% if tags.present? %>
+        <% tags.each do |tag| %>
+          # <%= tag.name %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="card mx-auto mt-3" style="width: 500px;">
+      <%= image_tag place.image.url %>
+      <div class="card-body text-center">
+        <h5 class="card-title"><%= place.name %> by <%= place.user.name %></h5>
+        <p class="card-text">
+          所要時間　<%= place.time %>時間<br>
+          <%= place.introduction %>
+        </p>
+        <%= link_to "編集する", edit_place_path(place.id), class: "btn btn-success" %>
       </div>
     </div>
   <% end %>
