@@ -14,7 +14,7 @@
 
         <tr>
           <th><%= f.label :time, "時間" %></th>
-          <th><%= f.number_field :time %>:00～</th>
+          <th><%= f.number_field :time, in: 0..24  %>:00～</th>
         </tr>
         <tr>
           <th><%= f.label :place_name, "施設名称" %></th>
