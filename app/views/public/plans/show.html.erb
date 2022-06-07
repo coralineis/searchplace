@@ -25,17 +25,13 @@
 
   <div class="row justify-content-center mt-3">
     <% if @plan.liked_by?(current_user) %>
-      <button type="button" class="btn btn-warning">
-        <%= link_to plan_likes_path(@plan), method: :delete, class: "text-dark" do %>
-          ♥ <%= @plan.likes.count %> お気に入りを解除
-        <% end %>
-      </button>
+      <%= button_to plan_likes_path(@plan), method: :delete, class: "btn btn-warning text-dark" do %>
+        ♥ <%= @plan.likes.count %> お気に入りを解除
+      <% end %>
     <% else %>
-      <button type="button" class="btn btn-warning">
-        <%= link_to plan_likes_path(@plan), method: :post, class: "text-dark" do %>
-          ♡ <%= @plan.likes.count %> お気に入りに追加
-        <% end %>
-      </button>
+      <%= button_to plan_likes_path(@plan), method: :post, class: "btn btn-warning text-dark" do %>
+        ♡ <%= @plan.likes.count %> お気に入りに追加
+      <% end %>
     <% end %>
   </div>
 </div>
