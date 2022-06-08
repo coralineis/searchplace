@@ -1,8 +1,8 @@
-<div class="col-4">
+<div class="col">
   <h5><span class="border-bottom border-warning">
     ジャンルから選ぶ
   </span></h5>
-  <ul class="list-group list-group-flush">
+  <ul class="list-group list-group-flush text-center">
     <% place_genres.each do |place_genre| %>
       <li class="list-group-item">
         <%= link_to place_genre.name, place_genre_path(place_genre.id), class: "text-info font-weight-bold" %>
