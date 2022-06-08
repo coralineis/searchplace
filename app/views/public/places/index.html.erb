@@ -3,7 +3,7 @@
 
     <%= render 'public/place_genres/genre_list', place_genres: @place_genres %>
 
-    <div class="col-auto">
+    <div class="col col-lg-9">
       <% @places.each do |place| %>
         <%= link_to place_path(place.id) do %>
           <div class="card mx-auto mt-3" style="width: 500px;">
