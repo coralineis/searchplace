@@ -1,11 +1,13 @@
 <div class="container">
   <% @plans.each do |plan| %>
     <%= link_to plan_path(plan.id) do %>
-      <div class="card" style="width: 18rem;">
-      <div class="card-body text-muted">
-        <h5 class="card-title"><%= plan.name %></h5>
-        <h6 class="card-subtitle">by <%= plan.user.name %></h6>
-        <p class="card-text"><%= plan.place_name %></p>
+      <div class="card mx-auto my-3" style="width: 500px;">
+        <div class="card-body text-muted text-center">
+          <h5 class="card-title"><%= plan.name %></h5><br>
+          <h6 class="card-subtitle text-right mb-3">posted by <%= plan.user.name %></h6>
+          <%= image_tag plan.image.url %>
+          <p class="card-text mt-2"><%= plan.place_name %></p>
+        </div>
       </div>
     <% end %>
   <% end %>
