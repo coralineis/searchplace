@@ -1,15 +1,8 @@
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mb-3">
     <h5>＜内容を確認してください＞</h5>
   </div>
 
-  <div class="row justify-content-center my-3">
-    <div class="bg-light">
-        <h5><%= @plan.name %></h5>
-    </div>
-    　by <%= @plan.user.name %>
-    </div>
-  </div>
 
   <div class="row">
     <% if @tags.present? %>
@@ -21,16 +14,7 @@
     <% end %>
   </div>
 
-  <div class="card mx-auto" style="width: 18rem;">
-    <%= image_tag @plan.image.url %>
-    <div class="card-body">
-      <h5 class="card-title">
-        <%= @plan.time %>:00～<br>
-        <%= @plan.place_name %>
-      </h5>
-      <p class="card-text"><%= @plan.introduction %></p>
-    </div>
-  </div>
+  <%= render 'plan', plan: @plan %>
 
   <%= form_with model: @plan, url: plans_path, method: :post do |f| %>
     <%= f.hidden_field :name %>
