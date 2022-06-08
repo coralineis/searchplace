@@ -1,4 +1,13 @@
 <div class="container">
+  <div class="row">
+    <div class="col-4">
+      <h5>ジャンルから選ぶ</h5>
+      <% @place_genres.each do |place_genre| %>
+        <%= link_to place_genre.name, place_genre_path(@genre.id) %>
+      <% end %>
+    </div>
+  </div>
+
   <% @places.each do |place| %>
     <%= link_to place_path(place.id) do %>
       <div class="row justify-content-center">
@@ -11,7 +20,7 @@
 
       <div class="card mx-auto mt-3" style="width: 500px;">
         <%= image_tag place.image.url %>
-        <div class="card-body text-muted">
+        <div class="card-body text-muted text-center">
           <h5 class="card-title"><%= place.name %> by <%= place.user.name %></h5>
           <p class="card-text">
             所要時間　<%= place.time %>時間<br>

@@ -18,6 +18,7 @@ class Public::PlacesController < ApplicationController
 
   def index
     @places = Place.all.order(id: "DESC")
+    @place_genres = PlaceGenre.all
     @tags = Place.tag_counts_on(:tags)
   end
 
