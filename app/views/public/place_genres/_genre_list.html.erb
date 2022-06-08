@@ -1,6 +1,12 @@
 <div class="col-4">
-      <h5>ジャンルから選ぶ</h5>
-      <% place_genres.each do |place_genre| %>
-        <%= link_to place_genre.name, place_genre_path(place_genre.id) %>
-      <% end %>
-    </div>
+  <h5><span class="border-bottom border-warning">
+    ジャンルから選ぶ
+  </span></h5>
+  <ul class="list-group list-group-flush">
+    <% place_genres.each do |place_genre| %>
+      <li class="list-group-item">
+        <%= link_to place_genre.name, place_genre_path(place_genre.id), class: "text-info font-weight-bold" %>
+      </li>
+    <% end %>
+  </ul>
+</div>
