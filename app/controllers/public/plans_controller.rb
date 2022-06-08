@@ -19,7 +19,7 @@ class Public::PlansController < ApplicationController
   end
 
   def index
-    @plans = Plan.all
+    @plans = Plan.all.order(id: "DESC")
     @tags = Plan.tag_counts_on(:tags)
   end
 
