@@ -1,12 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-4">
-      <h5>ジャンルから選ぶ</h5>
-      <% @place_genres.each do |place_genre| %>
-        <%= link_to place_genre.name, place_genre_path(@genre.id) %>
-      <% end %>
-    </div>
-  </div>
+
+  <%= render 'public/place_genres/genre_list', place_genres: @place_genres %>
 
   <% @places.each do |place| %>
     <%= link_to place_path(place.id) do %>

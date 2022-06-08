@@ -1,0 +1,6 @@
+<div class="col-4">
+      <h5>ジャンルから選ぶ</h5>
+      <% place_genres.each do |place_genre| %>
+        <%= link_to place_genre.name, place_genre_path(place_genre.id) %>
+      <% end %>
+    </div>

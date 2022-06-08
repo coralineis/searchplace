@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'place_genres/show'
-  end
   devise_for :admin, skip: [:registrations, :password], controllers: {
     sessions: 'admin/sessions'
   }
@@ -40,7 +37,7 @@ Rails.application.routes.draw do
           post :confirm
       end
     end
-    resources :genres, only: [:show]
+    resources :place_genres, only: [:show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
