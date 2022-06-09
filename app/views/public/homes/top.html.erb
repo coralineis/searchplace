@@ -1,19 +1,27 @@
 <div class="container">
-  <form class="d-flex">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success ml-3" type="submit">Search</button>
-  </form>
-
-  <% @plans.each do |plan| %>
-    <%= link_to plan_path(plan.id) do %>
-      <div class="card mx-auto my-4" style="width: 500px;">
-        <div class="card-body text-muted text-center">
-          <h5 class="card-title"><%= plan.name %></h5><br>
-          <h6 class="card-subtitle text-right mb-3">posted by <%= plan.user.name %></h6>
-          <%= image_tag plan.image.url %>
-          <p class="card-text mt-2"><%= plan.place_name %></p>
-        </div>
+  <form class="d-flex justify-content-end">
+    <%= search_form_for @q do |f| %>
+      <div style="width: 20%;">
+        <%= f.text_field :name_cont, class: "form-control me-2", placeholder: "Search" %>
       </div>
+        <%= f.submit "Search", class: "btn btn-outline-success ml-3" %>
     <% end %>
+  </div>
+
+  <% if @plans.present? %>
+    <% @plans.each do |plan| %>
+      <%= link_to plan_path(plan.id) do %>
+        <div class="card mx-auto my-4" style="width: 500px;">
+          <div class="card-body text-muted text-center">
+            <h5 class="card-title"><%= plan.name %></h5><br>
+            <h6 class="card-subtitle text-right mb-3">posted by <%= plan.user.name %></h6>
+            <%= image_tag plan.image.url %>
+            <p class="card-text mt-2"><%= plan.place_name %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <h5>検索結果はありません</h5>
   <% end %>
 </div>
