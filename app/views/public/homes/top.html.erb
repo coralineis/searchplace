@@ -1,6 +1,19 @@
 <div class="container">
-  <div class="row">
-    <%= search_form_for @search do |f| %>
+  <form class="d-flex">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success ml-3" type="submit">Search</button>
+  </form>
+
+  <% @plans.each do |plan| %>
+    <%= link_to plan_path(plan.id) do %>
+      <div class="card mx-auto my-4" style="width: 500px;">
+        <div class="card-body text-muted text-center">
+          <h5 class="card-title"><%= plan.name %></h5><br>
+          <h6 class="card-subtitle text-right mb-3">posted by <%= plan.user.name %></h6>
+          <%= image_tag plan.image.url %>
+          <p class="card-text mt-2"><%= plan.place_name %></p>
+        </div>
+      </div>
     <% end %>
-  </div>
+  <% end %>
 </div>

@@ -28,13 +28,14 @@ Rails.application.routes.draw do
       resource :likes, only: [:create, :destroy]
       collection do
         post :confirm
-        get :search
+        get 'search'
       end
     end
     resources :places do
       resource :likes, only: [:create, :destroy]
       collection do
           post :confirm
+          get 'search'
       end
     end
     resources :place_genres, only: [:show]

@@ -10,7 +10,7 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  
+
   </head>
 
   <body>
@@ -22,7 +22,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
               <% if admin_signed_in? %>
                 <li><%= link_to "会員一覧", admin_users_path, class: "btn btn-outline-secondary mr-2" %></li>
                 <li><%= link_to "ジャンル追加", admin_place_genres_path, class: "btn btn-outline-secondary mr-2" %></li>
@@ -47,15 +47,13 @@
           <li><%= link_to "Plans", plans_path, class: "btn btn-outline-info mr-5" %></li>
           <li><%= link_to "Places", places_path, class: "btn btn-outline-info" %></li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success ml-3" type="submit">Search</button>
-        </form>
       </div>
     </nav>
 
-    
-    
+
+
     <%= yield %>
   </body>
+
+  <footer class="footer"></footer>
 </html>
