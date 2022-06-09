@@ -1,4 +1,6 @@
 class Public::PlacesController < ApplicationController
+  before_action :search
+
   def new
     @place = Place.new
   end
@@ -16,8 +18,12 @@ class Public::PlacesController < ApplicationController
     redirect_to place_path(@place.id)
   end
 
+  def search
+    @q = Plan.ransack(params[:q])
+  end
+
   def index
-    @places = Place.all.order(id: "DESC")
+    @places = @q.result(distinct: true).order(id: "DESC")
     @place_genres = PlaceGenre.all
     @tags = Place.tag_counts_on(:tags)
   end

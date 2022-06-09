@@ -6,6 +6,6 @@ class Public::HomesController < ApplicationController
   end
 
   def top
-    @plans = @q.result(distinct: true)
+    @plans = @q.result(distinct: true).order(id: "DESC")
   end
 end
