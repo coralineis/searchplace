@@ -1,6 +1,6 @@
 <div class="container">
   <form class="d-flex justify-content-end">
-    <%= search_form_for @q do |f| %>
+    <%= search_form_for q do |f| %>
       <div style="width: 20%;">
         <%= f.text_field :name_or_introduction_or_place_name_or_user_name_cont, class: "form-control me-2", placeholder: "Search" %>
       </div>
@@ -8,8 +8,8 @@
     <% end %>
   </form>
 
-  <% if @plans.present? %>
-    <% @plans.each do |plan| %>
+  <% if plans.present? %>
+    <% plans.each do |plan| %>
       <%= link_to plan_path(plan.id) do %>
         <div class="card mx-auto my-4" style="width: 500px;">
           <div class="card-body text-muted text-center">

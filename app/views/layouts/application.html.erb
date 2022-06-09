@@ -41,19 +41,24 @@
       </nav>
     </header>
 
-    <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li><%= link_to "Plans", plans_path, class: "btn btn-outline-info mr-5" %></li>
-          <li><%= link_to "Places", places_path, class: "btn btn-outline-info" %></li>
+        <ul class="tab-list list-unstyled nav pull-light nav-pills justify-content-around my-3">
+          <li class="tab tab-active">Plans</li>
+          <li class="tab">Places</li>
         </ul>
+        <div class="tabbox-contents">
+          <div class="tabbox box-show">
+            <%= render 'public/plans/index', q: @q, plans: @plans %>
+          </div>
+          <div class="tabbox">
+            <%= render 'public/places/index', q: @q, places: @places, place_genres: @place_genres %>
+          </div>
+        </div>
       </div>
-    </nav>
-
 
 
     <%= yield %>
+    <footer class="footer"></footer>
   </body>
 
-  <footer class="footer"></footer>
 </html>
