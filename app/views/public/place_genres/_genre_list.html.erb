@@ -8,7 +8,7 @@
       <% place_genres.each do |place_genre| %>
       <li>
         <button class="dropdown-item" type="button">
-        <%= link_to place_genre.name, place_genre_path(place_genre.id), class: "text-info font-weight-bold" %>
+          <%= link_to place_genre.name, place_genre_path(place_genre.id), class: "text-info font-weight-bold" %>
         </button>
       </li>
       <% end %>

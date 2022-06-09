@@ -1,4 +1,6 @@
 class Public::PlansController < ApplicationController
+  before_action :search
+
   def new
     @plan = Plan.new
   end
@@ -18,8 +20,12 @@ class Public::PlansController < ApplicationController
     redirect_to plan_path(@plan.id)
   end
 
+  def search
+    @q = Plan.ransack(params[:q])
+  end
+
   def index
-    @plans = Plan.all.order(id: "DESC")
+    @plans = @q.result(distinct: true).order(id: "DESC")
     @tags = Plan.tag_counts_on(:tags)
   end
 
