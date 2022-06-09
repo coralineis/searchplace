@@ -2,7 +2,7 @@
   <form class="d-flex justify-content-end">
     <%= search_form_for @q do |f| %>
       <div style="width: 20%;">
-        <%= f.text_field :name_cont, class: "form-control me-2", placeholder: "Search" %>
+        <%= f.text_field :name_or_introduction_or_place_name_cont, class: "form-control me-2", placeholder: "Search" %>
       </div>
         <%= f.submit "Search", class: "btn btn-outline-success ml-3" %>
     <% end %>
