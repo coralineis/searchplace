@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_any!, except: [:top, :about, :index]
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :search
 
   def authenticate_any!
     if admin_signed_in?
@@ -9,6 +10,7 @@ class ApplicationController < ActionController::Base
       authenticate_user!
     end
   end
+
 
   protected
 

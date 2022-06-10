@@ -19,7 +19,7 @@ class Public::PlacesController < ApplicationController
   end
 
   def search
-    @q = Plan.ransack(params[:q])
+    @q = Place.ransack(params[:q])
   end
 
   def index
