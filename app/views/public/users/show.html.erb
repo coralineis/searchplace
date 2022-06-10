@@ -25,17 +25,17 @@
     </div>
 
     <div class="col-8">
-      <ul class="tab-list list-unstyled">
-        <li class="tab tab-active">お気に入り一覧</li>
-        <li class="tab">投稿一覧</li>
+      <ul class="tab-menu list-unstyled nav pull-light nav-pills justify-content-around">
+        <li class=""><a href="#tab1" class="active">お気に入り一覧</a></li>
+        <li class=""><a href="#tab2" class="">投稿一覧</a></li>
       </ul>
 
-      <div class="tabbox-contents">
-        <div class="tabbox box-show">
-          <%= render 'list', plans: @plans, tags: @tags, places: @places %>
-        </div>
-        <div class="tabbox">
+      <div class="tab-contents">
+        <div id="tab1" class="tab">
           <%= render 'like', plan: @like_list %>
+        </div>
+        <div id="tab2" class="tab">
+          <%= render 'list', plans: @plans, tags: @tags, places: @places %>
         </div>
       </div>
     </div>
