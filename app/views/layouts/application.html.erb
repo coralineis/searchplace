@@ -41,21 +41,20 @@
       </nav>
     </header>
 
-      <div class="container">
-        <ul class="tab-list list-unstyled nav pull-light nav-pills justify-content-around my-3">
-          <li class="tab tab-active">Plans</li>
-          <li class="tab">Places</li>
-        </ul>
-        <div class="tabbox-contents">
-          <div class="tabbox box-show">
-            <%= render 'public/plans/index', q: @q, plans: @plans %>
-          </div>
-          <div class="tabbox">
-            <%= render 'public/places/index', q: @q, places: @places, place_genres: @place_genres %>
-          </div>
+    <div class="wrap mx-auto" style="width: 80%;">
+      <ul class="tab-menu list-unstyled nav pull-light nav-pills justify-content-around my-3">
+        <li><a href="#tab1" class="active text-reset">Plans</a></li>
+        <li><a href="#tab2" class="text-reset">Places</a></li>
+      </ul>
+      <div id="tab-contents">
+        <div id="tab1" class="tab">
+          <%= render 'public/plans/index', q: @q, plans: @plans %>
+        </div>
+        <div id="tab2" class="tab">
+          <%= render 'public/places/index', q: @q, places: @places %>
         </div>
       </div>
-
+    </div>
 
     <%= yield %>
     <footer class="footer"></footer>
