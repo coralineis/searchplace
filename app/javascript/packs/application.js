@@ -19,7 +19,6 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-$(document).on('turbolinks:load', function() {
 
   $('#tab-contents .tab[id != "tab1"]').hide();
 
@@ -30,4 +29,3 @@ $(document).on('turbolinks:load', function() {
     $($(this).attr("href")).show();
     event.preventDefault();
   });
-});
