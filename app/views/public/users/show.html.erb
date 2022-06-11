@@ -3,9 +3,9 @@
     <h3>My Page</h3>
   </div>
 
-  <div class="row justify-content-center mt-3">
-    <div class="col-lg-4 col-sm-6 col-xs-6">
-      <div class="card border-info bg-light mb-3" style="max-width: 13rem;">
+  <div class="row mt-3">
+    <div class="col-lg-6 col-sm-6 col-xs-12">
+      <div class="card border-info bg-light mb-3 mx-auto" style="max-width: 13rem;">
         <div class="card-header font-weight-bold text-center">ユーザー情報</div>
         <div class="card-body">
           <p class="card-text">名前　　　<%= @user.name %></p>
@@ -16,8 +16,8 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-4 col-sm-6 col-xs-6">
-      <div class="card border-success bg-light mb-3" style="max-width: 13rem;">
+    <div class="col-lg-6 col-sm-6 col-xs-12">
+      <div class="card border-success bg-light mb-3 mx-auto" style="max-width: 13rem;">
         <div class="card-header font-weight-bold text-center">投稿する</div>
         <div class="card-body">
           <div class="text-center"><%= link_to "Plan", new_plan_path, class: "btn btn-info px-5" %></div>
@@ -25,8 +25,9 @@
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="col-lg-8 col-sm-12 col-xs-12">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
       <ul class="tab-menu list-unstyled nav pull-light nav-pills justify-content-around">
         <li class=""><a href="#tab1" class="active">お気に入り一覧</a></li>
         <li class=""><a href="#tab2" class="">投稿一覧</a></li>
@@ -41,5 +42,5 @@
         </div>
       </div>
     </div>
-  </div>
+
 </div>
