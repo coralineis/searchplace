@@ -1,12 +1,12 @@
-<div class="card mx-auto" style="width: 500px;">
-    <div class="card-body text-center">
-      <h5 class="card-title"><%= plan.name %></h5>
-      <h6 class="card-subtitle text-right mb-2">posted by <%= plan.user.name %></h6>
-      <%= image_tag plan.image.url %>
-      <p class="card-text mt-2">
-        <%= plan.time %>:00～<br>
-        <%= plan.place_name %><br>
-        <%= plan.introduction %>
-      </p>
-    </div>
+<div class="card mx-auto" style="max-width: 500px;">
+  <div class="card-body text-center">
+    <h5 class="card-title"><%= plan.name %></h5>
+    <h6 class="card-subtitle text-right mb-2">posted by <%= plan.user.name %></h6>
+    <%= image_tag plan.image.url %>
+    <p class="card-text mt-2">
+      <%= plan.time %>:00～<br>
+      <%= plan.place_name %><br>
+      <%= plan.introduction %>
+    </p>
   </div>
+</div>

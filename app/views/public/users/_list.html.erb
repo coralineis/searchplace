@@ -12,19 +12,15 @@
 
     <div class="card mx-auto my-3" style="max-width: 500px;">
       <div class="card-body text-center">
-        <h5 class="card-title">
-          <%= plan.name %>  posted by <%= plan.user.name %>
-        </h5>
+        <h5 class="card-title"><%= plan.name %></h5>
+        <h6 class="card-subtitle text-right mb-2">posted by <%= plan.user.name %></h6>
         <%= image_tag plan.image.url %>
-        <div class="card-text">
-          <h5 class="mt-2">
-            <%= plan.time %>:00～<br>
-            <%= plan.place_name %>
-          </h6>
-          <p><%= plan.introduction %></p>
-        </div>
+        <p class="card-text mt-2">
+          <%= plan.time %>:00～<br>
+          <%= plan.place_name %><br>
+          <%= plan.introduction %>
+        </p>
         <%= link_to "編集する", edit_plan_path(plan.id), class: "btn btn-success" %>
-
       </div>
     </div>
   <% end %>
@@ -38,15 +34,24 @@
       <% end %>
     </div>
 
-    <div class="card mx-auto my-3" style="max-width: 500px;">
+    <div class="card mx-auto mt-3" style="max-width: 500px;">
       <%= image_tag place.image.url %>
       <div class="card-body text-center">
-        <h5 class="card-title"><%= place.name %> by <%= place.user.name %></h5>
         <p class="card-text">
-          所要時間　<%= place.time %>時間<br>
+          <% if place.tag_list.present? %>
+            <% place.tag_list.each do |tag| %>
+              #<%= tag %>
+            <% end %>
+          <% end %>
+        </p>
+        <h4 class="card-title"><%= place.name %></h4>
+        <h6 class="card-subtitle text-right">posted by <%= place.user.name %></h6>
+        <p class="card-text py-3">
+          ≪ 所要時間 ≫　<%= place.time %>時間<br>
           <%= place.introduction %>
         </p>
         <%= link_to "編集する", edit_place_path(place.id), class: "btn btn-success" %>
       </div>
     </div>
   <% end %>
+
