@@ -8,27 +8,30 @@
     <% end %>
   </form>
 
-  <div class="row">
-    <div class="col col-lg-9">
-      <% if @places.present? %>
-        <% @places.each do |place| %>
-          <%= link_to place_path(place.id) do %>
-            <div class="card mx-auto mt-3" style="width: 500px;">
-              <%= image_tag place.image.url %>
-              <div class="card-body text-muted text-center">
-                <h5 class="card-title"><%= place.name %> by <%= place.user.name %></h5>
-                <p class="card-text">
-                  所要時間　<%= place.time %>時間<br>
-                  <%= place.introduction %>
-                </p>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      <% else %>
-        <h5>検索結果はありません</h5>
+  <% if @places.present? %>
+    <% @places.each do |place| %>
+      <%= link_to place_path(place.id) do %>
+        <div class="card mx-auto my-3" style="max-width: 500px;">
+          <%= image_tag place.image.url %>
+          <div class="card-body text-muted text-center">
+            <p class="card-text">
+              <% if place.tag_list.present? %>
+                <% place.tag_list.each do |tag| %>
+                  #<%= tag %>
+                <% end %>
+              <% end %>
+            </p>
+            <h4 class="card-title"><%= place.name %></h4>
+            <h6 class="card-subtitle text-right">posted by <%= place.user.name %></h6>
+            <p class="card-text py-3">
+              ≪ 所要時間 ≫　<%= place.time %>時間<br>
+              <%= place.introduction %>
+            </p>
+          </div>
+        </div>
       <% end %>
-    </div>
-
-  </div>
+    <% end %>
+  <% else %>
+    <h5>検索結果はありません</h5>
+  <% end %>
 </div>
