@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2022_06_11_073359) do
   end
 
   create_table "spots", force: :cascade do |t|
+    t.integer "place_id"
     t.string "address"
     t.float "latitude"
     t.float "longitude"

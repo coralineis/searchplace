@@ -38,13 +38,16 @@
           <th><%= f.label :time, "所要時間" %></th>
           <th><%= f.text_field :time %>時間</th>
         </tr>
-        <tr>
-          <%= f.fields_for :spot do |s| %>
-          <th><%=  %></th>
+        <%= f.fields_for :spot, @place.build_spot do |s| %>
+          <tr>
+            <th><%= s.label :address, "所在地" %></th>
+            <th>
+              <%= s.text_field :address %>
+              <% end %>
+              <input type="button" value="検索" onclick="codeAddress()">
+            </th>
+            <div id="display"></div>
 
-<div id="display"></div>
-<input id="address" type="textbox" value="GeekSalon">
-<input type="button" value="Encode" onclick="codeAddress()">
             <div id='map'></div>
             <style>
             #map {

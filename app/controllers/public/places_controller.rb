@@ -3,6 +3,7 @@ class Public::PlacesController < ApplicationController
 
   def new
     @place = Place.new
+    @place.build_spot
   end
 
   def confirm
@@ -52,7 +53,7 @@ class Public::PlacesController < ApplicationController
   private
 
   def place_params
-    params.require(:place).permit(:name, :image, :image_cache, :time, :introduction, :tag_list, :place_genre_id)
+    params.require(:place).permit(:name, :image, :image_cache, :time, :introduction, :tag_list, :place_genre_id, spot_attributes:[:id, :address, :latitude, :longitude]).merge(user_id: current_user.id)
   end
 
 end
