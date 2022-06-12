@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_11_073359) do
+ActiveRecord::Schema.define(version: 2022_04_30_034223) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -44,7 +44,9 @@ ActiveRecord::Schema.define(version: 2022_06_11_073359) do
   create_table "places", force: :cascade do |t|
     t.integer "user_id"
     t.integer "place_genre_id"
-    t.string "name"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.string "image"
     t.string "time"
     t.text "introduction"
@@ -69,15 +71,6 @@ ActiveRecord::Schema.define(version: 2022_06_11_073359) do
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id"
     t.string "review"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "spots", force: :cascade do |t|
-    t.integer "place_id"
-    t.string "address"
-    t.float "latitude"
-    t.float "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

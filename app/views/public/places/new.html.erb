@@ -20,8 +20,10 @@
           </th>
         </tr>
         <tr>
-          <th><%= f.label :name, "施設名称" %></th>
-          <th><%= f.text_field :name %></th>
+          <th><%= f.label :address, "施設名称" %></th>
+          <th>
+            <%= f.text_field :address %>
+          </th>
         </tr>
         <tr>
           <th><%= f.label :introduction, "感想　おすすめポイント" %></th>
@@ -37,56 +39,6 @@
         <tr>
           <th><%= f.label :time, "所要時間" %></th>
           <th><%= f.text_field :time %>時間</th>
-        </tr>
-        <%= f.fields_for :spot, @place.build_spot do |s| %>
-          <tr>
-            <th><%= s.label :address, "所在地" %></th>
-            <th>
-              <%= s.text_field :address %>
-              <% end %>
-              <input type="button" value="検索" onclick="codeAddress()">
-            </th>
-            <div id="display"></div>
-
-            <div id='map'></div>
-            <style>
-            #map {
-              height: 400px;
-              width: 400px;
-            }
-            </style>
-            <script>
-            let map
-            function initMap(){
-              geocoder = new google.maps.Geocoder()
-              map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 35.6809591, lng: 139.7673068},
-                zoom: 12,
-              });
-              marker = new google.maps.Marker({
-                position:  {lat: 35.6809591, lng: 139.7673068},
-                map: map
-              });
-            }
-            let geocoder
-            const display = document.getElementById('display')
-            function codeAddress(){
-              let inputAddress = document.getElementById('address').value;
-              geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-                if (status == 'OK') {
-                  map.setCenter(results[0].geometry.location);
-                  var marker = new google.maps.Marker({
-                      map: map,
-                      position: results[0].geometry.location
-                  });
-                  display.textContent = "検索結果：" + results[ 0 ].geometry.location
-                } else {
-                  alert('該当する結果がありませんでした：' + status);
-                }
-              });
-            }
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
         </tr>
         <tr>
           <th></th>

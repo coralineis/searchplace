@@ -7,7 +7,7 @@
 
   <div class="row justify-content-center">
     <%= form_with model: @place, url: places_path, method: :post do |f| %>
-      <%= f.hidden_field :name %>
+      <%= f.hidden_field :address %>
       <%= f.hidden_field :tag_list %>
       <%= f.hidden_field :image %>
       <%= f.hidden_field :image_cache %>
