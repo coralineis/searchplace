@@ -1,6 +1,11 @@
 <div class="card mx-auto" style="max-width: 500px;">
   <div class="card-body text-center">
     <h5 class="card-title"><%= plan.name %></h5>
+    <p class="card-text">
+      <% plan.tag_list.each do |tag| %>
+        <%= tag %>
+      <% end %>
+    </p>
     <h6 class="card-subtitle text-right mb-2">posted by <%= plan.user.name %></h6>
     <%= image_tag plan.image.url %>
     <p class="card-text mt-2">

@@ -2,7 +2,7 @@
   <form class="d-flex justify-content-end">
     <%= search_form_for @q do |f| %>
       <div style="width: 20%;">
-        <%= f.text_field :name_or_introduction_or_user_name_cont, class: "form-control me-2", placeholder: "Search" %>
+        <%= f.text_field :address_or_introduction_or_user_name_cont, class: "form-control me-2", placeholder: "Search" %>
       </div>
         <%= f.submit "Search", class: "btn btn-outline-success ml-3" %>
     <% end %>
@@ -15,13 +15,11 @@
           <%= image_tag place.image.url %>
           <div class="card-body text-muted text-center">
             <p class="card-text">
-              <% if place.tag_list.present? %>
-                <% place.tag_list.each do |tag| %>
-                  #<%= tag %>
-                <% end %>
+              <% place.tag_list.each do |tag| %>
+                #<%= tag %>
               <% end %>
             </p>
-            <h4 class="card-title"><%= place.name %></h4>
+            <h4 class="card-title"><%= place.address %></h4>
             <h6 class="card-subtitle text-right">posted by <%= place.user.name %></h6>
             <p class="card-text py-3">
               ≪ 所要時間 ≫　<%= place.time %>時間<br>

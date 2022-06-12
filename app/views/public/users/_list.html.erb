@@ -1,18 +1,12 @@
   <% plans.each do |plan| %>
-
-    <div class="row">
-      <% if tags.present? %>
-        <div class="border border-dark border-4 rounded-2">
-          <% tags.each do |tag| %>
-            <%= tag.name %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-
     <div class="card mx-auto my-3" style="max-width: 500px;">
       <div class="card-body text-center">
         <h5 class="card-title"><%= plan.name %></h5>
+        <p class="card-text">
+          <% plan.tag_list.each do |tag| %>
+            <%= tag %>
+          <% end %>
+        </p>
         <h6 class="card-subtitle text-right mb-2">posted by <%= plan.user.name %></h6>
         <%= image_tag plan.image.url %>
         <p class="card-text mt-2">
@@ -26,26 +20,16 @@
   <% end %>
 
   <% places.each do |place| %>
-    <div class="row justify-content-center">
-      <% if tags.present? %>
-        <% tags.each do |tag| %>
-          # <%= tag.name %>
-        <% end %>
-      <% end %>
-    </div>
-
     <div class="card mx-auto my-3" style="max-width: 500px;">
-      <%= image_tag place.image.url %>
       <div class="card-body text-center">
         <p class="card-text">
-          <% if place.tag_list.present? %>
-            <% place.tag_list.each do |tag| %>
-              #<%= tag %>
-            <% end %>
+          <% place.tag_list.each do |tag| %>
+            #<%= tag %>
           <% end %>
         </p>
-        <h4 class="card-title"><%= place.name %></h4>
+        <h4 class="card-title"><%= place.address %></h4>
         <h6 class="card-subtitle text-right">posted by <%= place.user.name %></h6>
+        <%= image_tag place.image.url %>
         <p class="card-text py-3">
           ≪ 所要時間 ≫　<%= place.time %>時間<br>
           <%= place.introduction %>
