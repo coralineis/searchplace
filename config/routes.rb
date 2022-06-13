@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       sessions: 'public/sessions'
     }
 
-    root to: 'homes#top'
+    root to: 'plans#index'
     get 'about' => 'homes#about'
     resource :users, only: [:edit, :update] do
       collection do

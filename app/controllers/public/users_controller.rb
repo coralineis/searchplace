@@ -1,8 +1,8 @@
 class Public::UsersController < ApplicationController
   def show
     @user = current_user
-    @plans = @user.plans
-    @places = @user.places
+    @plans = @user.plans.order(id: "DESC")
+    @places = @user.places.order(id: "DESC")
     @likes = Like.where(user_id: current_user.id).pluck(:id)
     @like_list = Place.find(@likes)
   end

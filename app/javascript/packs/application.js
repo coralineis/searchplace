@@ -12,7 +12,9 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
-import '@fortawesome/fontawesome-free/js/all'
+import "jquery_ujs"
+import "jquery-ui"
+import "tag-it"
 
 
 Rails.start()

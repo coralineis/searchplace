@@ -32,7 +32,7 @@
         <tr>
           <th><%= f.label :tag_list, "タグを追加" %></th>
           <th>
-            <%= f.text_field :tag_list, value: @place.tag_list.join(',') %>
+            <%= f.text_field :tag_list, value: @place.tag_list.join(','), class: "tag-form" %>
           </th>
         </tr>
         <tr>

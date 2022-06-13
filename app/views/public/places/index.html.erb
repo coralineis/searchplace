@@ -8,11 +8,12 @@
     <% end %>
   </form>
 
+  <%= render 'public/place_genres/genre_list', place_genres: @place_genres %>
+
   <% if @places.present? %>
     <% @places.each do |place| %>
       <%= link_to place_path(place.id) do %>
         <div class="card mx-auto my-3" style="max-width: 500px;">
-          <%= image_tag place.image.url %>
           <div class="card-body text-muted text-center">
             <p class="card-text">
               <% place.tag_list.each do |tag| %>
@@ -21,6 +22,7 @@
             </p>
             <h4 class="card-title"><%= place.address %></h4>
             <h6 class="card-subtitle text-right">posted by <%= place.user.name %></h6>
+            <%= image_tag place.image.url %>
             <p class="card-text py-3">
               ≪ 所要時間 ≫　<%= place.time %>時間<br>
               <%= place.introduction %>

@@ -2,7 +2,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  process resize_to_fit: [280, 200]
+  process resize_to_fit: [250, 200]
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -15,7 +15,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-  "logo.jpg"
+  "no_image.png"
   end
 
   def extension_allowlist
@@ -39,7 +39,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process resize_to_fit: [100, 50]
+    process resize_to_fit: [200, 150]
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.
