@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
-    <h3 class="bg-secondary text-white p-1">プロフィール編集</h3>
+    <h3 class="bg-secondary text-white p-1 mt-3">プロフィール編集</h3>
   </div>
 
   <%= form_with model: @user, url: registration_path(resource_name), method: :patch do |f| %>
@@ -46,7 +46,7 @@
     </div>
   <% end %>
 
-  <div class="row justify-content-end text-reset">
+  <div class="row justify-content-around text-reset my-3">
     <%= link_to "退会する", unsubscribe_path, class: "btn btn-outline-danger" %>
   </div>
 </div>

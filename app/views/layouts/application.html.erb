@@ -18,7 +18,7 @@
 
   <body>
     <header class="shadow-sm" style="height: 100px;">
-      <nav class="navbar navbar-expand-lg navbar-light bg-white" style="z-index: 2;">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white" style="z-index: 2;">
         <div class="container">
           <a class="navbar-brand p-3 pull-left" href="/"><%= image_tag('logo.jpg') %></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,22 +43,23 @@
         </div>
       </nav>
     </header>
-
-    <nav class="navbar navbar-expand-lg navbar-light"  style="z-index: 1;">
-      <div class="container">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0" style="flex-direction: row;">
-          <li><%= link_to "Plans", plans_path, class: "btn btn-outline-info mr-5" %></li>
-          <li><%= link_to "Places", places_path, class: "btn btn-outline-info" %></li>
-        </ul>
-        <form class="d-flex mx-auto">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success ml-3" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
+    <main>
+      <nav class="navbar navbar-expand-lg navbar-light"  style="z-index: 1;">
+        <div class="container">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0" style="flex-direction: row;">
+            <li><%= link_to "Plans", plans_path, class: "btn btn-outline-info mr-5" %></li>
+            <li><%= link_to "Places", places_path, class: "btn btn-outline-info" %></li>
+          </ul>
+          <form class="d-flex mx-auto">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success ml-3" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    </main>
 
     <%= yield %>
-    <footer class="footer"></footer>
+    <footer class="footer mt-auto" style="height: 50px;"></footer>
   </body>
 
 </html>
