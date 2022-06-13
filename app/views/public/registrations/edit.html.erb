@@ -6,50 +6,44 @@
   <%= form_with model: @user, url: registration_path(resource_name), method: :patch do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
 
-    <table class="table table-borderless">
-      <tbody>
-        <tr>
-          <th><%= f.label :name, "ユーザーネーム" %></th>
-          <th><%= f.text_field :name %></th>
-        </tr>
-        <tr>
-          <th><%= f.label :prefecture, "居住地" %></th>
-          <th><%= f.select :prefecture, User.prefectures_i18n.invert %></th>
-        </tr>
-        <tr>
-          <th><%= f.label :email, "メールアドレス" %></th>
-          <th><%= f.email_field :email, autocomplete: "email" %></th>
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-          <% end %>
-        </tr>
-        <tr>
-          <td class="text-warning">！パスワードを変更しない場合は空白のままにしてください！</td>
-        </tr>
-        <tr>
-          <th>
-            <%= f.label :password, "新しいパスワード" %>
-            <% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %>文字以上)</em>
-            <% end %>
-          </th>
-          <th>
-            <%= f.password_field :password, autocomplete: "new-password" %>
-          </th>
-        </tr>
-        <tr>
-          <th><%= f.label :password_confirmation, "新しいパスワード(確認用)" %></th>
-          <th><%= f.password_field :password_confirmation, autocomplete: "new-password" %></th>
-        </tr>
-        <tr>
-          <th><%= f.label :current_password, "確認のため現在のパスワードを入力してください" %></th>
-          <th><%= f.password_field :current_password, autocomplete: "current-password" %></th>
-        </tr>
-        <tr>
-          <th class="text-center"><%= f.submit "変更を保存する", class: "btn btn-success mt-3" %></th>
-        </tr>
-      </tbody>
-    </table>
+    <div class="field my-3">
+      <%= f.label :name, "ユーザーネーム" %><br>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field mb-3">
+      <%= f.label :prefecture, "居住地" %><br>
+      <%= f.select :prefecture, User.prefectures_i18n.invert %>
+    </div>
+
+    <div class="field mb-5">
+      <%= f.label :email, "メールアドレス" %><br>
+      <%= f.email_field :email, autocomplete: "email" %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+    </div>
+
+    <div class="text-warning">
+       ※パスワードを変更しない場合は空白のままにしてください！
+    </div>
+
+    <div class="field mb-3">
+      <%= f.label :password, "新しいパスワード" %>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %>文字以上)</em>
+      <% end %><br>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field mb-3">
+      <%= f.label :password_confirmation, "新しいパスワード(確認用)" %><br>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "変更を保存する", class: "btn btn-success mt-3" %>
+    </div>
   <% end %>
 
   <div class="row justify-content-end text-reset">

@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
+  attr_accessor :current_password
+
   enum prefecture: {
     not_selected: 0,
     hokkaido: 1, aomori: 2, iwate: 3, miyagi: 4, akita: 5, yamagata: 6, fukushima: 7,
@@ -18,6 +20,6 @@ class User < ApplicationRecord
     tottori: 31, shimane: 32, okayama: 33, hiroshima: 34, yamaguchi: 35, tokushima: 36, kagawa: 37, ehime: 38, kochi: 39,
     fukuoka: 40, saga: 41, nagasaki: 42, kumamoto: 43, oita: 44, miyazaki: 45, kagoshima: 46, okinawa: 47
   }
-  
-  
+
+
 end
