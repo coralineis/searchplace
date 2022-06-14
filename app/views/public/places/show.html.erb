@@ -63,13 +63,13 @@
     </div>
   </div>
 
-  <div class="row justify-content-center mt-3">
+  <div class="row justify-content-center my-5">
     <% if @place.liked_by?(current_user) %>
-      <%= button_to place_likes_path(@place), method: :delete, class: "btn btn-warning text-dark" do %>
+      <%= link_to place_likes_path(@place), method: :delete, class: "btn btn-warning text-dark" do %>
         ♥ <%= @place.likes.count %> お気に入りを解除
       <% end %>
     <% else %>
-      <%= button_to place_likes_path(@place), method: :post, class: "btn btn-warning text-dark" do %>
+      <%= link_to place_likes_path(@place), method: :post, class: "btn btn-warning text-dark" do %>
         ♡ <%= @place.likes.count %> お気に入りに追加
       <% end %>
     <% end %>

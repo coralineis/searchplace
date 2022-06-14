@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @plans = @user.plans.order(id: "DESC")
     @places = @user.places.order(id: "DESC")
-    @likes = Like.where(user_id: current_user.id).pluck(:id)
+    @like_place = Like.where(user_id: current_user.id).pluck(:id)
     @like_list = Place.find(@likes)
   end
 
