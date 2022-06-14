@@ -16,7 +16,9 @@
           <%= plan.place_name %><br>
           <%= plan.introduction %>
         </p>
-        <%= link_to "編集する", edit_plan_path(plan.id), class: "btn btn-success" %>
+        <% if signed_in? && current_user.id == plan.user.id %>
+          <%= link_to "編集する", edit_plan_path(plan.id), class: "btn btn-success" %>
+        <% end %>
       </div>
     </div>
   <% end %>
@@ -36,7 +38,9 @@
           ≪ 所要時間 ≫　<%= place.time %>時間<br>
           <%= place.introduction %>
         </p>
-        <%= link_to "編集する", edit_place_path(place.id), class: "btn btn-success" %>
+        <% if signed_in? && current_user.id == place.user.id %>
+          <%= link_to "編集する", edit_place_path(place.id), class: "btn btn-success" %>
+        <% end %>
       </div>
     </div>
   <% end %>

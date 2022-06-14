@@ -9,11 +9,11 @@
           <% end %>
         </p>
         <h4 class="card-title"><%= @place.address %></h4>
-        <h6 class="card-subtitle text-right text-dark my-3">
-          <%= link_to user_path(@place.user.id) do %>
+        <%= link_to user_path(@place.user.id) do %>
+          <h6 class="card-subtitle text-right text-muted my-3">
             posted by <%= @place.user.name %>
-          <% end %>
-        </h6>
+          </h6>
+        <% end %>
         <%= image_tag @place.image.url %>
         <p class="card-text py-3">
           所要時間  <%= @place.time %>時間<br>

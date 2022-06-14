@@ -35,6 +35,11 @@ class Public::PlacesController < ApplicationController
 
   def edit
     @place = Place.find(params[:id])
+    if @place.user == current_user
+      render :edit
+    else
+      redirect_to user_path(@place.user.id)
+    end
   end
 
   def update

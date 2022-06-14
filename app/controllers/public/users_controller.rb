@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     @plans = @user.plans.order(id: "DESC")
     @places = @user.places.order(id: "DESC")
     @likes = Like.where(user_id: current_user.id).pluck(:id)
@@ -15,13 +15,19 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
+    if @user == current_user
+      render template: 'public/registrations/edit'
+    else
+      redirect_to user_path(@user.id)
+    end
+
   end
 
   def update
-    @user = current_user
+    @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to my_page_path(current_user)
+    redirect_to user_path(current_user)
   end
 
   def withdraw
