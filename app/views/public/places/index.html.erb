@@ -8,7 +8,18 @@
     <% end %>
   </form>
 
-  <%= render 'public/place_genres/genre_list', place_genres: @place_genres %>
+  <div class="col col-lg-3 my-3">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        ジャンルから選ぶ
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% @place_genres.each do |place_genre| %>
+          <%= link_to place_genre.name, place_genre_path(place_genre.id), class: 'dropdown-item' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
   <% if @places.present? %>
     <% @places.each do |place| %>
@@ -17,7 +28,7 @@
           <div class="card-body text-muted text-center">
             <p class="card-text">
               <% place.tag_list.each do |tag| %>
-                #<%= tag %>
+                <%= tag %>
               <% end %>
             </p>
             <h4 class="card-title"><%= place.address %></h4>

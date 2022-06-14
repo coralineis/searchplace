@@ -6,14 +6,18 @@
     <div class="col col-lg-9">
       <% @place_genre.places.each do |place| %>
         <%= link_to place_path(place.id) do %>
-          <div class="card mx-auto mt-3" style="width: 500px;">
-            <%= image_tag place.image.url %>
+          <div class="card shadow mx-auto my-3" style="max-width: 500px;">
             <div class="card-body text-muted text-center">
-              <h5 class="card-title"><%= place.name %> by <%= place.user.name %></h5>
               <p class="card-text">
-                所要時間　<%= place.time %>時間<br>
-                <%= place.introduction %>
+                <% place.tag_list.each do |tag| %>
+                  <%= tag %>
+                <% end %>
               </p>
+              <h4 class="card-title"><%= place.address %></h4>
+              <h6 class="card-subtitle text-right my-3">posted by <%= place.user.name %></h6>
+              <%= image_tag place.image.url %>
+              <p class="card-text py-2">所要時間  <%= place.time %>時間</p>
+              <h5 class="card-text mb-3"><%= place.introduction %></h5>
             </div>
           </div>
         <% end %>
