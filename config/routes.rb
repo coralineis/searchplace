@@ -16,12 +16,11 @@ Rails.application.routes.draw do
 
     root to: 'plans#index'
     get 'about' => 'homes#about'
-    resource :users, only: [:edit, :update] do
+    resources :users, only: [:show, :edit, :update] do
       collection do
         get :likes
       end
     end
-    get 'users/my_page' => 'users#show', as: 'my_page'
     get 'users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw'
     resources :plans do

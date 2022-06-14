@@ -1,5 +1,5 @@
 class Plan < ApplicationRecord
-  mount_uploader :image, ImageUploader
+  mount_uploaders :images, ImageUploader
   acts_as_taggable
 
   belongs_to :user

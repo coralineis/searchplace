@@ -60,10 +60,10 @@ ActiveRecord::Schema.define(version: 2022_04_30_034223) do
     t.integer "review_id"
     t.string "name"
     t.string "place_name"
-    t.string "image"
     t.integer "time"
     t.string "stay_night"
     t.text "introduction"
+    t.json "images"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

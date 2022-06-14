@@ -13,7 +13,7 @@
   <% if @places.present? %>
     <% @places.each do |place| %>
       <%= link_to place_path(place.id) do %>
-        <div class="card mx-auto my-3" style="max-width: 500px;">
+        <div class="card shadow mx-auto my-3" style="max-width: 500px;">
           <div class="card-body text-muted text-center">
             <p class="card-text">
               <% place.tag_list.each do |tag| %>
@@ -21,12 +21,10 @@
               <% end %>
             </p>
             <h4 class="card-title"><%= place.address %></h4>
-            <h6 class="card-subtitle text-right">posted by <%= place.user.name %></h6>
+            <h6 class="card-subtitle text-right my-3">posted by <%= place.user.name %></h6>
             <%= image_tag place.image.url %>
-            <p class="card-text py-3">
-              ≪ 所要時間 ≫　<%= place.time %>時間<br>
-              <%= place.introduction %>
-            </p>
+            <p class="card-text py-2">所要時間  <%= place.time %>時間</p>
+            <h5 class="card-text mb-3"><%= place.introduction %></h5>
           </div>
         </div>
       <% end %>

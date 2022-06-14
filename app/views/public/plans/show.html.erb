@@ -1,17 +1,7 @@
 <div class="container">
 
-  <div class="row">
-    <% if @tags.present? %>
-      <div class="border border-dark border-4 rounded-2">
-        <% @tags.each do |tag| %>
-          <%= tag.name %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-
   <%= render 'plan', plan: @plan %>
-  
+
   <div class="row justify-content-center mt-3">
     <% if @plan.liked_by?(current_user) %>
       <%= button_to plan_likes_path(@plan), method: :delete, class: "btn btn-warning text-dark" do %>

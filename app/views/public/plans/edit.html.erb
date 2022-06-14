@@ -21,9 +21,9 @@
           <th><%= f.text_field :place_name %></th>
         </tr>
         <tr>
-          <th><%= f.label :image, "画像" %></th>
+          <th><%= f.label :images, "画像" %></th>
           <th>
-            <%= f.file_field :image %>
+            <%= f.file_field :images, multiple: true %>
             <%= f.hidden_field :image_cache %>
           </th>
         </tr>

@@ -13,7 +13,7 @@ class Public::PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params)
     @plan.user_id = current_user.id
-    @plan.save!
+    @plan.save
     if params[:back] || !@plan.save
       render :new and return
     end
@@ -52,6 +52,6 @@ class Public::PlansController < ApplicationController
   private
 
   def plan_params
-    params.require(:plan).permit(:name, :place_name, :image, :image_cache, :time, :stay_night, :introduction, :tag_list)
+    params.require(:plan).permit(:name, :place_name, :time, :stay_night, :introduction, :tag_list, :image_cache, { images: [] })
   end
 end
