@@ -20,12 +20,16 @@ class Public::PlacesController < ApplicationController
 
   def search
     @q = Place.ransack(params[:q])
+    selection = params[:keyword]
+    @places = Place.sort(selection)
+    @place_genres = PlaceGenre.all
   end
 
   def index
     @places = @q.result(distinct: true).order(id: "DESC")
     @place_genres = PlaceGenre.all
     @tags = Place.tag_counts_on(:tags)
+    @all_ranks = Place.find(Like.group(:place_id).order('count(place_id) desc').limit(3).pluck(:place_id))
   end
 
   def show

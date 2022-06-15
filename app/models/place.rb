@@ -12,4 +12,14 @@ class Place < ApplicationRecord
     likes.exists?(user_id: user.id)
   end
 
+  def self.sort(selection)
+    case selection
+    when 'new'
+      return all.order(created_at: :DESC)
+    when 'old'
+      return all.order(created_at: :ASC)
+    when 'likes'
+      return find(Like.group(:place_id).order(Arel.sql('count(place_id) desc')).pluck(:place_id))
+    end
+  end
 end
