@@ -26,12 +26,10 @@ ActiveRecord::Schema.define(version: 2022_04_30_034223) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "plan_id"
     t.integer "place_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["place_id"], name: "index_likes_on_place_id"
-    t.index ["plan_id"], name: "index_likes_on_plan_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -44,26 +42,13 @@ ActiveRecord::Schema.define(version: 2022_04_30_034223) do
   create_table "places", force: :cascade do |t|
     t.integer "user_id"
     t.integer "place_genre_id"
+    t.integer "prefecture"
     t.string "address"
     t.float "latitude"
     t.float "longitude"
     t.string "image"
     t.string "time"
     t.text "introduction"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "plans", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "like_id"
-    t.integer "review_id"
-    t.string "name"
-    t.string "place_name"
-    t.integer "time"
-    t.string "stay_night"
-    t.text "introduction"
-    t.json "images"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -122,7 +107,6 @@ ActiveRecord::Schema.define(version: 2022_04_30_034223) do
   end
 
   add_foreign_key "likes", "places"
-  add_foreign_key "likes", "plans"
   add_foreign_key "likes", "users"
   add_foreign_key "taggings", "tags"
 end

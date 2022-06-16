@@ -1,17 +1,9 @@
 class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @plans = @user.plans.order(id: "DESC")
     @places = @user.places.order(id: "DESC")
     likes = Like.where(user_id: current_user.id).pluck(:place_id)
     @likes = Place.find(likes)
-  end
-
-  def index
-    @user = current_user
-    @plans = @user.plans
-    @places = @user.places
-    @tags = Place.tag_counts_on(:tags)
   end
 
   def edit
@@ -21,7 +13,6 @@ class Public::UsersController < ApplicationController
     else
       redirect_to user_path(@user.id)
     end
-
   end
 
   def update

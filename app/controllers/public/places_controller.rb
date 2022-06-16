@@ -60,7 +60,7 @@ class Public::PlacesController < ApplicationController
   private
 
   def place_params
-    params.require(:place).permit(:address, :image, :image_cache, :time, :introduction, :tag_list, :place_genre_id, :latitude, :longitude)
+    params.require(:place).permit(:address, :prefecture, :image, :image_cache, :time, :introduction, :tag_list, :place_genre_id, :latitude, :longitude)
   end
 
 end

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
-    <h4 class="bg-dark text-white"><%= @place.place_genre.name %></h4>
+    <h4 class="bg-secondary text-white"><%= @place.place_genre.name %></h4>
   </div>
 
   <div class="row">
@@ -25,6 +25,7 @@
   <div class="row justify-content-center">
     <%= form_with model: @place, url: places_path, method: :post do |f| %>
       <%= f.hidden_field :address %>
+      <%= f.hidden_field :prefecture %>
       <%= f.hidden_field :tag_list %>
       <%= f.hidden_field :image %>
       <%= f.hidden_field :image_cache %>

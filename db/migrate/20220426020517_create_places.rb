@@ -4,6 +4,7 @@ class CreatePlaces < ActiveRecord::Migration[6.1]
 
       t.integer :user_id
       t.integer :place_genre_id
+      t.integer :prefecture
       t.string :address
       t.float :latitude
       t.float :longitude
