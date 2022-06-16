@@ -46,6 +46,14 @@
             <li><%= link_to "Plans", plans_path, class: "btn btn-outline-info mr-5" %></li>
             <li><%= link_to "Places", places_path, class: "btn btn-outline-info" %></li>
           </ul>
+          <form class="d-flex justify-content-end">
+            <%= search_form_for @q, url: places_search_path, method: :get do |f| %>
+              <div style="width: 40%;">
+                <%= f.text_field :address_or_introduction_or_user_name_cont, class: "form-control me-2", placeholder: "Search" %>
+              </div>
+                <%= f.submit "Search", class: "btn btn-outline-success ml-3" %>
+            <% end %>
+          </form>
         </div>
       </nav>
     </main>

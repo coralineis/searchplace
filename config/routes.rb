@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     }
 
     root to: 'places#index'
+    get 'places/search'
     get 'about' => 'homes#about'
     resources :users, only: [:show, :edit, :update] do
       collection do
@@ -37,11 +38,7 @@ Rails.application.routes.draw do
           get 'search'
       end
     end
-    resources :place_genres, only: [:show] do
-      collection do
-        get 'search'
-      end
-    end
+    resources :place_genres, only: [:show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

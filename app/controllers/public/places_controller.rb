@@ -19,7 +19,6 @@ class Public::PlacesController < ApplicationController
   end
 
   def search
-    @q = Place.ransack(params[:q])
     selection = params[:keyword]
     @places = Place.sort(selection)
     @place_genres = PlaceGenre.all
