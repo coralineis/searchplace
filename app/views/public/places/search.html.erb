@@ -21,21 +21,18 @@
     </div>
   </div>
 
-  <div class="dropdown">
-    <%= form_with model: @place, url: search_places_path, method: :get, local: true do |f| %>
-      <%= f.select :keyword, [['投稿が新しい順', 'new'], ['投稿が古い順', 'old'], ['いいねが多い順', 'likes']] %>
-      <%= f.submit %>
-    <% end %>
+  <div class="col col-lg-3 my-3">
     <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        ジャンルから選ぶ
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% @place_genres.each do |place_genre| %>
+          <%= link_to place_genre.name, place_genre_path(place_genre.id), class: 'dropdown-item' %>
+        <% end %>
+      </div>
+    </div>
   </div>
-</div>
 
   <% if @places.present? %>
     <% @places.each do |place| %>
