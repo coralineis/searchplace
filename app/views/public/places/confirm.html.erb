@@ -7,8 +7,8 @@
     <div class="card shadow mx-auto mt-3 col-lg-4 col-sm-12 col-xs-12" style="max-width: 500px;">
       <div class="card-body text-center">
         <p class="card-text">
-          <% @place.tag_list.each do |tag| %>
-            <%= tag %>
+          <% @place.tags.each do |tag| %>
+            <%= tag.name %>
           <% end %>
         </p>
         <h4 class="card-title"><%= @place.address %></h4>
@@ -26,7 +26,7 @@
     <%= form_with model: @place, url: places_path, method: :post do |f| %>
       <%= f.hidden_field :address %>
       <%= f.hidden_field :prefecture %>
-      <%= f.hidden_field :tag_list %>
+      <%= f.hidden_field :name %>
       <%= f.hidden_field :image %>
       <%= f.hidden_field :image_cache %>
       <%= f.hidden_field :time %>

@@ -8,14 +8,18 @@ class Public::PlacesController < ApplicationController
   def confirm
     @place = Place.new(place_params)
     @place.user_id = current_user.id
-    @places = Place.all
   end
 
   def create
     @place = Place.new(place_params)
     @place.user_id = current_user.id
-    @place.save
-    redirect_to place_path(@place.id)
+    tag_list = params[:place][:name].split(/[[:blank:]]+/)
+    if @place.save
+      @place.save_tags(tag_list)
+      redirect_to place_path(@place.id)
+    else
+      render :new
+    end
   end
 
   def search
@@ -27,13 +31,13 @@ class Public::PlacesController < ApplicationController
   def index
     @places = @q.result(distinct: true).order(id: "DESC")
     @place_genres = PlaceGenre.all
-    @tags = Place.tag_counts_on(:tags)
     @all_ranks = Place.find(Like.group(:place_id).order('count(place_id) desc').limit(3).pluck(:place_id))
+    @tag_list = Tag.all
   end
 
   def show
     @place = Place.find(params[:id])
-    @tags = Place.tag_counts_on(:tags)
+    @place_tags = @place.tags
   end
 
   def edit
@@ -47,8 +51,12 @@ class Public::PlacesController < ApplicationController
 
   def update
     @place = Place.find(params[:id])
-    @place.update(place_params)
-    redirect_to place_path(@place.id)
+    if @place.update(place_params)
+      @place.save_tags(params[:place][:tags])
+      redirect_to place_path(@place.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -60,7 +68,7 @@ class Public::PlacesController < ApplicationController
   private
 
   def place_params
-    params.require(:place).permit(:address, :prefecture, :image, :image_cache, :time, :introduction, :tag_list, :place_genre_id, :latitude, :longitude)
+    params.require(:place).permit(:address, :prefecture, :image, :image_cache, :time, :introduction, :place_genre_id, :latitude, :longitude)
   end
 
 end
