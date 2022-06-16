@@ -13,6 +13,10 @@
           </th>
         </tr>
         <tr>
+          <th><%= f.label :prefecture, "都道府県" %></th>
+          <th><%= f.select :prefecture, User.prefectures_i18n.invert, :prompt => "--都道府県を選択してください--" %></th>
+        </tr>
+        <tr>
           <th><%= f.label :image, "画像" %></th>
           <th>
             <%= f.file_field :image %>

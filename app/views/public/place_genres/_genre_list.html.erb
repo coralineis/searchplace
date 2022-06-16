@@ -1,18 +1,12 @@
-<div class="col col-lg-3">
-
+<div class="col col-lg-3 my-3">
   <div class="dropdown">
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       ジャンルから選ぶ
     </button>
-    <ul class="dropdown-menu dropdown-menu-lg-end">
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <% place_genres.each do |place_genre| %>
-        <li>
-          <button class="dropdown-item" type="button">
-            <%= link_to place_genre.name, place_genre_path(place_genre.id) %>
-          </button>
-        </li>
+        <%= link_to place_genre.name, place_genre_path(place_genre.id), class: 'dropdown-item' %>
       <% end %>
-    </ul>
+    </div>
   </div>
-
 </div>

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       sessions: 'public/sessions'
     }
 
-    root to: 'plans#index'
+    root to: 'places#index'
     get 'about' => 'homes#about'
     resources :users, only: [:show, :edit, :update] do
       collection do
@@ -37,7 +37,11 @@ Rails.application.routes.draw do
           get 'search'
       end
     end
-    resources :place_genres, only: [:show]
+    resources :place_genres, only: [:show] do
+      collection do
+        get 'search'
+      end
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
