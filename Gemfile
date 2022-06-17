@@ -59,8 +59,6 @@ gem 'devise'
 
 gem 'enum_help'
 
-gem 'acts-as-taggable-on', '~> 9.0'
-
 gem 'ransack'
 
 gem "gmaps4rails"
@@ -72,3 +70,5 @@ gem "pry-rails"
 
 gem "carrierwave"
 gem "mini_magick"
+
+gem 'kaminari','~> 1.2.1'

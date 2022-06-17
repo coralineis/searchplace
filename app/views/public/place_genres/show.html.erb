@@ -1,14 +1,21 @@
 <div class="container">
 
   <%= render 'genre_list', place_genres: @place_genres %>
+  
+  <div class="col col-lg-3 my-3">
+    <%= form_with model: @place, url: search_places_path, method: :get, local: true do |f| %>
+      <%= f.select :keyword, [['投稿が新しい順', 'new'], ['投稿が古い順', 'old'], ['いいねが多い順', 'likes']], class: "form-outline-secondary" %>
+      <%= f.submit "検索", class: "btn btn-outline-secondary" %>
+    <% end %>
+  </div>
 
   <% @place_genre.places.each do |place| %>
     <%= link_to place_path(place.id) do %>
       <div class="card shadow mx-auto my-3" style="max-width: 500px;">
         <div class="card-body text-muted text-center">
           <p class="card-text">
-            <% place.tag_list.each do |tag| %>
-              <%= tag %>
+            <% place.tags.each do |tag| %>
+              <%= tag.name %>
             <% end %>
           </p>
           <h4 class="card-title"><%= place.address %></h4>

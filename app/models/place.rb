@@ -6,7 +6,7 @@ class Place < ApplicationRecord
   belongs_to :user
   belongs_to :place_genre
   has_many :tag_maps, dependent: :destroy
-  has_many :tags, dependent: :destroy
+  has_many :tags, through: :tag_maps
   has_many :likes, dependent: :destroy
 
   def liked_by?(user)
@@ -24,17 +24,18 @@ class Place < ApplicationRecord
     end
   end
 
-  def sava_tags(sent_tags)
-    current_tags = self.tags.pluck(:tag_name)
+  def sava_tags(tags)
+    tag_list = tags.split(/[[:blank:]]+/)
+    current_tags = self.tags.pluck(:name)
     old_tags = current_tags - sent_tags
     new_tags = sent_tags - current_tags
 
     old_tags.each do |old|
-      self.place_tags.delete PlaceTag.find_by(tag_name: old)
+      self.place_tags.delete PlaceTag.find_by(name: old)
     end
 
     new_tags.each do |new|
-      new_place_tag = PlaceTag.find_or_create_by(tag_name: new)
+      new_place_tag = PlaceTag.find_or_create_by(name: new)
       self.place_tags << new_place_tag
     end
   end

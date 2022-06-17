@@ -3,21 +3,20 @@ class Public::PlacesController < ApplicationController
 
   def new
     @place = Place.new
+    @place.tags.build
   end
 
   def confirm
     @place = Place.new(place_params)
     @place.user_id = current_user.id
-    tag_list = params[:place][:tag_name].split(/[[:blank:]]+/)
     @tag_list = Tag.all
   end
 
   def create
     @place = Place.new(place_params)
     @place.user_id = current_user.id
-    tag_list = params[:place][:tag_name].split(/[[:blank:]]+/)
     if @place.save
-      @place.save_tags(tag_list)
+      @place.save_tags(params[:place][:tag])
       redirect_to place_path(@place.id)
     else
       render :new
@@ -32,6 +31,7 @@ class Public::PlacesController < ApplicationController
 
   def index
     @places = @q.result(distinct: true).order(id: "DESC")
+    @places = Place.page(params[:page])
     @place_genres = PlaceGenre.all
     @all_ranks = Place.find(Like.group(:place_id).order('count(place_id) desc').limit(3).pluck(:place_id))
     @tag_list = Tag.all
@@ -70,7 +70,7 @@ class Public::PlacesController < ApplicationController
   private
 
   def place_params
-    params.require(:place).permit(:address, :prefecture, :image, :image_cache, :time, :introduction, :place_genre_id, :latitude, :longitude, tags: [:tag_name])
+    params.require(:place).permit(:address, :prefecture, :image, :image_cache, :time, :introduction, :place_genre_id, :latitude, :longitude, tags: [:name])
   end
 
 end
