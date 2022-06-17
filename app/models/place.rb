@@ -24,20 +24,18 @@ class Place < ApplicationRecord
     end
   end
 
-  def sava_tags(tags)
-    tag_list = tags.split(/[[:blank:]]+/)
-    current_tags = self.tags.pluck(:name)
-    old_tags = current_tags - tag_list
-    new_tags = tag_list - current_tags
-    p current_tags
+  def sava_tags(sent_tags)
+    current_tags = self.tags.pluck(:tag_name)
+    old_tags = current_tags - sent_tags
+    new_tags = sent_tags - current_tags
 
     old_tags.each do |old|
-      self.tags.delete Tag.find_by(name: old)
+      self.place_tags.delete PlaceTag.find_by(tag_name: old)
     end
 
     new_tags.each do |new|
-      new_place_tag = Tag.find_or_create_by(name: new)
-      self.tags << new_place_tag
+      new_place_tag = PlaceTag.find_or_create_by(tag_name: new)
+      self.place_tags << new_place_tag
     end
   end
 

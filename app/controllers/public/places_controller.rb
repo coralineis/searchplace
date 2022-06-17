@@ -8,12 +8,14 @@ class Public::PlacesController < ApplicationController
   def confirm
     @place = Place.new(place_params)
     @place.user_id = current_user.id
+    tag_list = params[:place][:tag_name].split(/[[:blank:]]+/)
+    @tag_list = Tag.all
   end
 
   def create
     @place = Place.new(place_params)
     @place.user_id = current_user.id
-    tag_list = params[:place][:name].split(/[[:blank:]]+/)
+    tag_list = params[:place][:tag_name].split(/[[:blank:]]+/)
     if @place.save
       @place.save_tags(tag_list)
       redirect_to place_path(@place.id)
@@ -68,7 +70,7 @@ class Public::PlacesController < ApplicationController
   private
 
   def place_params
-    params.require(:place).permit(:address, :prefecture, :image, :image_cache, :time, :introduction, :place_genre_id, :latitude, :longitude)
+    params.require(:place).permit(:address, :prefecture, :image, :image_cache, :time, :introduction, :place_genre_id, :latitude, :longitude, tags: [:tag_name])
   end
 
 end

@@ -34,9 +34,9 @@
           <th><%= f.text_area :introduction %></th>
         </tr>
         <tr>
-          <th><%= f.label :name, "タグを追加(複数追加する場合はスペースで区切ってください)" %></th>
+          <th><%= f.label :tag_name, "タグを追加(複数追加する場合はスペースで区切ってください)" %></th>
           <th>
-            <%= f.text_field :name, value: @place.tags.pluck(:name) %>
+            <%= f.text_field :tag_name, value: @place.tags.pluck(:tag_name) %>
           </th>
         </tr>
         <tr>

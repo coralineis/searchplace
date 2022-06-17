@@ -4,8 +4,8 @@
     <div class="card shadow mx-auto mt-3 col-lg-4 col-sm-12 col-xs-12" style="max-width: 500px;">
       <div class="card-body text-center">
         <p class="card-text">
-          <% @place.tag_list.each do |tag| %>
-            <%= tag %>
+          <% @tag_list.each do |tag| %>
+            <%= tag.tag_name %>
           <% end %>
         </p>
         <h4 class="card-title"><%= @place.address %></h4>
