@@ -1,0 +1,22 @@
+<% places.each do |place| %>
+  <div class="card shadow mx-auto my-3" style="max-width: 500px;">
+    <div class="card-body text-center">
+      <p class="card-text">
+        <% place.tags.each do |tag| %>
+          <%= tag.name %>
+        <% end %>
+      </p>
+      <h4 class="card-title"><%= place.address %></h4>
+      <h6 class="card-subtitle text-right my-3">posted by <%= place.user.name %></h6>
+      <%= image_tag place.image.url %>
+      <p class="card-text py-3">
+        ≪ 所要時間 ≫　<%= place.time %>時間<br>
+        <%= place.introduction %>
+      </p>
+      <% if signed_in? && current_user.id == place.user.id %>
+        <%= link_to "編集する", edit_place_path(place.id), class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+

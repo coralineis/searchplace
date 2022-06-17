@@ -9,7 +9,6 @@ class Public::PlacesController < ApplicationController
   def confirm
     @place = Place.new(place_params)
     @place.user_id = current_user.id
-    @tag_list = Tag.all
   end
 
   def create
@@ -25,16 +24,16 @@ class Public::PlacesController < ApplicationController
 
   def search
     selection = params[:keyword]
+    @places = Place.page(params[:page]).order(id: "DESC")
     @places = Place.sort(selection)
     @place_genres = PlaceGenre.all
   end
 
   def index
-    @places = @q.result(distinct: true).order(id: "DESC")
-    @places = Place.page(params[:page])
+    @places = @q.result(distinct: true)
+    @places = Place.page(params[:page]).order(id: "DESC")
     @place_genres = PlaceGenre.all
     @all_ranks = Place.find(Like.group(:place_id).order('count(place_id) desc').limit(3).pluck(:place_id))
-    @tag_list = Tag.all
   end
 
   def show

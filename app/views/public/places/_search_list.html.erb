@@ -1,7 +1,7 @@
 <div class="col col-lg-3 my-3">
   <%= form_with model: place, url: search_places_path, method: :get, local: true do |f| %>
     <%= f.select :keyword, [['投稿が新しい順', 'new'], ['投稿が古い順', 'old'], ['いいねが多い順', 'likes']], class: "form-outline-secondary" %>
-    <%= f.submit "検索", class: "btn btn-outline-secondary" %>
+    <%= f.submit "並び替え", class: "btn btn-outline-secondary" %>
   <% end %>
 </div>
 

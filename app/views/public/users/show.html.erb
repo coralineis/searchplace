@@ -9,7 +9,11 @@
         <div class="card-header font-weight-bold text-center">ユーザー情報</div>
         <div class="card-body">
           <p class="card-text">名前　　　<%= @user.name %></p>
-          <p class="card-text">居住地　　<%= @user.prefecture_i18n %>在住</p>
+          <% if @user.prefecture != nil %>
+            <p class="card-text">居住地　　<%= @user.prefecture_i18n %>在住</p>
+          <% else %>
+            <p class="card-text">居住地　　未選択</p>
+          <% end %>
           <div class="text-center">
             <% if signed_in? && current_user.id == @user.id %>
               <%= link_to "編集する", edit_user_path(current_user), class: "btn btn-primary" %>
@@ -42,7 +46,7 @@
       </ul>
       <div class="tab-content">
         <div id="tab1" class="tab-pane active">
-          <%= render 'list', places: @places %>
+          <%= render 'place_list', places: @places %>
         </div>
         <div id="tab2" class="tab-pane">
           <%= render 'like', place: @like_list %>

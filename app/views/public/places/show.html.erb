@@ -1,26 +1,6 @@
 <div class="container">
-
   <div class="row">
-    <div class="card shadow mx-auto mt-3 col-lg-4 col-sm-12 col-xs-12" style="max-width: 500px;">
-      <div class="card-body text-center">
-        <p class="card-text">
-          <% @place.tags.each do |tag| %>
-            <%= tag.name %>
-          <% end %>
-        </p>
-        <h4 class="card-title"><%= @place.address %></h4>
-        <%= link_to user_path(@place.user.id) do %>
-          <h6 class="card-subtitle text-right text-muted my-3">
-            posted by <%= @place.user.name %>
-          </h6>
-        <% end %>
-        <%= image_tag @place.image.url %>
-        <p class="card-text py-3">
-          所要時間  <%= @place.time %>時間<br>
-          <%= @place.introduction %>
-        </p>
-      </div>
-    </div>
+    <%= render 'place_card', place: @place %>  
 
     <div class="col-lg-4 col-sm-12 col-xs-12 mx-auto my-3">
       <h5 class="text-center">住所</h5>
