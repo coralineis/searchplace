@@ -4,14 +4,14 @@
   </div>
 
   <div class="row">
-    <%= render 'place_card', place: @place %>
+    <%= render 'place_card', place: @place, tags: @tags %>
   </div>
 
   <div class="row justify-content-center">
     <%= form_with model: @place, url: places_path, method: :post do |f| %>
       <%= f.hidden_field :address %>
       <%= f.hidden_field :prefecture %>
-      <%= f.hidden_field :name %>
+      <%= hidden_field_tag 'tag', @tags %>
       <%= f.hidden_field :image %>
       <%= f.hidden_field :image_cache %>
       <%= f.hidden_field :time %>

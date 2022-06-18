@@ -13,7 +13,19 @@ class ApplicationController < ActionController::Base
 
   def set_search
     @q = Place.ransack(params[:q])
-    @search_places = @q.result(distinct: true).order(id: "DESC").page(params[:page])
+    # search addredd or introduction or user_name
+    place_query_result = @q.result(distinct: true)
+    # search prefecture ex: prefecture like %hokkaido%
+    prefecture_query_result = Place.where(prefecture: params.dig(:q, :address_or_introduction_or_user_name_cont))
+    # hint for like search
+    # prefecture_query_result = Place.where('prefecture like ?', "%#{params.dig(:q, :address_or_introduction_or_user_name_cont)}%")
+    if place_query_result == []
+      @search_places = prefecture_query_result.order(id: "DESC").page(params[:page])
+    elsif prefecture_query_result == []
+      @search_places = place_query_result.order(id: "DESC").page(params[:page])
+    else
+      @search_places = place_query_result.or(prefecture_query_result).order(id: "DESC").uniq.page(params[:page])
+    end
   end
 
   protected
@@ -22,7 +34,5 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :prefecture, :is_deleted])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :prefecture, :is_deleted])
   end
-
-  private
 
 end

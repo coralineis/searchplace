@@ -6,13 +6,14 @@ class Public::PlacesController < ApplicationController
   def confirm
     @place = Place.new(place_params)
     @place.user_id = current_user.id
+    @tags = params[:place][:tag].split(/[[:blank:]]+/)
   end
 
   def create
     @place = Place.new(place_params)
     @place.user_id = current_user.id
     if @place.save
-      @place.save_tags(params[:place][:name])
+      @place.save_tags(params[:tag])
       redirect_to place_path(@place.id)
     else
       render :new
@@ -21,7 +22,8 @@ class Public::PlacesController < ApplicationController
 
   def search
     selection = params[:keyword]
-    @places = Place.sort(selection).page(params[:page])
+    @places = Place.sort(selection)
+    @search_places = @q.result
     @place_genres = PlaceGenre.all
   end
 
@@ -32,7 +34,7 @@ class Public::PlacesController < ApplicationController
 
   def show
     @place = Place.find(params[:id])
-    @place_tags = @place.tags
+    @tags = Tag.all
   end
 
   def edit
@@ -47,7 +49,7 @@ class Public::PlacesController < ApplicationController
   def update
     @place = Place.find(params[:id])
     if @place.update(place_params)
-      @place.save_tags(params[:place][:name])
+      @place.save_tags(params[:place][:tag])
       redirect_to user_path(@place.user.id)
     else
       render :edit
