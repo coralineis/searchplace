@@ -11,12 +11,14 @@
     <%= form_with model: @place, url: places_path, method: :post do |f| %>
       <%= f.hidden_field :address %>
       <%= f.hidden_field :prefecture %>
-      <%= hidden_field_tag 'tag', @tags %>
       <%= f.hidden_field :image %>
       <%= f.hidden_field :image_cache %>
       <%= f.hidden_field :time %>
       <%= f.hidden_field :introduction %>
       <%= f.hidden_field :place_genre_id %>
+      <% @tags.each do |tag| %>
+        <%= hidden_field_tag 'tag[]', tag.name %>
+      <% end %>
       <%= f.submit "投稿する", class: "btn btn-success mt-3" %>
     <% end %>
   </div>

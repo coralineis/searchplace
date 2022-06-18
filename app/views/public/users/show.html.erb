@@ -52,7 +52,11 @@
           <%= render 'like', place: @like_list %>
         </div>
       </div>
+    </div>
 
-      <ul class="tab-list list-unstyled nav pull-light nav-pills ">
+    <%= paginate @places %>
+
+  </div>
+
 </div>
 

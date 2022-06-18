@@ -25,10 +25,12 @@ class Place < ApplicationRecord
   end
 
   def save_tags(tags)
-    tag_list = tags.split(/[[:blank:]]+/)
+    if tags.class == String
+      tags = tags.split(/[[:blank:]]+/)
+    end
     current_tags = self.tags.pluck(:name)
-    old_tags = current_tags - tag_list
-    new_tags = tag_list - current_tags
+    old_tags = current_tags - tags
+    new_tags = tags - current_tags
 
     old_tags.each do |old|
       self.tags.delete Tag.find_by(name: old)

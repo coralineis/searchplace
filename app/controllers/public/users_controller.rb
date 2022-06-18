@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @places = @user.places.order(id: "DESC")
+    @places = @user.places.order(id: "DESC").page(params[:page])
     likes = Like.where(user_id: current_user.id).pluck(:place_id)
     @likes = Place.find(likes)
   end

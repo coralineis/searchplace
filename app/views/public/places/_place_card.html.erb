@@ -3,7 +3,7 @@
     <h4 class="card-title"><%= place.address %></h4>
     <p class="card-text">
       <% tags.each do |tag| %>
-        ＃<%= tag %>
+        ＃<%= tag.name %>
       <% end %>
     </p>
     <h6 class="card-subtitle text-right my-3">posted by <%= place.user.name %></h6>

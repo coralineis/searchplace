@@ -6,7 +6,10 @@ class Public::PlacesController < ApplicationController
   def confirm
     @place = Place.new(place_params)
     @place.user_id = current_user.id
-    @tags = params[:place][:tag].split(/[[:blank:]]+/)
+    @tags = []
+    params[:place][:tag].split(/[[:blank:]]+/).each do|t|
+      @tags.push(Tag.new(name: t))
+    end
   end
 
   def create
@@ -30,11 +33,13 @@ class Public::PlacesController < ApplicationController
   def index
     @places = Place.order(id: "DESC").page(params[:page])
     @place_genres = PlaceGenre.all
+    @tags = Tag.all
   end
 
   def show
     @place = Place.find(params[:id])
-    @tags = Tag.all
+    @places = Place.all
+    @tags = @place.tags
   end
 
   def edit
