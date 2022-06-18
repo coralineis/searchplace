@@ -32,9 +32,9 @@
     </div>
 
     <div class="field">
-      <%= f.label :tag, "タグを追加(複数追加する場合はスペースで区切ってください)", class: "mt-3 font-weight-bold" %><br>
-      <%= f.text_field :tag, value: @place.tags.pluck(:name) %>
-      <%= f.hidden_field :tag %>
+      <%= f.label :name, "タグを追加(複数追加する場合はスペースで区切ってください)", class: "mt-3 font-weight-bold" %><br>
+      <%= f.text_field :name, value: @place.tags.pluck(:name) %>
+      <%= f.hidden_field :name %>
     </div>
 
     <div class="field">

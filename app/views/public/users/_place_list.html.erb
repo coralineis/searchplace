@@ -10,7 +10,7 @@
       <h6 class="card-subtitle text-right my-3">posted by <%= place.user.name %></h6>
       <%= image_tag place.image.url %>
       <p class="card-text py-3">
-        ≪ 所要時間 ≫　<%= place.time %>時間<br>
+        所要時間    <%= place.time %>時間<br>
         <%= place.introduction %>
       </p>
       <% if signed_in? && current_user.id == place.user.id %>

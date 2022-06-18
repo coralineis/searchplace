@@ -24,11 +24,11 @@ class Place < ApplicationRecord
     end
   end
 
-  def sava_tags(tags)
+  def save_tags(tags)
     tag_list = tags.split(/[[:blank:]]+/)
     current_tags = self.tags.pluck(:name)
-    old_tags = current_tags - sent_tags
-    new_tags = sent_tags - current_tags
+    old_tags = current_tags - tag_list
+    new_tags = tag_list - current_tags
 
     old_tags.each do |old|
       self.place_tags.delete PlaceTag.find_by(name: old)

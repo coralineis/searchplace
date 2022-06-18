@@ -11,6 +11,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_search
+    @q = Place.ransack(params[:q])
+    @search_places = @q.result(distinct: true).order(id: "DESC").page(params[:page])
+  end
+
   protected
 
   def configure_permitted_parameters
@@ -20,8 +25,4 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def set_search
-    @q = Place.ransack(params[:q])
-    @places = @q.result(distinct: true)
-  end
 end

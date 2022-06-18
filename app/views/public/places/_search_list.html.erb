@@ -1,5 +1,5 @@
 <div class="col col-lg-3 my-3">
-  <%= form_with model: place, url: search_places_path, method: :get, local: true do |f| %>
+  <%= form_with model: place, url: search_places_path, method: :get do |f| %>
     <%= f.select :keyword, [['投稿が新しい順', 'new'], ['投稿が古い順', 'old'], ['いいねが多い順', 'likes']], class: "form-outline-secondary" %>
     <%= f.submit "並び替え", class: "btn btn-outline-secondary" %>
   <% end %>
@@ -16,6 +16,7 @@
             <% end %>
           </p>
           <h4 class="card-title"><%= place.address %></h4>
+          <p class="card-title"><%= place.prefecture_i18n %></p>
           <h6 class="card-subtitle text-right my-3">posted by <%= place.user.name %></h6>
           <%= image_tag place.image.url %>
           <p class="card-text py-2">所要時間  <%= place.time %>時間</p>

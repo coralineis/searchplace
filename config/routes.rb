@@ -24,13 +24,6 @@ Rails.application.routes.draw do
     end
     get 'users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw'
-    resources :plans do
-      resource :likes, only: [:create, :destroy]
-      collection do
-        post :confirm
-        get 'search'
-      end
-    end
     resources :places do
       resource :likes, only: [:create, :destroy]
       collection do
@@ -39,7 +32,6 @@ Rails.application.routes.draw do
       end
     end
     resources :place_genres, only: [:show]
-    resources :tags, only: [:index, :show, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

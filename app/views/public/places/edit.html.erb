@@ -28,8 +28,8 @@
     </div>
 
     <div class="field">
-      <%= f.label :tag, "タグを追加(複数追加する場合はスペースで区切ってください)", class: "mt-3 font-weight-bold" %><br>
-      <%= f.text_field :tag, value: @place.tags.pluck(:name) %>
+      <%= f.label :name, "タグを追加(複数追加する場合はスペースで区切ってください)", class: "mt-3 font-weight-bold" %><br>
+      <%= f.text_field :name, value: @place.tags.pluck(:name) %>
     </div>
 
     <div class="field">
@@ -39,8 +39,9 @@
 
     <div class="actions">
       <%= f.submit "変更を保存する", class: "btn btn-success mt-5" %>
-      <%= button_to "投稿を削除する", place_path(@place.id), method: :delete, "data-confirm" => "投稿を削除しますか？", class: "btn btn-danger" %>
     </div>
-
   <% end %>
+
+  <%= button_to "投稿を削除する", place_path(@place.id), method: :delete, "data-confirm" => "投稿を削除しますか？", class: "btn btn-danger mt-5" %>
+
 </div>

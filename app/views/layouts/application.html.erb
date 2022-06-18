@@ -27,12 +27,13 @@
                 <li class="nav-item ml-auto mb-1"><%= link_to "ジャンル追加", admin_place_genres_path, class: "btn btn-outline-secondary mr-2" %></li>
                 <li class="nav-item ml-auto"><%= button_to "Sign Out", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary mr-2" %></li>
               <% elsif user_signed_in? %>
+                <li class="nav-item ml-auto mb-1"><%= link_to "About", about_path, class: "btn btn-outline-secondary mr-2" %></li>
                 <li class="nav-item ml-auto mb-1"><%= link_to "Places", places_path, class: "btn btn-outline-secondary mr-2" %></li>
                 <li class="nav-item ml-auto mb-1"><%= link_to "My Page", user_path(current_user), class: "btn btn-outline-secondary mr-2" %></li>
                 <li class="nav-item ml-auto"><%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary mr-2" %></li>
               <% else %>
-                <li class="nav-item ml-auto mb-1"><%= link_to "Places", places_path, class: "btn btn-outline-secondary mr-2" %></li>
                 <li class="nav-item ml-auto mb-1"><%= link_to "About", about_path, class: "btn btn-outline-secondary mr-2" %></li>
+                <li class="nav-item ml-auto mb-1"><%= link_to "Places", places_path, class: "btn btn-outline-secondary mr-2" %></li>
                 <li class="nav-item ml-auto mb-1"><%= link_to "Sign Up", new_user_registration_path, class: "btn btn-outline-secondary mr-2" %></li>
                 <li class="nav-item ml-auto"><%= link_to "Log In", new_user_session_path, class: "btn btn-outline-secondary mr-2" %></li>
               <% end %>
