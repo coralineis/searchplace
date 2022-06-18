@@ -53,13 +53,6 @@ ActiveRecord::Schema.define(version: 2022_06_16_133251) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "review"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "tag_maps", force: :cascade do |t|
     t.integer "place_id"
     t.integer "tag_id"

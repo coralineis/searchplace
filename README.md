@@ -1,4 +1,4 @@
-# TriPlan
+# Searchplace
 
 ## サイト概要
 
@@ -33,6 +33,11 @@
 
 ## 設計書
 
+* テーブル定義書
+https://docs.google.com/spreadsheets/d/1wA4iyHeEe2hAJpWzcaqXfUA9csaM8JiUrtLN7I9DOo8/edit?usp=sharing
+
+* ER図
+https://drive.google.com/file/d/1B4tacpiZtWZGDbkJhW3bn5PFXLxSSdkK/view?usp=sharing
 
 ## チャレンジ要素一覧
 

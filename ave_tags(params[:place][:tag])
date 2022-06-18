@@ -1,5 +1,5 @@
 
-[1mFrom:[0m /home/ec2-user/environment/TriPlan/app/controllers/public/places_controller.rb:15 Public::PlacesController#create:
+[1mFrom:[0m /home/ec2-user/environment/Searchplace/app/controllers/public/places_controller.rb:15 Public::PlacesController#create:
 
     [1;34m11[0m: [32mdef[0m [1;34mcreate[0m
     [1;34m12[0m:   @place = [1;34;4mPlace[0m.new(place_params)
