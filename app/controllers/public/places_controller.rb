@@ -19,6 +19,7 @@ class Public::PlacesController < ApplicationController
       @place.save_tags(params[:tag])
       redirect_to place_path(@place.id)
     else
+      flash.now[:alert] = '※すべての項目を埋めてください'
       render :new
     end
   end

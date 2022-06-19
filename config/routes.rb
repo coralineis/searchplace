@@ -25,10 +25,10 @@ Rails.application.routes.draw do
     get 'users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw'
     resources :places do
+      resource :likes, only: [:create, :destroy]
       collection do
           post :confirm
           get 'search'
-      resource :likes, only: [:create, :destroy]
       end
     end
     resources :place_genres, only: [:show]

@@ -9,6 +9,12 @@ class Place < ApplicationRecord
   has_many :tags, through: :tag_maps
   has_many :likes, dependent: :destroy
 
+  validates :address, presence: true
+  validates :prefecture, presence: true
+  validates :image, presence: true
+  validates :time, presence: true
+  validates :introduction, presence: true
+
   def liked_by?(user)
     likes.exists?(user_id: user.id)
   end

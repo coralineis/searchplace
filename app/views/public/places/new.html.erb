@@ -3,6 +3,10 @@
     <h3 class="bg-light my-3">Place新規登録</h3>
   </div>
 
+  <h4 class="alert alert-danger">
+    <%= alert %>
+  </h4>
+
   <%= form_with model: @place, url: confirm_places_path, method: :post do |f| %>
 
     <div class="field">
@@ -22,7 +26,7 @@
     </div>
 
     <div class="field">
-      <%= f.label :address, "施設名称", class: "mt-3 font-weight-bold" %><br>
+      <%= f.label :address, "施設名称(正しい名前を記述してください)", class: "mt-3 font-weight-bold" %><br>
       <%= f.text_field :address %>
     </div>
 
