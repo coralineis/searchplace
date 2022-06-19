@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mt-5">
     <h3>My Page</h3>
   </div>
 
@@ -9,10 +9,10 @@
         <div class="card-header font-weight-bold text-center">ユーザー情報</div>
         <div class="card-body">
           <p class="card-text">名前　　　<%= @user.name %></p>
-          <% if @user.prefecture != nil %>
-            <p class="card-text">居住地　　<%= @user.prefecture_i18n %>在住</p>
-          <% else %>
+          <% if @user.prefecture == nil || @user.prefecture == 'not_selected'  %>
             <p class="card-text">居住地　　未選択</p>
+          <% else %>
+            <p class="card-text">居住地　　<%= @user.prefecture_i18n %>在住</p>
           <% end %>
           <div class="text-center">
             <% if signed_in? && current_user.id == @user.id %>
@@ -49,7 +49,7 @@
           <%= render 'place_list', places: @places %>
         </div>
         <div id="tab2" class="tab-pane">
-          <%= render 'like', likes: @likes, place: @place %>
+          <%= render 'like', likes: @likes %>
         </div>
       </div>
     </div>

@@ -20,23 +20,6 @@
       <%= f.email_field :email, autocomplete: "email" %>
     </div>
 
-    <div class="text-warning">
-       ※パスワードを変更しない場合は空白のままにしてください！
-    </div>
-
-    <div class="field mb-3">
-      <%= f.label :password, "新しいパスワード" %>
-      <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %>文字以上)</em>
-      <% end %><br>
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
-
-    <div class="field mb-3">
-      <%= f.label :password_confirmation, "新しいパスワード(確認用)" %><br>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-
     <div class="actions">
       <%= f.submit "変更を保存する", class: "btn btn-success mt-3" %>
     </div>

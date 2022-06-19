@@ -1,9 +1,11 @@
 <div class="col col-lg-3 my-3">
-  <%= form_with model: place, url: places_search_path, method: :get do |f| %>
-    <%= f.select :keyword, [['投稿が新しい順', 'new'], ['投稿が古い順', 'old'], ['いいねが多い順', 'likes']], class: "form-outline-secondary" %>
+  <%= form_with model: place, url: search_places_path, method: :get do |f| %>
+    <%= f.select :keyword, [['投稿が新しい順', 'new'], ['投稿が古い順', 'old']], class: "form-outline-secondary" %>
     <%= f.submit "並び替え", class: "btn btn-outline-secondary mt-2" %>
   <% end %>
 </div>
+
+<%= link_to "いいね順が多い順に見る", like_rank_places_path, class: 'text-info ml-3' %>
 
 <% if search_places.present? %>
   <% search_places.each do |place| %>
@@ -21,6 +23,7 @@
           <%= image_tag place.image.url %>
           <p class="card-text py-2">所要時間  <%= place.time %>時間</p>
           <h5 class="card-text mb-3"><%= place.introduction %></h5>
+          ♥ <%= place.likes.count %> お気に入り
         </div>
       </div>
     <% end %>

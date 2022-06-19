@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row justify-content-center">
-    <h3 class="text-secondary">＜退会に際しての注意点＞</h3>
+    <h3 class="text-secondary mt-5">＜退会に際しての注意点＞</h3>
   </div>
 
   <div class="row justify-content-center mt-3">
-    <p>・退会すると投稿したものは自動的に削除されます。</p>
-    <p>・また、お気に入りに追加した投稿も自動的に削除されます。</p>
+    <h5>・退会すると投稿したものは自動的に削除されます。<br></h5>
+    <h5>・また、お気に入りに追加した投稿も自動的に削除されます。</h5>
   </div>
 
   <div class="row justify-content-center mt-5">
-    <%= link_to "My Pageに戻る", my_page_path, class: "btn btn-success mr-5" %>
+    <%= link_to "My Pageに戻る", user_path(current_user), class: "btn btn-success mr-5" %>
     <%= link_to "退会する", withdraw_path, method: :patch, class: "btn btn-danger" %>
   </div>
 </div>

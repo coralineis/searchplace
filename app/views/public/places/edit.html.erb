@@ -1,4 +1,8 @@
 <div class="container">
+  <div class="text-danger font-weight-bold">
+    <%= alert %>
+  </div>
+
   <%= form_with model: @place, url: place_path, method: :patch do |f| %>
 
     <div class="field">

@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  after_update :delete_places
+
   has_many :places, dependent: :destroy
   has_many :likes, dependent: :destroy
 
@@ -18,6 +20,14 @@ class User < ApplicationRecord
     tottori: 31, shimane: 32, okayama: 33, hiroshima: 34, yamaguchi: 35, tokushima: 36, kagawa: 37, ehime: 38, kochi: 39,
     fukuoka: 40, saga: 41, nagasaki: 42, kumamoto: 43, oita: 44, miyazaki: 45, kagoshima: 46, okinawa: 47
   }
+
+  private
+
+  def delete_places
+    if is_deleted
+      places.destroy_all
+    end
+  end
 
 
 end

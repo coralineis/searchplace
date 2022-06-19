@@ -17,18 +17,19 @@ Rails.application.routes.draw do
     root to: 'places#index'
     get 'places/search'
     get 'about' => 'homes#about'
+    get 'users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+    patch 'users/withdraw' => 'users#withdraw', as: 'withdraw'
     resources :users, only: [:show, :edit, :update] do
       collection do
         get :likes
       end
     end
-    get 'users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
-    patch 'users/withdraw' => 'users#withdraw', as: 'withdraw'
     resources :places do
       resource :likes, only: [:create, :destroy]
       collection do
           post :confirm
           get 'search'
+          get 'like_rank'
       end
     end
     resources :place_genres, only: [:show]

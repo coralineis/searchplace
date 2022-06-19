@@ -5,9 +5,10 @@ class Place < ApplicationRecord
 
   belongs_to :user
   belongs_to :place_genre
+
+  has_many :likes, dependent: :destroy
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
-  has_many :likes, dependent: :destroy
 
   validates :address, presence: true
   validates :prefecture, presence: true
@@ -25,8 +26,6 @@ class Place < ApplicationRecord
       return all.order(created_at: :DESC)
     when 'old'
       return all.order(created_at: :ASC)
-    when 'likes'
-      return find(Like.group(:place_id).order(Arel.sql('count(place_id) desc')).pluck(:place_id))
     end
   end
 

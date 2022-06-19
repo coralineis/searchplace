@@ -1,4 +1,6 @@
 class Public::PlacesController < ApplicationController
+  before_action :set_search
+
   def new
     @place = Place.new
   end
@@ -27,7 +29,6 @@ class Public::PlacesController < ApplicationController
   def search
     selection = params[:keyword]
     @places = Place.sort(selection)
-    @search_places = @q.result.page(params[:page])
     @place_genres = PlaceGenre.all
   end
 
@@ -35,6 +36,11 @@ class Public::PlacesController < ApplicationController
     @places = Place.order(id: "DESC").page(params[:page])
     @place_genres = PlaceGenre.all
     @tags = Tag.all
+  end
+
+  def like_rank
+    @like_ranks = Place.find(Like.group(:place_id).order('count(place_id) desc').pluck(:place_id))
+    @place_genres = PlaceGenre.all
   end
 
   def show
@@ -58,6 +64,7 @@ class Public::PlacesController < ApplicationController
       @place.save_tags(params[:place][:tag])
       redirect_to user_path(@place.user.id)
     else
+      flash.now[:alert] = '※すべての項目を埋めてください'
       render :edit
     end
   end
@@ -66,6 +73,23 @@ class Public::PlacesController < ApplicationController
     @place = Place.find(params[:id])
     @place.destroy
     redirect_to user_path(@place.user.id)
+  end
+
+  def set_search
+    @q = Place.ransack(params[:q])
+    # search addredd or introduction or user_name
+    place_query_result = @q.result(distinct: true)
+    # search prefecture ex: prefecture like %hokkaido%
+    prefecture_query_result = Place.where(prefecture: params.dig(:q, :address_or_introduction_or_user_name_cont))
+    # hint for like search
+    # prefecture_query_result = Place.where('prefecture like ?', "%#{params.dig(:q, :address_or_introduction_or_user_name_cont)}%")
+    if place_query_result == []
+      @search_places = prefecture_query_result.order(id: "DESC").page(params[:page])
+    elsif prefecture_query_result == []
+      @search_places = place_query_result.order(id: "DESC").page(params[:page])
+    else
+      @search_places = place_query_result.or(prefecture_query_result).order(id: "DESC").uniq.page(params[:page])
+    end
   end
 
   private

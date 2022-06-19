@@ -1,7 +1,9 @@
 <% places.each do |place| %>
   <div class="card shadow mx-auto my-3" style="max-width: 500px;">
     <div class="card-body text-center">
-      <h4 class="card-title"><%= place.address %></h4>
+      <%= link_to place_path(place.id) do %>
+        <h4 class="card-title text-muted"><%= place.address %></h4>
+      <% end %>
       <p class="card-text">
         <% place.tags.each do |tag| %>
           ＃<%= tag.name %>

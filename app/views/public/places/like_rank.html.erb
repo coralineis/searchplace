@@ -1,15 +1,9 @@
 <div class="container">
+  <%= render 'search_form', q: @q %>
 
-  <%= render 'genre_list', place_genres: @place_genres %>
+  <%= render 'public/place_genres/genre_list', place_genres: @place_genres %>
 
-  <div class="col col-lg-3 my-3">
-    <%= form_with model: @place, url: search_places_path, method: :get, local: true do |f| %>
-      <%= f.select :keyword, [['投稿が新しい順', 'new'], ['投稿が古い順', 'old'], ['いいねが多い順', 'likes']], class: "form-outline-secondary" %>
-      <%= f.submit "並び替え", class: "btn btn-outline-secondary" %>
-    <% end %>
-  </div>
-
-  <% @place_genre.places.each do |place| %>
+  <% @like_ranks.each do |place| %>
     <%= link_to place_path(place.id) do %>
       <div class="card shadow mx-auto my-3" style="max-width: 500px;">
         <div class="card-body text-muted text-center">
@@ -24,9 +18,9 @@
           <%= image_tag place.image.url %>
           <p class="card-text py-2">所要時間  <%= place.time %>時間</p>
           <h5 class="card-text mb-3"><%= place.introduction %></h5>
+          ♥ <%= place.likes.count %> お気に入り
         </div>
       </div>
     <% end %>
   <% end %>
-
 </div>

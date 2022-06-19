@@ -1,0 +1,12 @@
+<nav class="navbar navbar-expand-lg navbar-light"  style="z-index: 1;">
+  <div class="container">
+    <form class="d-flex justify-content-end ml-auto mt-3">
+      <%= search_form_for q, url: places_search_path, method: :get do |f| %>
+        <div style="width: 50%;">
+          <%= f.text_field :address_or_introduction_or_user_name_cont, class: "form-control me-2", placeholder: "Search" %>
+        </div>
+          <%= f.submit "Search", class: "btn btn-outline-success ml-3" %>
+      <% end %>
+    </form>
+  </div>
+</nav>
