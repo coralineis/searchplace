@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 2022_06_16_133251) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "place_id"
+    t.integer "user_id", null: false
+    t.integer "place_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["place_id"], name: "index_likes_on_place_id"
@@ -34,28 +34,28 @@ ActiveRecord::Schema.define(version: 2022_06_16_133251) do
   end
 
   create_table "place_genres", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "places", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "place_genre_id"
-    t.integer "prefecture"
-    t.string "address"
-    t.float "latitude"
-    t.float "longitude"
-    t.string "image"
-    t.string "time"
-    t.text "introduction"
+    t.integer "user_id", null: false
+    t.integer "place_genre_id", null: false
+    t.integer "prefecture", null: false
+    t.string "address", null: false
+    t.float "latitude", null: false
+    t.float "longitude", null: false
+    t.string "image", null: false
+    t.string "time", null: false
+    t.text "introduction", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tag_maps", force: :cascade do |t|
-    t.integer "place_id"
-    t.integer "tag_id"
+    t.integer "place_id", null: false
+    t.integer "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["place_id"], name: "index_tag_maps_on_place_id"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2022_06_16_133251) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

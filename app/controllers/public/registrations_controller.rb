@@ -52,7 +52,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    my_page_path(current_user)
+    user_path(current_user)
   end
 
   def update_resource(resource, params)
@@ -60,7 +60,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    my_page_path(current_user)
+    user_path(current_user)
   end
 
   # The path used after sign up for inactive accounts.
