@@ -27,8 +27,6 @@ class Public::PlacesController < ApplicationController
   end
 
   def search
-    selection = params[:keyword]
-    @places = Place.sort(selection)
     @place_genres = PlaceGenre.all
   end
 
@@ -40,6 +38,7 @@ class Public::PlacesController < ApplicationController
 
   def like_rank
     @like_ranks = Place.find(Like.group(:place_id).order('count(place_id) desc').pluck(:place_id))
+    @like_ranks = Kaminari.paginate_array(@like_ranks).page(params[:page])
     @place_genres = PlaceGenre.all
   end
 

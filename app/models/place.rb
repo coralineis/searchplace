@@ -20,15 +20,6 @@ class Place < ApplicationRecord
     likes.exists?(user_id: user.id)
   end
 
-  def self.sort(selection)
-    case selection
-    when 'new'
-      return all.order(created_at: :DESC)
-    when 'old'
-      return all.order(created_at: :ASC)
-    end
-  end
-
   def save_tags(tags)
     if tags.class == String
       tags = tags.split(/[[:blank:]]+/)

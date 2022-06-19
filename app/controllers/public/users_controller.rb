@@ -1,9 +1,10 @@
 class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @places = @user.places.order(id: "DESC").page(params[:page])
+    @places = @user.places.order(id: "DESC").page(params[:page]).per(5)
     likes = Like.where(user_id: current_user.id).pluck(:place_id)
     @likes = Place.find(likes)
+    @likes = Kaminari.paginate_array(@likes).page(params[:page]).per(5)
   end
 
   def edit
