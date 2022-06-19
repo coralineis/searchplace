@@ -27,7 +27,7 @@ class Public::PlacesController < ApplicationController
   def search
     selection = params[:keyword]
     @places = Place.sort(selection)
-    @search_places = @q.result
+    @search_places = @q.result.page(params[:page])
     @place_genres = PlaceGenre.all
   end
 

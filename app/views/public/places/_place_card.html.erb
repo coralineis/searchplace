@@ -6,7 +6,9 @@
         ＃<%= tag.name %>
       <% end %>
     </p>
-    <h6 class="card-subtitle text-right my-3">posted by <%= place.user.name %></h6>
+    <%= link_to user_path(@place.user.id) do %>
+      <h6 class="card-subtitle text-right my-3 text-muted">posted by <%= place.user.name %></h6>
+    <% end %>
     <%= image_tag place.image.url %>
     <p class="card-text py-5">
       所要時間  <%= place.time %>時間<br>
