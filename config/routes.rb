@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :place_genres
-    resources :users, only:[:show, :index, :edit, :update]
+    resources :place_genres, except: [:new, :show]
+    resources :users, only: [:show, :index]
   end
 
   scope module: :public do
