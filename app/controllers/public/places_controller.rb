@@ -17,11 +17,12 @@ class Public::PlacesController < ApplicationController
   def create
     @place = Place.new(place_params)
     @place.user_id = current_user.id
-    if @place.save
+    if params[:place][:latitude] != nil
+      @place.save
       @place.save_tags(params[:tag])
       redirect_to place_path(@place.id)
     else
-      flash.now[:alert] = '※すべての項目を埋めてください'
+      flash.now[:alert] = '※すべての項目を埋めてください(施設名は正式名称を記述してください)'
       render :new
     end
   end
