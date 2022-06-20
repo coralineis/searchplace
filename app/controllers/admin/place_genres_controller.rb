@@ -16,7 +16,7 @@ class Admin::PlaceGenresController < ApplicationController
 
   def update
     @place_genre = PlaceGenre.find(params[:id])
-    @place_genre.update
+    @place_genre.update(place_genre_params)
     redirect_to admin_place_genres_path
   end
 
