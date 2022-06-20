@@ -1,5 +1,5 @@
 
-<%= link_to "いいね順が多い順に見る", like_rank_places_path, class: 'text-info ml-3' %>
+<%= link_to "いいね順が多い順に見る", like_rank_places_path, class: 'btn btn-outline-secondary ml-3' %>
 
 <% if search_places.present? %>
   <% search_places.each do |place| %>
@@ -23,5 +23,5 @@
     <% end %>
   <% end %>
 <% else %>
-  <h5>検索結果はありません</h5>
+  <h5 class="text-center m-5">検索結果はありません</h5>
 <% end %>

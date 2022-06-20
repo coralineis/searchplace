@@ -1,5 +1,5 @@
 class Public::PlacesController < ApplicationController
-  before_action :set_search
+  before_action :search
 
   def new
     @place = Place.new
@@ -29,17 +29,29 @@ class Public::PlacesController < ApplicationController
 
   def search
     @place_genres = PlaceGenre.all
+    @q = Place.ransack(params[:q])
+    # search addredd or introduction or user_name
+    place_query_result = @q.result(distinct: true)
+    # search prefecture ex: prefecture like %hokkaido%
+    prefecture_query_result = Place.where(prefecture: params.dig(:q, :address_or_introduction_or_user_name_cont))
+    if place_query_result == []
+      @search_places = prefecture_query_result.order(id: "DESC").page(params[:page]).per(5)
+    elsif prefecture_query_result == []
+      @search_places = place_query_result.order(id: "DESC").page(params[:page]).per(5)
+    else
+      @search_places = place_query_result.or(prefecture_query_result).order(id: "DESC").uniq.page(params[:page]).per(5)
+    end
   end
 
   def index
-    @places = Place.order(id: "DESC").page(params[:page])
+    @places = Place.order(id: "DESC").page(params[:page]).per(8)
     @place_genres = PlaceGenre.all
     @tags = Tag.all
   end
 
   def like_rank
     @like_ranks = Place.find(Like.group(:place_id).order('count(place_id) desc').pluck(:place_id))
-    @like_ranks = Kaminari.paginate_array(@like_ranks).page(params[:page])
+    @like_ranks = Kaminari.paginate_array(@like_ranks).page(params[:page]).per(5)
     @place_genres = PlaceGenre.all
   end
 
@@ -60,11 +72,12 @@ class Public::PlacesController < ApplicationController
 
   def update
     @place = Place.find(params[:id])
-    if @place.update(place_params)
+    if params[:place][:latitude] != nil
+      @place.update(place_params)
       @place.save_tags(params[:place][:tag])
       redirect_to user_path(@place.user.id)
     else
-      flash.now[:alert] = '※すべての項目を埋めてください'
+      flash.now[:alert] = '※すべての項目を埋めてください(施設名は正式名称を記述してください)'
       render :edit
     end
   end
@@ -73,23 +86,6 @@ class Public::PlacesController < ApplicationController
     @place = Place.find(params[:id])
     @place.destroy
     redirect_to user_path(@place.user.id)
-  end
-
-  def set_search
-    @q = Place.ransack(params[:q])
-    # search addredd or introduction or user_name
-    place_query_result = @q.result(distinct: true)
-    # search prefecture ex: prefecture like %hokkaido%
-    prefecture_query_result = Place.where(prefecture: params.dig(:q, :address_or_introduction_or_user_name_cont))
-    # hint for like search
-    # prefecture_query_result = Place.where('prefecture like ?', "%#{params.dig(:q, :address_or_introduction_or_user_name_cont)}%")
-    if place_query_result == []
-      @search_places = prefecture_query_result.order(id: "DESC").page(params[:page])
-    elsif prefecture_query_result == []
-      @search_places = place_query_result.order(id: "DESC").page(params[:page])
-    else
-      @search_places = place_query_result.or(prefecture_query_result).order(id: "DESC").uniq.page(params[:page])
-    end
   end
 
   private

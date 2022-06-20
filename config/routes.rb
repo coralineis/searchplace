@@ -27,9 +27,8 @@ Rails.application.routes.draw do
     resources :places do
       resource :likes, only: [:create, :destroy]
       collection do
-          post :confirm
-          get 'search'
-          get 'like_rank'
+        post :confirm
+        get 'like_rank'
       end
     end
     resources :place_genres, only: [:show]
