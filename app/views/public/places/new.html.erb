@@ -7,7 +7,7 @@
     <%= alert %>
   </div>
 
-  <%= form_with model: @place, url: confirm_places_path, method: :post do |f| %>
+  <%= form_with model: @place, url: confirm_path, method: :post do |f| %>
 
     <div class="field">
       <%= f.label :place_genre_id, "ジャンル", class: "mt-3 font-weight-bold" %><br>
