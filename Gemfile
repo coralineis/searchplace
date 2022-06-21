@@ -75,6 +75,7 @@ end
 
 gem "carrierwave"
 gem "mini_magick"
+gem 'fog-aws'
 
 gem 'kaminari','~> 1.2.1'
 
