@@ -27,10 +27,10 @@ Rails.application.routes.draw do
     resources :places do
       resource :likes, only: [:create, :destroy]
       collection do
-        post :confirm
         get 'like_rank'
       end
     end
+    post 'places/confirm' => 'places#confirm', as: 'confirm'
     resources :place_genres, only: [:show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
