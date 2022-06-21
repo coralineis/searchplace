@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_16_133251) do
+ActiveRecord::Schema.define(version: 2022_06_21_130314) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 2022_06_16_133251) do
     t.integer "place_genre_id", null: false
     t.integer "prefecture", null: false
     t.string "address", null: false
-    t.float "latitude", null: false
-    t.float "longitude", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.string "image", null: false
     t.string "time", null: false
     t.text "introduction", null: false

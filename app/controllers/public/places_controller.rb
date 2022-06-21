@@ -17,12 +17,11 @@ class Public::PlacesController < ApplicationController
   def create
     @place = Place.new(place_params)
     @place.user_id = current_user.id
-    if params[:place][:latitude] != nil
-      @place.save
+    if @place.save
       @place.save_tags(params[:tag])
       redirect_to place_path(@place.id)
     else
-      flash.now[:alert] = '※すべての項目を埋めてください(施設名は正式名称を記述してください)'
+      flash.now[:alert] = '※すべての項目を埋めてください'
       render :new
     end
   end
@@ -72,12 +71,11 @@ class Public::PlacesController < ApplicationController
 
   def update
     @place = Place.find(params[:id])
-    if params[:place][:latitude] != nil
-      @place.update(place_params)
+    if @place.update(place_params)
       @place.save_tags(params[:place][:tag])
       redirect_to user_path(@place.user.id)
     else
-      flash.now[:alert] = '※すべての項目を埋めてください(施設名は正式名称を記述してください)'
+      flash.now[:alert] = '※すべての項目を埋めてください'
       render :edit
     end
   end
