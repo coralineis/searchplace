@@ -50,7 +50,7 @@ class Public::PlacesController < ApplicationController
 
   def like_rank
     @like_ranks = Place.find(Like.group(:place_id).order('count(place_id) desc').pluck(:place_id))
-    @like_ranks = Kaminari.paginate_array(@like_ranks).page(params[:page])
+    @like_ranks = Kaminari.paginate_array(@like_ranks).page(params[:page]).per(5)
     @place_genres = PlaceGenre.all
   end
 
