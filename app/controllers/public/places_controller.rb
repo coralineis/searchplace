@@ -34,23 +34,23 @@ class Public::PlacesController < ApplicationController
     # search prefecture ex: prefecture like %hokkaido%
     prefecture_query_result = Place.where(prefecture: params.dig(:q, :address_or_introduction_or_user_name_cont))
     if place_query_result == []
-      @search_places = prefecture_query_result.order(id: "DESC").page(params[:page]).per(5)
+      @search_places = prefecture_query_result.order(id: "DESC").page(params[:page])
     elsif prefecture_query_result == []
-      @search_places = place_query_result.order(id: "DESC").page(params[:page]).per(5)
+      @search_places = place_query_result.order(id: "DESC").page(params[:page])
     else
-      @search_places = place_query_result.or(prefecture_query_result).order(id: "DESC").uniq.page(params[:page]).per(5)
+      @search_places = place_query_result.or(prefecture_query_result).order(id: "DESC").uniq.page(params[:page])
     end
   end
 
   def index
-    @places = Place.order(id: "DESC").page(params[:page]).per(8)
+    @places = Place.order(id: "DESC").page(params[:page])
     @place_genres = PlaceGenre.all
     @tags = Tag.all
   end
 
   def like_rank
     @like_ranks = Place.find(Like.group(:place_id).order('count(place_id) desc').pluck(:place_id))
-    @like_ranks = Kaminari.paginate_array(@like_ranks).page(params[:page]).per(5)
+    @like_ranks = Kaminari.paginate_array(@like_ranks).page(params[:page])
     @place_genres = PlaceGenre.all
   end
 
