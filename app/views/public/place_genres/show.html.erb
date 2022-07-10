@@ -2,6 +2,8 @@
 
   <%= render 'genre_list', place_genres: @place_genres %>
 
+  <h2 class="text-center text-info"><<%= @place_genre.name %>></h2>
+
   <% @place_genre.places.each do |place| %>
     <%= link_to place_path(place.id) do %>
       <div class="card shadow mx-auto my-3" style="max-width: 500px;">
