@@ -16,6 +16,10 @@ class Place < ApplicationRecord
   validates :time, presence: true
   validates :introduction, presence: true
 
+  with_options if: :place_genre? do |place_genre|
+    place_genre.validates :name, presence: true
+  end
+
   def liked_by?(user)
     likes.exists?(user_id: user.id)
   end
