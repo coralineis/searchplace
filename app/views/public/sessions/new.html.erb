@@ -24,6 +24,9 @@
     </div>
   <% end %>
 
+  <%= link_to "ゲストとしてログインする", users_guest_sign_in_path, method: :post, class: "btn btn-dark mr-2" %>
+
+
   <div class="row text-info">
     <%= link_to "新規会員登録はこちら", new_user_registration_path, class: "m-3 text-reset" %>
   </div>

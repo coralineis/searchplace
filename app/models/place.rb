@@ -14,7 +14,6 @@ class Place < ApplicationRecord
   validates :image, presence: true
   validates :address, presence: true
   validates :introduction, presence: true
-  validates :tags, presence: true
   validates :time, presence: true
 
   def liked_by?(user)

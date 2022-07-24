@@ -15,6 +15,6 @@
       所要時間  <%= place.time %>時間<br>
       <%= place.introduction %>
     </p>
-    <p class="card-text">投稿日　<%= l place.created_at %></p>
+    <p class="card-text">投稿日　<%= place.created_at.strftime('%Y/%m/%d') %></p>
   </div>
 </div>
