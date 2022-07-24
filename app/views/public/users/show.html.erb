@@ -9,7 +9,7 @@
         <div class="card-header font-weight-bold text-center">ユーザー情報</div>
         <div class="card-body">
           <p class="card-text">名前　　　<%= @user.name %></p>
-          <% if @user.prefecture.nil? || @user.prefecture == 'not_selected'  %>
+          <% if @user.prefecture.blank? || @user.prefecture == 'not_selected'  %>
             <p class="card-text">居住地　　未選択</p>
           <% else %>
             <p class="card-text">居住地　　<%= @user.prefecture_i18n %>在住</p>

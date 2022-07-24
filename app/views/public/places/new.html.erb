@@ -3,6 +3,15 @@
     <h3 class="bg-light my-3">Place新規登録</h3>
   </div>
 
+  <% if @place.errors.any? %>
+    <%= @place.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @place.errors.full_message.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <div class="text-danger font-weight-bold">
     <%= alert %>
   </div>
@@ -11,7 +20,7 @@
 
     <div class="field">
       <%= f.label :place_genre_id, "ジャンル", class: "mt-3 font-weight-bold" %><br>
-      <%= f.select :place_genre_id, options_from_collection_for_select(PlaceGenre.all, :id, :name), :prompt => "--ジャンルを選択してください--" %>
+      <%= f.select :place_genre_id, options_from_collection_for_select(PlaceGenre.all, :id, :name) %>
     </div>
 
     <div class="field">

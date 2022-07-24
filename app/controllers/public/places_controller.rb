@@ -7,6 +7,7 @@ class Public::PlacesController < ApplicationController
 
   def confirm
     @place = Place.new(place_params)
+    render :new if @place.invalid?
     @place.user_id = current_user.id
     @tags = []
     params[:place][:tag].split(/[[:blank:]]+/).each do|t|

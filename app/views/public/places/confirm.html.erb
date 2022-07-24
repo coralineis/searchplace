@@ -1,12 +1,4 @@
 <div class="container">
-  <% if @place.errors.any? %>
-    <%= @place.errors.count %>件のエラーが発生しました
-    <ul>
-      <% @place.errors.full_message.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
   <div class="row justify-content-center">
     <h4 class="bg-secondary text-white my-3 p-2"><%= @place.place_genre.name %></h4>
   </div>
@@ -24,6 +16,7 @@
       <%= f.hidden_field :time %>
       <%= f.hidden_field :introduction %>
       <%= f.hidden_field :place_genre_id %>
+      <%= f.hidden_field :created_at %>
       <% @tags.each do |tag| %>
         <%= hidden_field_tag 'tag[]', tag.name %>
       <% end %>
