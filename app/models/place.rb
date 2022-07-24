@@ -10,15 +10,12 @@ class Place < ApplicationRecord
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
 
-  validates :address, presence: true
   validates :prefecture, presence: true
   validates :image, presence: true
-  validates :time, presence: true
+  validates :address, presence: true
   validates :introduction, presence: true
-
-  with_options if: :place_genre? do |place_genre|
-    place_genre.validates :name, presence: true
-  end
+  validates :tags, presence: true
+  validates :time, presence: true
 
   def liked_by?(user)
     likes.exists?(user_id: user.id)

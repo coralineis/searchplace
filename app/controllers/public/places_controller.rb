@@ -7,8 +7,8 @@ class Public::PlacesController < ApplicationController
 
   def confirm
     @place = Place.new(place_params)
-    render :new if @place.invalid?
     @place.user_id = current_user.id
+    render :new if @place.invalid?
     @tags = []
     params[:place][:tag].split(/[[:blank:]]+/).each do|t|
       @tags.push(Tag.new(name: t))
@@ -22,7 +22,6 @@ class Public::PlacesController < ApplicationController
       @place.save_tags(params[:tag])
       redirect_to place_path(@place.id)
     else
-      flash.now[:alert] = '※すべての項目を埋めてください'
       render :new
     end
   end

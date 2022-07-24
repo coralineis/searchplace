@@ -120,6 +120,18 @@ ja:
           attributes:
             place_genre:
               required: "場所ジャンルが必要です"
+            prefecture:
+              blank: "都道府県を選択してください"
+            image:
+              blank: "画像を選択してください"
+            address:
+              blank: "施設名称を入力してください"
+            introduction:
+              blank: "感想　おすすめポイントを入力してください"
+            tags:
+             blank: "タグを入力してください"
+            time:
+              blank: "所要時間を入力してください"
 
 ---
 ja:

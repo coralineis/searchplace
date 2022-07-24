@@ -6,7 +6,7 @@
   <% if @place.errors.any? %>
     <%= @place.errors.count %>件のエラーが発生しました
     <ul>
-      <% @place.errors.full_message.each do |message| %>
+      <% @place.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>
