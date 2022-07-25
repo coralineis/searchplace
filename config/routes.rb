@@ -9,15 +9,15 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    devise_for :users, controllers: {
+    devise_for :users, skip: [:password], controllers: {
       registrations: 'public/registrations',
       sessions: 'public/sessions'
     }
 
-    devise_scope :users do
+    devise_scope :user do
       get "sign_in", :to => "users/sessions#new"
       get "sign_out", :to => "users/sessions#destroy"
-      post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+      post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
     end
 
     root to: 'places#index'
