@@ -44,9 +44,9 @@ https://drive.google.com/file/d/1B4tacpiZtWZGDbkJhW3bn5PFXLxSSdkK/view?usp=shari
 https://docs.google.com/spreadsheets/d/1Eg61PCbQM74HNB_9vCGv0Hst36bgQyld_GfhbN-rrAc/edit?usp=sharing
 
 ## 開発環境
-- OS：Windows
+- OS：Windows10  Amazon Linux release 2 (Karoo)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails
+- フレームワーク：Ruby on Rails 6.1.5
 - JSライブラリ：jQuery
 - IDE：Cloud9
 

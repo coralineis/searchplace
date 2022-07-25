@@ -21,6 +21,13 @@ class User < ApplicationRecord
     福岡県: 40, 佐賀県: 41, 長崎県: 42, 熊本県: 43, 大分県: 44, 宮崎県: 45, 鹿児島県: 46, 沖縄県: 47
   }
 
+  def self.guest
+    find_or_create_by(email: "guest@example.com") do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲスト"
+    end
+  end
+
   private
 
   def delete_places
@@ -29,12 +36,6 @@ class User < ApplicationRecord
     end
   end
 
-  def self.guest
-    find_or_create_by(email: "guest@example.com") do |user|
-      user.password = SecureRandom.urlsafe_base64
-      user.name = "ゲスト"
-    end
-  end
 
 
 end
